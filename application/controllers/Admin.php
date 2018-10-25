@@ -39,27 +39,27 @@ class Admin extends CI_Controller {
 			$this->session->set_flashdata('message_harian', '
 				<div class="alert alert-danger alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Peringatan!</strong> Anda Belum Mengisi data hari ini!
+				<strong>Peringatan!</strong> Anda Belum Mengisi Data PERALATAN AGROKLIMAT hari ini!
 				</div>');
 		}else{
 			$this->session->set_flashdata('message_harian', '
 				<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Terima Kasih</strong> Hari Ini sudah Input Data Hari Ini, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
+				<strong>Terima Kasih</strong> Anda sudah Mengisi Data Peralatan Agroklimat Hari Ini, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
 				</div>');
 		}
 		$data1['haloradar'] = $this->m_logbook->cekTodayRadar();
 		if($data1['haloradar'] == 0){
-			$this->session->set_flashdata('message_harian', '
+			$this->session->set_flashdata('message_harian_radar', '
 				<div class="alert alert-danger alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Peringatan!</strong> Anda Belum Mengisi data hari ini!
+				<strong>Peringatan!</strong> Anda Belum Mengisi Data RADAR hari ini!
 				</div>');
 		}else{
-			$this->session->set_flashdata('message_harian', '
+			$this->session->set_flashdata('message_harian_radar', '
 				<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Terima Kasih</strong> Hari Ini sudah Input Data Hari Ini, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
+				<strong>Terima Kasih</strong> Hari Ini sudah Input Data RADAR Hari Ini, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
 				</div>');
 		}		
 		$kategori = "kategori";
@@ -105,7 +105,7 @@ class Admin extends CI_Controller {
 			$this->session->set_flashdata('message_harian_sukses', '
 				<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Success!</strong> Data Berhasil di Input.
+				<strong>Success!</strong> Data Peralatan Agroklimat Berhasil di Input.
 				</div>');
 			header('location: cek/harian');
 		}
@@ -135,7 +135,7 @@ class Admin extends CI_Controller {
 			$this->session->set_flashdata('message_harian_sukses', '
 				<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Success!</strong> Data Berhasil di Update.
+				<strong>Success!</strong> Data Peralatan Agroklimat Berhasil di Update.
 				</div>');
 			header('location: cek/harian');
 		}
@@ -151,7 +151,7 @@ class Admin extends CI_Controller {
 		$this->session->set_flashdata('message', '
 			<div class="alert alert-success alert-dismissible">
     		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    		<strong>Success!</strong> Kategori Alat Baru ditambahkan.
+    		<strong>Success!</strong> Kategori Alat Baru Agroklimat ditambahkan.
   			</div>');
 	}
 	function cekmingguan(){
@@ -173,10 +173,10 @@ class Admin extends CI_Controller {
 			);
 			$table='kondisi';			
 			$this->m_logbook->inputMingguan($table, $data);
-			$this->session->set_flashdata('message_harian_sukses', '
+			$this->session->set_flashdata('message_mingguan_sukses', '
 				<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Success!</strong> Data Berhasil di Input.
+				<strong>Success!</strong> Data Peralatan Agroklimat Mingguan Berhasil di Input.
 				</div>');
 			header('location: cek/mingguan');
 		}
@@ -202,12 +202,21 @@ class Admin extends CI_Controller {
 				'keterangan' => $keterangan
 			);
 			
-			$this->m_logbook->update_data($where,$data,'kondisi');
-			$this->session->set_flashdata('message_harian_sukses', '
+			$update = $this->m_logbook->update_data($where,$data,'kondisi');
+			if($update){
+				$this->session->set_flashdata('message_mingguan_sukses', '
 				<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Success!</strong> Data Berhasil di Update.
+				<strong>Success!</strong> Data Peralatan Agroklimat Berhasil di Update.
 				</div>');
+			}else{
+				$this->session->set_flashdata('message_mingguan_sukses', '
+				<div class="alert alert-danger alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Success!</strong> Data Tidak Terupdate.
+				</div>');
+			}
+			
 			header('location: cek/mingguan');
 		}
 	}
@@ -227,7 +236,7 @@ class Admin extends CI_Controller {
 			$this->session->set_flashdata('message', '
 			<div class="alert alert-success alert-dismissible">
     		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    		<strong>Success!</strong> Update Data Kategori Alat.
+    		<strong>!</strong> Update Data Kategori Alat.
   			</div>');
 			$this->m_logbook->update_data($where,$data,'kategori');
 			header('location: view/agroklimat');
@@ -310,7 +319,7 @@ class Admin extends CI_Controller {
 		$this->session->set_flashdata('message', '
 			<div class="alert alert-success alert-dismissible">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Success!</strong> Kategori Alat Baru ditambahkan.
+			<strong>Success!</strong> Kategori Radar Baru ditambahkan.
 			</div>');
 	}
 	public function updatekategoriradar(){
@@ -328,7 +337,7 @@ class Admin extends CI_Controller {
 			$this->session->set_flashdata('message', '
 				<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Success!</strong> Update Data Kategori Alat.
+				<strong>Success!</strong> Update Data Radar Kategori Alat.
 				</div>');
 			$this->m_logbook->update_data($where,$data,'kategoriradar');
 			header('location: view/radar');
@@ -346,7 +355,7 @@ class Admin extends CI_Controller {
 		$this->session->set_flashdata('message', '
 			<div class="alert alert-success alert-dismissible">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Success!</strong> Alat Baru Ditambahkan.
+			<strong>Success!</strong> Radar Baru Ditambahkan.
 			</div>');
 		$this->m_logbook->tambahRadar($data);
 		header('location: view/radar');
@@ -370,7 +379,7 @@ class Admin extends CI_Controller {
 			$this->session->set_flashdata('message', '
 				<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Success!</strong> Update Data Alat.
+				<strong>Success!</strong>  Data Radar Berhasil di update.
 				</div>');
 			header('location: view/radar');
 		}
@@ -380,7 +389,7 @@ class Admin extends CI_Controller {
 		$this->session->set_flashdata('message', '
 			<div class="alert alert-success alert-dismissible">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Success!</strong> Hapus Kategori Alat.
+			<strong>Success!</strong> Kategori Radar Berhasil di Hapus.
 			</div>');
 		header('location: ../view/radar');
 	}
@@ -389,7 +398,7 @@ class Admin extends CI_Controller {
 		$this->session->set_flashdata('message', '
 			<div class="alert alert-success alert-dismissible">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Success!</strong> Hapus Alat.
+			<strong>Success!</strong> data Radar berhasil di Hapus .
 			</div>');
 		header('location: ../view/radar');
 	}
@@ -401,21 +410,6 @@ class Admin extends CI_Controller {
 			$var = "pembacaan".$id = $radar->id_radar;
 			$pembacaan = $this->input->post($var);
 			echo $var." - ".$pembacaan;
-			// $data = array(
-			// 	'id_radar' => $id,
-			// 	'tanggal' => $date,
-			// 	'pembacaan' => $pembacaan
-			// );
-			
-			// $this->m_logbook->inputHarianRadar($data);
-			// $this->session->set_flashdata('message_harian_sukses', '
-			// 	<div class="alert alert-success alert-dismissible">
-			// 	<div class="alert alert-success alert-dismissible">
-			// 	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			// 	<strong>Success!</strong> Data Berhasil di Input.
-			// 	</div>');
-			// header('location: cek/cek_radar');
-			
 		}
 	}
 	public function updateharianradar()
@@ -435,10 +429,10 @@ class Admin extends CI_Controller {
 			);
 			
 			$this->m_logbook->update_data($where,$data,'pembacaan');
-			$this->session->set_flashdata('message_harian_sukses', '
+			$this->session->set_flashdata('message_radar_sukses', '
 				<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Success!</strong> Data Berhasil di Update.
+				<strong>Success!</strong> Data Radar Berhasil di Update.
 				</div>');
 			header('location: cek/cek_radar');
 			
@@ -450,6 +444,7 @@ class Admin extends CI_Controller {
 	// LAPORAN
 	public function buat_laporan(){
 		 $jenis = $this->input->post('jenis_laporan');
+		 $jenis_alat = $this->input->post('jenis_alat');
 		 $nama_alat = $this->input->post('nama');
 		 $lokasi = $this->input->post('lokasi');
 		 $permasalahan = $this->input->post('permasalahan');
@@ -459,6 +454,7 @@ class Admin extends CI_Controller {
 			(
 			'tanggal' => date('Y-m-d'),
 			'jenis_laporan' => $jenis,
+			'jenis_alat' => $jenis_alat,
 			'nama_alat'=> $nama_alat,
 			'lokasi' => $lokasi,
 			'permasalahan' => $permasalahan,
@@ -470,16 +466,17 @@ class Admin extends CI_Controller {
 	}
 	public function hapuslaporan($data){
 		$this->m_logbook->hapuslaporan($data);
-		$this->session->set_flashdata('message', '
+		$this->session->set_flashdata('message_laporan', '
 			<div class="alert alert-success alert-dismissible">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Success!</strong> Hapus Alat.
+			<strong>Success!</strong> Laporan berhasil di Hapus .
 			</div>');
 		header('location: ../view/laporan');	
 	}
 	public function updatelaporan(){
 		$id = $this->input->post('id');
 		$jenis_laporan = $this->input->post('jenis_laporan');
+		$jenis_alat = $this->input->post('jenis_alat');
 		$nama_alat = $this->input->post('nama');
 		$lokasi = $this->input->post('lokasi');
 		$permasalahan = $this->input->post('permasalahan');
@@ -500,10 +497,10 @@ class Admin extends CI_Controller {
 			header('location: view/laporan');
 		}else{
 			$this->m_logbook->update_data($where,$data, 'laporan');
-			$this->session->set_flashdata('message', '
+			$this->session->set_flashdata('message_laporan', '
 			<div class="alert alert-success alert-dismissible">
     		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    		<strong>Success!</strong> Update Data Alat.
+    		<strong>Success!</strong> Laporan berhasil di Update.
   			</div>');
 			header('location: view/laporan');
 		}

@@ -7,8 +7,8 @@
   <div class="row" align="center">
     <div class="col-lg-12">
       <?php 
-      echo $this->session->flashdata('message_harian');
-      echo $this->session->flashdata('message_harian_sukses');
+      echo $this->session->flashdata('message_mingguan');
+      echo $this->session->flashdata('message_mingguan_sukses');
       ?>
 
       <table class="table table-bordered">
