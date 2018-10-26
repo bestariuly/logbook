@@ -5,8 +5,9 @@
     </div>
   </div>
   <div class="row" align="center">
+    <?php echo isset($_GET['id']); ?>
     <div class="col-lg-12">
-      <table class="table table-bordered">
+      <!-- <table class="table table-bordered">
         <thead>
           <tr>
             <th>No.</th>
@@ -41,4 +42,4 @@
                </table>
                 </form>
 
-        <?php ; ?>  
+        <?php ; ?>   -->

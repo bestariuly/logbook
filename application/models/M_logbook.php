@@ -50,10 +50,7 @@
 			$query = $this->db->query("SELECT * FROM kategoriradar");
 			return $query->result();
 		}
-		// function getKategoriRadarjoin(){
-		// 	$query = $this->db->query("SELECT radar.*, kategoriradar.nama_kategori FROM radar INNER JOIN kategoriradar ON radar.id_kategoriradar = kategoriradar.id_kategori");
-		// 	return $query->result();
-		// }
+		
 		function tambahKategoriRadar($input){
 			return $this->db->insert('kategoriradar', $input);
 		}

@@ -18,8 +18,7 @@
         </thead>
         <form action="#" method="post">
             <tbody>
-
-                <tr>
+          <tr>
                  
                </tr>
                <?php $no=1; foreach ($tanggal as $row2) {
@@ -40,7 +39,9 @@
                     );
                     echo $dayList[$day];  ?></td>
                     <td><?php echo $row2->tanggal; ?></td>
-                    <td><input type='button'value='Lihat' onClick='top.location="show_alat.php"'class='button'></td>
+                    <td><a href="show_alat?id=3"><button style="float: right">button</button></a></td>
+
+
                                    
                   </tr>
                 <?php } ?>

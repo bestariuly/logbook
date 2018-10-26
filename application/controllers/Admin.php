@@ -450,6 +450,10 @@ class Admin extends CI_Controller {
 		 $permasalahan = $this->input->post('permasalahan');
 		 $tindakan = $this->input->post('tindakan');
 		 $hasil = $this->input->post('hasil');
+		 $mengetahui = $this->input->post('mengetahui');
+		 $nama_lengkap = $this->input->post('nama_lengkap');
+		 $nip = $this->input->post('nip');
+		 $nama_teknisi = $this->input->post('nama_teknisi'); 
 		$data = array
 			(
 			'tanggal' => date('Y-m-d'),
@@ -459,7 +463,11 @@ class Admin extends CI_Controller {
 			'lokasi' => $lokasi,
 			'permasalahan' => $permasalahan,
 			'tindakan' => $tindakan,
-			'hasil' => $hasil
+			'hasil' => $hasil,
+			'mengetahui' => $mengetahui,
+			'nama_lengkap' => $nama_lengkap,
+			'nip' => $nip,
+			'nama_teknisi' => $nama_teknisi
 			 );
 		$this->m_logbook->buat_laporan($data);
 		header('location:view/laporan');
@@ -482,6 +490,10 @@ class Admin extends CI_Controller {
 		$permasalahan = $this->input->post('permasalahan');
 		$tindakan = $this->input->post('tindakan');
 		$hasil = $this->input->post('hasil');
+		$mengetahui = $this->input->post('mengetahui');
+		$nama_lengkap = $this->input->post('nama_lengkap');
+		$nip = $this->input->post('nip');
+		$nama_teknisi = $this->input->post('nama_teknisi'); 
 		$where = array(
 			'id' => $id
 		);
@@ -491,7 +503,11 @@ class Admin extends CI_Controller {
 			'lokasi' => $lokasi,
 			'permasalahan' => $permasalahan,
 			'tindakan' => $tindakan,
-			'hasil' => $hasil
+			'hasil' => $hasil,
+			'mengetahui' => $mengetahui,
+			'nama_lengkap' => $nama_lengkap,
+			'nip' => $nip,
+			'nama_teknisi' => $nama_teknisi
 		);
 		if(empty($jenis_laporan)){
 			header('location: view/laporan');
@@ -504,6 +520,9 @@ class Admin extends CI_Controller {
   			</div>');
 			header('location: view/laporan');
 		}
+	}
+	function lihat_data_alat(){
+		
 	}
 }
 

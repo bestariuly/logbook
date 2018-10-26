@@ -38,7 +38,8 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        
+                       
+ <!-- lihat laporan --> 
                       </div> 
                       <div class="modal-body"> 
                         <div class="row">
@@ -62,6 +63,7 @@
                             <br>
                           </div>
                           <div class="row">
+                            <br>
                             JENIS ALAT : <?php echo $laporan->jenis_alat; ?><br>
                             NAMA ALAT : <?php echo $laporan->nama_alat; ?><br>
                             LOKASI : <?php echo $laporan->lokasi; ?><br>
@@ -72,6 +74,22 @@
                              <textarea style="background-color: white" readonly class="form-control" rows = "5"><?php echo $laporan->tindakan; ?></textarea> <br>
                              HASIL : <br>
                               <textarea style="background-color: white" readonly class="form-control" rows = "5"><?php echo $laporan->hasil; ?></textarea> <br>
+                              <br>
+                            <div class="row">
+                              <div class="col-sm-6" align="center">
+                                Mengetahui, <br>
+                                <?php echo $laporan->mengetahui; ?><br> <br><br>
+                                <u><?php echo $laporan->nama_lengkap; ?></u><br>
+                                Nip. <?php echo $laporan->nip; ?><br>
+                              </div>
+                              <div class="col-sm-6" align="center">
+                                <br>
+                                Teknisi On Duty, <br><br><br>
+                                <u><?php  echo $laporan->nama_teknisi; ?></u><br>
+                              </div>
+                                
+
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -111,6 +129,14 @@
                             <textarea name="tindakan" class="form-control" id="tindakan"><?php echo $laporan->tindakan; ?></textarea>
                             <label for="hasil">Hasil</label>
                             <textarea name="hasil" class="form-control" id="hasil"> <?php echo $laporan->hasil; ?></textarea>
+                            <label for="nama_alat">Mengetahui</label>
+                             <input required type="text" class="form-control" id="nama" name="nama" value="<?php echo $laporan->mengetahui; ?>">
+                            <label for="nama_alat">Nama Lengkap</label>
+                            <input required type="text" class="form-control" id="nama" name="nama" value="<?php echo $laporan->nama_lengkap; ?>">
+                            <label for="nama_alat">Nip</label>
+                             <input required type="text" class="form-control" id="nama" name="nama" value="<?php echo $laporan->nip; ?>">
+                            <label for="nama_alat">Teknisi On Duty</label>
+                             <input required type="text" class="form-control" id="nama" name="nama" value="<?php echo $laporan->nama_teknisi; ?>">
                           </div>
                           <button type="submit" class="btn btn-default">Submit</button>
                         </form>
@@ -121,8 +147,7 @@
                     </div>
 
                   </div>
-                </div>
-<!-- End Edit kategoriradar -->    
+                </div>  
               </h4>
             </div>
             <div id="collapse<?php echo $laporan->id; ?>" class="panel-collapse collapse">
@@ -143,6 +168,8 @@
             </div>
             
           </div>
+
+
 <!-- modal buat laporan -->
         <div id="laporan" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -167,8 +194,8 @@
                 <option value="backup">Backup</option>
               </select>
             </div>
-             <label for="nama_alat">Jenis Alat</label>
-            <input type="text" class="form-control" id="nama_alat" name="jenis_alat">
+            <label for="nama_alat">Jenis Alat</label>
+            <input type="text" class="form-control" id="jenis_alat" name="jenis_alat">
             <label for="nama_alat">Nama Alat</label>
             <input type="text" class="form-control" id="nama_alat" name="nama">
             <label for="lokasi">Lokasi</label>
@@ -179,6 +206,14 @@
             <textarea id = "tindakan" class="form-control" name="tindakan"></textarea>
             <label for="hasil">Hasil</label>
             <textarea id = "hasil" class="form-control" name="hasil"></textarea>
+            <label for="nama_alat">Mengetahui</label>
+            <input type="text" class="form-control" id="mengetahui" name="mengetahui">
+            <label for="nama_alat">Nama Lengkap</label>
+            <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap">
+            <label for="nama_alat">Nip</label>
+            <input type="text" class="form-control" id="nip" name="nip">
+            <label for="nama_alat">Teknisi On Duty</label>
+            <input type="text" class="form-control" id="nama_teknisi" name="nama_teknisi">
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
