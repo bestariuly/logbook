@@ -8,7 +8,7 @@
   <div class="row" align="center">
     <div class="col-lg-12">
       <?php 
-      echo $this->session->flashdata('message_harian');
+      echo $this->session->flashdata('message_harian_radar');
       echo $this->session->flashdata('message_harian_sukses');
 
       ?>
