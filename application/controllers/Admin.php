@@ -27,9 +27,22 @@ class Admin extends CI_Controller {
 		$data1['laporan'] = $this->m_logbook->get('laporan');
 		$data1['data'] = $this->m_logbook->operasijoin2();
 		$data1['tanggal'] = $this->m_logbook->grup_tanggal();
+
+		if($this->input->get('tanggal')){
+			$tgl = $this->input->get('tanggal');
+			$data1['harianalat'] = $this->m_logbook->operasiJoinByDate($tgl);
+			$data1['tgl'] = $tgl;
+		}
+		if($this->input->get('edit')){
+			$tgl = $this->input->get('edit');
+			$data1['editharianalat'] = $this->m_logbook->operasiJoinByDate($tgl);
+			$data1['tgl'] = $tgl;
+		}
 		$this->load->view('admin/header');
 		$this->load->view('admin/view/'.$data, $data1);
-		$this->load->view('admin/footer');
+		$this->load->view('admin/footer');	
+		
+		
 	}
 
 	// ALAT
@@ -138,6 +151,38 @@ class Admin extends CI_Controller {
 				<strong>Success!</strong> Data Peralatan Agroklimat Berhasil di Update.
 				</div>');
 			header('location: cek/harian');
+		}
+	}
+	public function updateharianByTanggal(){
+		$data = $this->m_logbook->get('alat');
+		$date = date('Y-m-d');
+		foreach ($data as $alat) {
+			$var = "operasi".$id = $alat->id_alat;
+			$var1 = "keterangan".$alat->id_alat;
+			$var2 = "id_operasi".$alat->id_alat;
+			$var3 = "tanggal".$alat->id_alat;
+			$operasi = $this->input->post($var);
+			$keterangan = $this->input->post($var1);
+			$tanggal = $this->input->post($var3);
+			$id_operasi = $this->input->post($var2);
+			if(empty($keterangan)){
+				$keterangan = "-";
+			}
+			$where = array(
+				'id_operasi' => $id_operasi
+			);
+			$data = array(
+				'operasi' => $operasi,
+				'keterangan' => $keterangan
+			);
+			
+			$this->m_logbook->update_data($where,$data,'operasi');
+			$this->session->set_flashdata('message_harian_sukses', '
+				<div class="alert alert-success alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Success!</strong> Data Peralatan Agroklimat Berhasil di Update.
+				</div>');
+			header('location: view/harian');
 		}
 	}
 	function tambah_alat_agroklimat(){
@@ -298,15 +343,6 @@ class Admin extends CI_Controller {
   			</div>');
 		header('location: ../view/agroklimat');
 	}
-
-	//DATA TAMPIL ALAT 
-	public function showAlat(){
-		$tampil['data'] = $this->m_logbook->operasijoin2();
-		$this->load->view('show_alat', $tampil);
-	}
-
-
-
 
 	//RADAR
 	public function tambah_kategori_radar(){
@@ -522,7 +558,7 @@ class Admin extends CI_Controller {
 		}
 	}
 	function lihat_data_alat(){
-		
+
 	}
 }
 

@@ -12,6 +12,7 @@
     <link href="<?php echo base_url(); ?>asset/dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>asset/vendor/morrisjs/morris.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>asset/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
 </head>
 
 <body>
