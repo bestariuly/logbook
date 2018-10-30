@@ -9,7 +9,50 @@
       <?php 
       echo $this->session->flashdata('message_mingguan');
       echo $this->session->flashdata('message_mingguan_sukses');
-      ?>
+      function hari_ini(){
+        $hari = date ("D");
+       
+        switch($hari){
+          case 'Sun':
+            $hari_ini = "Minggu";
+          break;
+       
+          case 'Mon':     
+            $hari_ini = "Senin";
+          break;
+       
+          case 'Tue':
+            $hari_ini = "Selasa";
+          break;
+       
+          case 'Wed':
+            $hari_ini = "Rabu";
+          break;
+       
+          case 'Thu':
+            $hari_ini = "Kamis";
+          break;
+       
+          case 'Fri':
+            $hari_ini = "Jumat";
+          break;
+       
+          case 'Sat':
+            $hari_ini = "Sabtu";
+          break;
+          
+          default:
+            $hari_ini = "Tidak di ketahui";   
+          break;
+        }
+       
+        return "<b>" . $hari_ini . "</b>";
+       
+      }
+ 
+      if (hari_ini()=='Jumat') {
+        ?>
+      
 
       <table class="table table-bordered">
         <thead>
@@ -107,7 +150,15 @@
             <button type="submit" class="btn btn-default" style="float: right;">Update</button>
           </form>   
 
-        <?php }; ?>  
+        <?php };
+        }else{
+          echo '
+<div class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Peringatan!</strong> Data Hanya Bisa Diisi Pada Hari Jumat!
+        </div>
+          ';
+        } ?>  
         <!-- /.row -->
 
         <!-- /#page-wrapper -->
