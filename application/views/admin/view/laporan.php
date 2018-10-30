@@ -50,8 +50,7 @@
                             </div>
                             <div class="col-sm-10" style="text-align: center;">
                               BADAN METEOROLOGI KLIMATOLOGI DAN GEOFISIKA <br>
-                              <strong style="font-size: 150%">STASIUN KLIMATOLOGI KLAS I YOGYAKARTA</strong><br>
-                              POS KLIMATOLOGI YOGYAKARTA <br>
+                              <strong style="font-size: 150%">STASIUN KLIMATOLOGI MLATI YOGYAKARTA</strong><br>
                               Jl. Kabupaten Km. 5,5 Duwet Sendangadi, Mlati, Sleman, D.I. Yogyakarta<br>
                               Telp : (0274) 2880152 ; Fax: (0247) 2880151 ; email: staklim.yogya@gmail.com
                               <br><br>
