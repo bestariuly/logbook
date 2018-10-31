@@ -30,11 +30,13 @@ class Admin extends CI_Controller {
 
 		if($this->input->get('tanggal')){
 			$tgl = $this->input->get('tanggal');
+			$data1['harianradar'] = $this->m_logbook->pembacaanJoinByDate($tgl);
 			$data1['harianalat'] = $this->m_logbook->operasiJoinByDate($tgl);
 			$data1['tgl'] = $tgl;
 		}
 		if($this->input->get('edit')){
 			$tgl = $this->input->get('edit');
+			$data1['editharianradar'] = $this->m_logbook->pembacaanJoinByDate($tgl);
 			$data1['editharianalat'] = $this->m_logbook->operasiJoinByDate($tgl);
 			$data1['tgl'] = $tgl;
 		}
@@ -86,7 +88,6 @@ class Admin extends CI_Controller {
 		$data1['operasi'] = $this->m_logbook->getWhere('operasi', array('tanggal' => date('Y-m-d')));
 		$data1['operasijoin'] = $this->m_logbook->operasiJoin();
 		$data1['operasijoin3'] = $this->m_logbook->operasijoin3();
-		$data1['joinradar'] = $this->m_logbook->joinradar();
 		$data1['alat'] = $this->m_logbook->get($alat);
 		$data1['kategoriradar'] = $this->m_logbook->get($kategoriradar);
 		$data1['kategoriradar'] = $this->m_logbook->getKategoriRadar();
@@ -473,22 +474,23 @@ class Admin extends CI_Controller {
 			$var1 = "id_pembacaan".$radar->id_radar;
 			$pembacaan = $this->input->post($var);
 			$id_pembacaan = $this->input->post($var1);
-			if(empty($pembacaan)){
-				$pembacaan = "-";
-			}
-			$where = array(
-				'id_pembacaan' => $id_pembacaan
-			);
-			$data = array(
-				'pembacaan' => $pembacaan
-			);
-			$this->m_logbook->update_data($where,$data,'pembacaan');
-			$this->session->set_flashdata('message_harian_sukses', '
-				<div class="alert alert-success alert-dismissible">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Success!</strong> Data Radar Agroklimat Berhasil di Update.
-				</div>');
-			header('location: cek/harian');
+			echo $id_pembacaan."-".$pembacaan."<br>";
+			// if(empty($pembacaan)){
+			// 	$pembacaan = "-";
+			// }
+			// $where = array(
+			// 	'id_pembacaan' => $id_pembacaan
+			// );
+			// $data = array(
+			// 	'pembacaan' => $pembacaan
+			// );
+			// $this->m_logbook->update_data($where,$data,'pembacaan');
+			// $this->session->set_flashdata('message_harian_sukses', '
+			// 	<div class="alert alert-success alert-dismissible">
+			// 	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			// 	<strong>Success!</strong> Data Radar Agroklimat Berhasil di Update.
+			// 	</div>');
+			// header('location: cek/cek_radar');
 		}
 	}
 

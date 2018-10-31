@@ -148,7 +148,7 @@
                                     <a href="<?php echo base_url('admin/view/harian'); ?>">Data Peralatan Agroklimat</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo base_url('admin/view/mingguan'); ?>">Data Radar</a>
+                                    <a href="<?php echo base_url('admin/view/tampil_data_radar'); ?>">Data Radar</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
