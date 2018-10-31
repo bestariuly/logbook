@@ -43,6 +43,7 @@
                         <select class="form-control" id="sel1" name="operasi<?php echo $row2->id_alat; ?>" required>
                           <option value="normal">Normal</option>
                           <option value="gangguan">Gangguan</option>
+                          <option value="rusak">Rusak</option>
                         </select>
 
                       </td>
@@ -83,10 +84,17 @@
                           <?php if ($row2->operasi == 'normal'): ?>
                             <option value="normal">Normal</option>
                             <option value="gangguan">Gangguan</option>
+                            <option value="rusak">Rusak</option>
                           <?php endif ?>
                           <?php if ($row2->operasi == 'gangguan'): ?>
                             <option value="gangguan">Gangguan</option>
                             <option value="normal">Normal</option>
+                            <option value="rusak">Rusak</option>
+                          <?php endif ?>
+                          <?php if ($row2->operasi == 'rusak'): ?>
+                            <option value="gangguan">Gangguan</option>
+                            <option value="normal">Normal</option>
+                            <option value="rusak">Rusak</option>
                           <?php endif ?>
                           <input type="hidden" name="id_operasi<?php echo $row2->id_alat; ?>" value="<?php echo $row2->id_operasi; ?>">
                         </select>

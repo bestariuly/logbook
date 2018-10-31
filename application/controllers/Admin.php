@@ -28,6 +28,7 @@ class Admin extends CI_Controller {
 		$data1['data'] = $this->m_logbook->operasijoin2();
 		$data1['tanggal'] = $this->m_logbook->grup_tanggal();
 
+//harian Alat
 		if($this->input->get('tanggal')){
 			$tgl = $this->input->get('tanggal');
 			$data1['harianalat'] = $this->m_logbook->operasiJoinByDate($tgl);
@@ -36,6 +37,17 @@ class Admin extends CI_Controller {
 		if($this->input->get('edit')){
 			$tgl = $this->input->get('edit');
 			$data1['editharianalat'] = $this->m_logbook->operasiJoinByDate($tgl);
+			$data1['tgl'] = $tgl;
+		}
+//mingguan Alat
+		if($this->input->get('tanggal')){
+			$tgl = $this->input->get('tanggal');
+			$data1['mingguanalat'] = $this->m_logbook->operasiJoinByDate($tgl);
+			$data1['tgl'] = $tgl;
+		}
+		if($this->input->get('edit')){
+			$tgl = $this->input->get('edit');
+			$data1['editmingguanalat'] = $this->m_logbook->operasiJoinByDate($tgl);
 			$data1['tgl'] = $tgl;
 		}
 		$this->load->view('admin/header');
@@ -183,6 +195,38 @@ class Admin extends CI_Controller {
 				<strong>Success!</strong> Data Peralatan Agroklimat Berhasil di Update.
 				</div>');
 			header('location: view/harian');
+		}
+	}
+	public function updatemingguanByTanggal(){
+		$data = $this->m_logbook->get('alat');
+		$date = date('Y-m-d');
+		foreach ($data as $alat) {
+			$var = "kondisi".$id = $alat->id_alat;
+			$var1 = "keterangan".$alat->id_alat;
+			$var2 = "id_kondisi".$alat->id_alat;
+			$var3 = "tanggal".$alat->id_alat;
+			$kondisi = $this->input->post($var);
+			$keterangan = $this->input->post($var1);
+			$tanggal = $this->input->post($var3);
+			$id_kondisi = $this->input->post($var2);
+			if(empty($keterangan)){
+				$keterangan = "-";
+			}
+			$where = array(
+				'id_kondisi' => $id_kondisi
+			);
+			$data = array(
+				'kondisi' => $kondisi,
+				'keterangan' => $keterangan
+			);
+			
+			$this->m_logbook->update_data($where,$data,'kondisi');
+			$this->session->set_flashdata('message_mingguan_sukses', '
+				<div class="alert alert-success alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Success!</strong> Data Peralatan Agroklimat Berhasil di Update.
+				</div>');
+			header('location: view/mingguan');
 		}
 	}
 	function tambah_alat_agroklimat(){

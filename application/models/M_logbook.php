@@ -114,7 +114,7 @@
 			return $query->result();
 		}
 		function operasiJoinByDate($date){
-			$query = $this->db->query("SELECT o.id_operasi, o.operasi, o.id_alat, a.id_kategori, o.tanggal, o.keterangan, a.nama_alat FROM operasi o INNER JOIN alat a ON o.id_alat = a.id_alat WHERE o.tanggal = '$date'"); 
+			$query = $this->db->query("SELECT o.id_operasi, o.operasi, o.id_alat, a.id_kategori, o.tanggal, o.keterangan, a.nama_alat,k.kondisi FROM operasi o INNER JOIN alat a ON o.id_alat = a.id_alat JOIN kondisi k ON a.id_alat=k.id_alat WHERE o.tanggal='$date'"); 
 			return $query->result();
 		}
 		function operasiJoin2(){

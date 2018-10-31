@@ -46,7 +46,7 @@
                         <div class="col-lg-12" style="padding-left: 10%; padding-right: 10%">
                           <div class="row">
                             <div class="col-sm-2" style="text-align: center;">
-                              <img src="http://4.bp.blogspot.com/-LqUyMLMG05w/Ty0S-w100jI/AAAAAAAABC0/2AmjPy4Br1s/s1600/logo_BMKG.png" style="width: 80%; height: auto;">
+                              <img src="http://4.bp.blogspot.com/-LqUyMLMG05w/Ty0S-w100jI/AAAAAAAABC0/2AmjPy4Br1s/s1600/logo_BMKG.png" style="width: 60%; height: auto;">
                             </div>
                             <div class="col-sm-10" style="text-align: center;">
                               BADAN METEOROLOGI KLIMATOLOGI DAN GEOFISIKA <br>
@@ -57,17 +57,17 @@
                             </div>
                           </div>
                           <div class="row" style="background-color: black; height: 4px;"></div>
-                          <div class="row" style="text-align: center;">
+                          <div class="row" style="text-align: center;  ">
                             <br><strong>LAPORAN <?php echo strtoupper($laporan->jenis_laporan); ?> PERALATAN </strong>
                             <br>
                           </div>
                           <div class="row">
                             <br>
-                            JENIS ALAT : <?php echo $laporan->jenis_alat; ?><br>
-                            NAMA ALAT : <?php echo $laporan->nama_alat; ?><br>
-                            LOKASI : <?php echo $laporan->lokasi; ?><br>
-                            TANGGAL : <?php echo $laporan->tanggal; ?><br><br>
-                            PERMASALAHAN : <br>
+                            JENIS ALAT &emsp; : <?php echo $laporan->jenis_alat; ?><br>
+                            NAMA ALAT &emsp; : <?php echo $laporan->nama_alat; ?><br>
+                            LOKASI &emsp;&emsp;&emsp;: <?php echo $laporan->lokasi; ?><br>
+                            TANGGAL &emsp;&emsp;: <?php echo $laporan->tanggal; ?><br><br>
+                            PERMASALAHAN :<br><span class="margin-left: 10 px;"> </span>
                             <textarea style="background-color: white" readonly class="form-control" rows = "5"><?php echo $laporan->permasalahan; ?></textarea> <br>
                             TINDAKAN : <br>
                              <textarea style="background-color: white" readonly class="form-control" rows = "5"><?php echo $laporan->tindakan; ?></textarea> <br>
