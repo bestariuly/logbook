@@ -66,13 +66,13 @@ class Admin extends CI_Controller {
 			$this->session->set_flashdata('message_harian_radar', '
 				<div class="alert alert-danger alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Peringatan!</strong> Anda Belum Mengisi Data RADAR hari ini!
+				<strong>Peringatan!</strong> Anda Belum Mengisi Data Radar hari ini!
 				</div>');
 		}else{
 			$this->session->set_flashdata('message_harian_radar', '
 				<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Terima Kasih</strong> Hari Ini sudah Input Data RADAR Hari Ini, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
+				<strong>Terima Kasih</strong> Hari Ini sudah Input Data Radar Hari Ini, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
 				</div>');
 		}		
 		$kategori = "kategori";
@@ -434,7 +434,7 @@ class Admin extends CI_Controller {
 		$this->session->set_flashdata('message', '
 			<div class="alert alert-success alert-dismissible">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Success!</strong> data Radar berhasil di Hapus .
+			<strong>Success!</strong> Data Radar berhasil di Hapus .
 			</div>');
 		header('location: ../view/radar');
 	}
