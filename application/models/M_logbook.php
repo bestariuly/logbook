@@ -117,6 +117,11 @@
 			$query = $this->db->query("SELECT o.id_operasi, o.operasi, o.id_alat, a.id_kategori, o.tanggal, o.keterangan, a.nama_alat,k.kondisi FROM operasi o INNER JOIN alat a ON o.id_alat = a.id_alat JOIN kondisi k ON a.id_alat=k.id_alat WHERE o.tanggal='$date'"); 
 			return $query->result();
 		}
+		function pembacaanJoinByDate($date){
+			$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal, r.nama_radar, r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE p.tanggal = '$date'"); 
+			return $query->result();
+		}
+
 		function operasiJoin2(){
 			$date = date('Y-m-d');
 			$query = $this->db->query("SELECT o.id_operasi, o.operasi, o.id_alat, a.id_kategori, o.tanggal, o.keterangan, a.nama_alat FROM operasi o INNER JOIN alat a ON o.id_alat = a.id_alat"); 
@@ -127,11 +132,6 @@
 			$query = $this->db->query("SELECT k.id_kondisi, k.kondisi, k.id_alat, a.id_kategori, k.tanggal, k.keterangan, a.nama_alat FROM kondisi k INNER JOIN alat a ON k.id_alat = a.id_alat"); 
 			return $query->result();
 		}	
-		function joinradar(){
-			$date = date('Y-m-d');
-			$query = $this->db->query("SELECT r.*, k.nama_kategori FROM radar r INNER JOIN kategoriradar k ON r.id_kategoriradar = k.id_kategori"); 
-			return $query->result();
-		}
 		function grup_tanggal(){
 			$date = date('Y-m-d');
 			$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM operasi GROUP BY tanggal"); 
@@ -147,11 +147,11 @@
 			$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal,r.nama_radar,r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE p.tanggal = '$date'"); 
 			return $query->result();
 		}
-		function pembacaanJoin2(){
-			$date = date('Y-m-d');
-			$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal, r.nama_radar,r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar"); 
-			return $query->result();
-		}	
+		// function pembacaanJoin2(){
+		// 	$date = date('Y-m-d');
+		// 	$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal, r.nama_radar,r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar"); 
+		// 	return $query->result();
+		// }	
 		
 
 		
