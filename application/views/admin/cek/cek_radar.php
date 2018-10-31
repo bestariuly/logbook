@@ -44,35 +44,70 @@
                     <td><?php echo $row2->standar; ?></td>
                     <td>
                       <div class="form-group">
-                        <select id="pilih<?php echo $row2->id_radar; ?>" class="form-control" onchange="lainnya(<?php echo $row2->id_radar; ?>)" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                          <option value="menyala">Menyala</option>
+                          <?php if ($row2->standar=='MENYALA') {
+                            ?>
+                            <select id="pilih<?php echo $row2->id_radar; ?>" class="form-control" onchange="lainnya(<?php echo $row2->id_radar; ?>)" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="menyala">Menyala</option>
+                            <option value="mati">Mati</option></select>
+                            <?php
+                          }else if ($row2->standar=='ENABLE') {
+                            ?>
+                            <select id="pilih<?php echo $row2->id_radar; ?>" class="form-control" onchange="lainnya(<?php echo $row2->id_radar; ?>)" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="enable">Enable</option>
+                            <option value="disable">Disable</option></select>
+                            <?php
+                          }else if ($row2->standar=='MENYALA HIJAU') {
+                            ?>
+                            <select id="pilih<?php echo $row2->id_radar; ?>" class="form-control" onchange="lainnya(<?php echo $row2->id_radar; ?>)" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
                           <option value="menyala_hijau">Menyala Hijau</option>
                           <option value="menyala_merah">Menyala Merah</option>
-                          <option value="berkedip">Berkedip</option>
-                          <option value="hijau">Hijau</option>
-                          <option value="hijau_menyala">Hijau Menyala</option>
-                          <option value="hijau_tua">Hijau Tua</option>
-                          <option value="putih">Putih</option>
-                          <option value="enable">Enable</option>
-                          <option value="disable">Disable</option>
-                          <option value="connect">Connect</option>
-                          <option value="disconnect">Disconnect</option>
-                          <option value="control">Control</option>
-                          <option value="ctrl_yogfrog">CTRL YogFrog</option>
-                          <option value="mati">Mati</option>
-                          <option value="lainnya">Lainnya</option>
-                        </select>
-                        <input type="number" name="lainnya<?php echo $row2->id_radar; ?>" >
-                                <script >
-                                  function lainnya(y){
-                                    var x = document.getElementById("pilih"+y).value;
-                                    if(x=='lainnya'){
-                                      document.getElementById("lainnya"+y).innerHTML = "<input name='lainnyaa"+y+"' type='number' class='form-control'>";
-                                    }else{
-                                      $('#lainnya').hide;
-                                    }
-                                  }
-                                </script>
+                            <option value="mati">Mati</option></select>
+                            <?php
+                          }else if ($row2->standar=='BERKEDIP') {
+                            ?>
+                            <select id="pilih<?php echo $row2->id_radar; ?>" class="form-control" onchange="lainnya(<?php echo $row2->id_radar; ?>)" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="mati">Mati</option>
+                            <option value="berkedip">Berkedip</option></select>
+                            <?php
+                          }else if ($row2->standar=='MATI') {
+                            ?>
+                            <select id="pilih<?php echo $row2->id_radar; ?>" class="form-control" onchange="lainnya(<?php echo $row2->id_radar; ?>)" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="mati">Mati</option>
+                            <option value="menyala">Menyala</option></select>
+                            
+                            <?php
+                          }else if ($row2->standar=='Hijau') {
+                            ?>
+                            <select id="pilih<?php echo $row2->id_radar; ?>" class="form-control" onchange="lainnya(<?php echo $row2->id_radar; ?>)" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="hijau">Hijau</option>
+                            <option value="putih">Putih</option></select>
+                            <?php
+                          }else if ($row2->standar=='Hijau Menyala') {
+                            ?>
+                            <select id="pilih<?php echo $row2->id_radar; ?>" class="form-control" onchange="lainnya(<?php echo $row2->id_radar; ?>)" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="hijau_menyala">Hijau Menyala</option>
+                          <option value="hijau_tua">Hijau Tua</option></select>
+                            <?php
+                          }else if ($row2->standar=='Connect') {
+                            ?>
+                            <select id="pilih<?php echo $row2->id_radar; ?>" class="form-control" onchange="lainnya(<?php echo $row2->id_radar; ?>)" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="connect">Connect</option>
+                            <option value="disconnect">Disconnect</option></select>
+                            <?php
+                          }else if($row2->standar=='Posisi Control'){
+                            ?>
+                            <select id="pilih<?php echo $row2->id_radar; ?>" class="form-control" onchange="lainnya(<?php echo $row2->id_radar; ?>)" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="control">Control</option>
+                          <option value="ctrl_yogfrog">CTRL YogFrog</option></select>
+                            <?php
+                          }else{
+                            ?>
+                            <input type="number" class="form-control" name="lainnya<?php echo $row2->id_radar; ?>" >
+                            <?php
+                          }?>
+                          
+                        
+                        
                         
                         </div>
                       </td>

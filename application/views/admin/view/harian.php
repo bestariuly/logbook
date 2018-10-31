@@ -1,3 +1,17 @@
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myData tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -27,7 +41,7 @@
             </div> 
             <div class="modal-body">
 
-              <table class="table table-bordered">
+              <table class="table table-bordered table-stripped">
                   <thead>
                     <tr>
                       <th>No.</th>
@@ -162,7 +176,8 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-  <table class="table table-bordered">
+                  <div class="row2" align="right"> <input class="form-control" style="width: 30%;" id="myInput" type="text" placeholder="Search.."><br></div>
+  <table class="table table-bordered table-stripped">
         <thead>
           <tr>
             <th>No.</th>
@@ -173,7 +188,7 @@
           </tr>
         </thead>
         <form action="#" method="post">
-            <tbody>
+            <tbody id="myData">
           <tr>
                  
                </tr>
@@ -207,5 +222,11 @@
                 </div>
             </div>
             <!-- /.row -->
+                        <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">DATA CHEKLIST MINGGUAN PERALATAN AGROKLIMAT</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
 </div>
         <!-- /#page-wrapper -->
