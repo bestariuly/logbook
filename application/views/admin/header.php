@@ -134,13 +134,10 @@
                                 <li>
                                     <a href="<?php echo base_url('admin/cek/cek_radar'); ?>">Harian</a>
                                 </li>
-<<<<<<< HEAD
-                                
-=======
                                 <!-- <li>
                                     <a href="<?php echo base_url('admin/view/mingguan'); ?>">Mingguan</a>
                                 </li> -->
->>>>>>> 33d9320780c0e3d716962cfabca1a838a12658d9
+
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
