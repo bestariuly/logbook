@@ -137,6 +137,11 @@
 			$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM operasi GROUP BY tanggal"); 
 			return $query->result();
 		}
+		function grup_tanggal_radar(){
+			$date = date('Y-m-d');
+			$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM pembacaan GROUP BY tanggal"); 
+			return $query->result();
+		}
 		function cekTodayRadar(){
 			$date = date('Y-m-d');
 			$query = $this->db->query("SELECT * FROM pembacaan WHERE tanggal = '$date'");  
