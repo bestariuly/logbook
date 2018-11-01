@@ -12,6 +12,7 @@
       });
     });
   </script>
+
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
@@ -66,110 +67,121 @@
                         <td>
                           <div class="form-group">
                             <?php if ($row2->pembacaan=='MENYALA') {
-                              ?>
-                              <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                <option value="MENYALA">Menyala</option>
-                                <option value="MATI">Mati</option></select>
-                                <?php
-                              }else if ($row2->pembacaan=='MATI') {
-                                ?>
-                                <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                  <option value="MENYALA">Menyala</option>
-                                  <option value="MATI">Mati</option></select>
-                                  <?php
-                                }else if ($row2->pembacaan=='ENABLE') {
-                                ?>
-                                <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                  <option value="ENABLE">Enable</option>
-                                  <option value="DISABLE">Disable</option></select>
-                                  <?php
-                                }else if ($row2->pembacaan=='MENYALA HIJAU') {
-                                  ?>
-                                  <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                    <option value="MENYALA HIJAU">Menyala Hijau</option>
-                                    <option value="MENYALA MERAH">Menyala Merah</option>
-                                    <option value="MATI">Mati</option></select>
-                                    <?php
-                                  }else if ($row2->pembacaan=='MENYALA MERAH') {
-                                  ?>
-                                  <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                    <option value="MENYALA MERAH">Menyala Merah</option>
-                                    <option value="MENYALA HIJAU">Menyala Hijau</option>
-                                    <option value="MATI">Mati</option></select>
-                                    <?php
-                                  }else if ($row2->pembacaan=='MATI') {
-                                  ?>
-                                  <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                    <option value="MATI">Mati</option>
-                                    <option value="MENYALA HIJAU">Menyala Hijau</option>
-                                    <option value="MENYALA MERAH">Menyala Merah</option></select>
-                                    <?php
-                                  }else if ($row2->pembacaan=='BERKEDIP') {
-                                    ?>
-                                    <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                      <option value="BERKEDIP">Berkedip</option>
-                                      <option value="MATI">Mati</option></select>
-                                      <?php
-                                    }else if ($row2->pembacaan=='MATI') {
-                                      ?>
-                                      <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                        <option value="MATI">Mati</option>
-                                        <option value="BERKEDIP">Berkedip</option></select>
-                                        
-                                        <?php
-                                      }else if ($row2->pembacaan=='HIJAU') {
-                                        ?>
-                                        <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                          <option value="HIJAU">Hijau</option>
-                                          <option value="PUTIH">Putih</option></select>
-                                          <?php
-                                        }else if ($row2->pembacaan=='PUTIH') {
-                                        ?>
-                                        <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                          <option value="PUTIH">Putih</option>
-                                          <option value="HIJAU">Hijau</option></select>
-                                          <?php
-                                        }else if ($row2->pembacaan=='HIJAU MENYALA') {
-                                          ?>
-                                          <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                            <option value="HIJAU MENYALA">Hijau Menyala</option>
-                                            <option value="HIJAU TUA">Hijau Tua</option></select>
-                                            <?php
-                                          }else if ($row2->pembacaan=='HIJAU TUA') {
-                                          ?>
-                                          <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                            <option value="HIJAU TUA">Hijau Tua</option>
-                                            <option value="HIJAU MENYALA">Hijau Menyala</option></select>
-                                            <?php
-                                          }else if ($row2->pembacaan=='CONNECT') {
-                                            ?>
-                                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                              <option value="CONNECT">Connect</option>
-                                              <option value="DISCONNECT">Disconnect</option></select>
-                                              <?php
-                                            }else if ($row2->pembacaan=='DISCONNECT') {
-                                            ?>
-                                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                              <option value="DISCONNECT">Disconnect</option>
-                                              <option value="CONNECT">Connect</option></select>
-                                              <?php
-                                            }else if($row2->pembacaan=='CONTROL'){
-                                              ?>
-                                              <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                                <option value="CONTROL">Control</option>
-                                                <option value="CTRL YOGFROG">CTRL YogFrog</option></select>
-                                                <?php
-                                              }else if($row2->pembacaan=='CTRL YOGFROG'){
-                                              ?>
-                                              <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                                                <option value="CTRL YOGFROG">CTRL YogFrog</option>
-                                                <option value="CONTROL">Control</option></select>
-                                                <?php
-                                              }else{
-                                                ?>
-                                                <input type="number" style="background-color: rgb(255,255,255);" readonly class="form-control" name="pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_radar ?>" >
-                                                <?php
-                                              }?>
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="MENYALA">Menyala</option>
+                            <option value="MATI">Mati</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='MATI') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                           <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="MATI">Mati</option>
+                            <option value="MENYALA">Menyala</option>
+                            <option value="MENYALA HIJAU">Menyala Hijau</option>
+                            <option value="MENYALA MERAH">Menyala Merah</option>
+                            <option value="BERKEDIP">Berkedip</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='ENABLE') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                           <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="ENABLE">Enable</option>
+                            <option value="DISABLE">Disable</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='DISABLE') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                           <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="DISABLE">Disable</option>
+                            <option value="ENABLE">Enable</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='MENYALA HIJAU') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                          <option value="MENYALA HIJAU">Menyala Hijau</option>
+                          <option value="MENYALA MERAH">Menyala Merah</option>
+                            <option value="MATI">Mati</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='MENYALA MERAH') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                          <option value="MENYALA MERAH">Menyala Merah</option>
+                          <option value="MENYALA HIJAU">Menyala Hijau</option>
+                            <option value="MATI">Mati</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='BERKEDIP') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="BERKEDIP">Berkedip</option>
+                            <option value="MATI">Mati</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='HIJAU') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="HIJAU">Hijau</option>
+                            <option value="PUTIH">Putih</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='PUTIH') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="PUTIH">Putih</option>
+                            <option value="HIJAU">Hijau</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='HIJAU MENYALA') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="HIJAU MENYALA">Hijau Menyala</option>
+                          <option value="HIJAU TUA">Hijau Tua</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='HIJAU TUA') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="HIJAU TUA">Hijau Tua</option>
+                            <option value="HIJAU MENYALA">Hijau Menyala</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='CONNECT') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="CONNECT">Connect</option>
+                            <option value="DISCONNECT">Disconnect</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='DISCONNECT') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="DISCONNECT">Disconnect</option>
+                            <option value="CONNECT">Connect</option></select>
+                            <?php
+                          }else if($row2->pembacaan=='CONTROL'){
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="CONTROL">Control</option>
+                          <option value="CTRL YOGFROG">CTRL YogFrog</option></select>
+                            <?php
+                          }else if($row2->pembacaan=='CTRL YOGFROG'){
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="CTRL YOGFROG">CTRL YogFrog</option>
+                            <option value="CONTROL">Control</option></select>
+                            <?php
+                          }else{
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <input readonly style="background-color: rgb(255,255,255);" type="number" class="form-control" name="pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->pembacaan ?>" >
+                            <?php
+                          }?>
                                               
                                               
                                               
@@ -223,7 +235,7 @@
                                           <tr>
                                            <td colspan="4" style="background-color:#eceaea;"><?php echo $row1->nama_kategori; ?></td>
                                          </tr>
-                                         <?php foreach ($editharianalat as $row2) {
+                                         <?php foreach ($editharianradar as $row2) {
                                           if ($row2->id_kategoriradar == $row1->id_kategori) {
 
                                             ?>
@@ -233,23 +245,122 @@
                                               <td><?php echo $row2->standar; ?></td>
                                               <td>
                                                 <div class="form-group">
-                                                  <select class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required >
-                                                    <?php if ($row2->pembacaan == 'normal'): ?>
-                                                      <option value="normal" >Normal</option>
-                                                      <option value="gangguan" >Gangguan</option>
-
-                                                    <?php endif ?>
-                                                    <?php if ($row2->operasi == 'gangguan'): ?>
-                                                      <option value="normal" >Normal</option>
-                                                      <option value="gangguan" >Gangguan</option>
-                                                    <?php endif ?>
-                                                    <input type="hidden" name="id_operasi<?php echo $row2->id_alat; ?>" value="<?php echo $row2->id_operasi; ?>">
-                                                    <input type="hidden" name="tanggal<?php echo $row2->id_alat; ?>" value="<?php echo $row2->id_operasi; ?>">
-                                                  </select>
-
-                                                </td>
-                                                <td>
-                                                  <textarea class="form-control" name="keterangan<?php echo $row2->id_alat; ?>" placeholder="Keterangan" style="background-color: white;"><?php echo $row2->keterangan; ?></textarea>
+                                                  <?php if ($row2->pembacaan=='MENYALA') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="MENYALA">Menyala</option>
+                            <option value="MATI">Mati</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='MATI') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                           <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="MATI">Mati</option>
+                            <option value="MENYALA">Menyala</option>
+                            <option value="MENYALA HIJAU">Menyala Hijau</option>
+                            <option value="MENYALA MERAH">Menyala Merah</option>
+                            <option value="BERKEDIP">Berkedip</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='ENABLE') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                           <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="ENABLE">Enable</option>
+                            <option value="DISABLE">Disable</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='DISABLE') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                           <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="DISABLE">Disable</option>
+                            <option value="ENABLE">Enable</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='MENYALA HIJAU') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                          <option value="MENYALA HIJAU">Menyala Hijau</option>
+                          <option value="MENYALA MERAH">Menyala Merah</option>
+                            <option value="MATI">Mati</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='MENYALA MERAH') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                          <option value="MENYALA MERAH">Menyala Merah</option>
+                          <option value="MENYALA HIJAU">Menyala Hijau</option>
+                            <option value="MATI">Mati</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='BERKEDIP') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="BERKEDIP">Berkedip</option>
+                            <option value="MATI">Mati</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='HIJAU') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="HIJAU">Hijau</option>
+                            <option value="PUTIH">Putih</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='PUTIH') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="PUTIH">Putih</option>
+                            <option value="HIJAU">Hijau</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='HIJAU MENYALA') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="HIJAU MENYALA">Hijau Menyala</option>
+                          <option value="HIJAU TUA">Hijau Tua</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='HIJAU TUA') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="HIJAU TUA">Hijau Tua</option>
+                            <option value="HIJAU MENYALA">Hijau Menyala</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='CONNECT') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="CONNECT">Connect</option>
+                            <option value="DISCONNECT">Disconnect</option></select>
+                            <?php
+                          }else if ($row2->pembacaan=='DISCONNECT') {
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="DISCONNECT">Disconnect</option>
+                            <option value="CONNECT">Connect</option></select>
+                            <?php
+                          }else if($row2->pembacaan=='CONTROL'){
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="CONTROL">Control</option>
+                          <option value="CTRL YOGFROG">CTRL YogFrog</option></select>
+                            <?php
+                          }else if($row2->pembacaan=='CTRL YOGFROG'){
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                            <option value="CTRL YOGFROG">CTRL YogFrog</option>
+                            <option value="CONTROL">Control</option></select>
+                            <?php
+                          }else{
+                            ?>
+                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
+                            <input type="number" class="form-control" name="pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->pembacaan ?>" >
+                            <?php
+                          }?>
                                                 </div>
                                               </td>
                                             </tr>
@@ -271,7 +382,7 @@
 
                           <?php endif ?>
 
-                          <!-- tampil data alat by date -->
+                          <!-- tampil data radar by date -->
                           <!-- /.row -->
                           <div class="row">
                             <div class="col-lg-12">
@@ -321,5 +432,16 @@
                                 </div>
                               </div>
                               <!-- /.row -->
+                              <div class="col-lg-12">
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tambahkategoriRadar">Tambah Kategori Radar</button>
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tambahkategoriRadar">Tambah Kategori Radar</button>
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tambahkategoriRadar">Tambah Kategori Radar</button>
+  
+
+                              </div>
+                             
+                              
+
+                              
                             </div>
                             <!-- /#page-wrapper -->

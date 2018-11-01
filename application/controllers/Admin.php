@@ -29,7 +29,7 @@ class Admin extends CI_Controller {
 		$data1['tanggal'] = $this->m_logbook->grup_tanggal();
 		$data1['tanggal_radar'] = $this->m_logbook->grup_tanggal_radar();
 
-//harian Alat
+//harian Alat dan radar
 		if($this->input->get('tanggal')){
 			$tgl = $this->input->get('tanggal');
 			$data1['harianradar'] = $this->m_logbook->pembacaanJoinByDate($tgl);
@@ -539,7 +539,7 @@ class Admin extends CI_Controller {
 	public function updateharianradarByTanggal(){
 			$data = $this->m_logbook->get('radar');
 			$date = date('Y-m-d');
-			foreach ($data as $alat) {
+			foreach ($data as $radar) {
 				$var = "pembacaan".$id = $radar->id_radar;
 				$var1 = "id_pembacaan".$radar->id_radar;
 				$var2 = "tanggal".$radar->id_radar;
