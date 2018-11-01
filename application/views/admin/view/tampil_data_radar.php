@@ -65,65 +65,65 @@
                         <td><?php echo $row2->standar; ?></td>
                         <td>
                           <div class="form-group">
-                            <?php if ($row2->pembacaan=='MENYALA') {
+                            <?php if ($row2->pembacaan=='menyala') {
                               ?>
                               <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
                                 <option value="menyala">Menyala</option>
                                 <option value="mati">Mati</option></select>
                                 <?php
-                              }else if ($row2->pembacaan=='ENABLE') {
+                              }else if ($row2->pembacaan=='enable') {
                                 ?>
                                 <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
                                   <option value="enable">Enable</option>
                                   <option value="disable">Disable</option></select>
                                   <?php
-                                }else if ($row2->pembacaan=='MENYALA HIJAU') {
+                                }else if ($row2->pembacaan=='menyala_hijau') {
                                   ?>
                                   <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
                                     <option value="menyala_hijau">Menyala Hijau</option>
                                     <option value="menyala_merah">Menyala Merah</option>
                                     <option value="mati">Mati</option></select>
                                     <?php
-                                  }else if ($row2->pembacaan=='BERKEDIP') {
+                                  }else if ($row2->pembacaan=='berkedip') {
                                     ?>
                                     <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
                                       <option value="berkedip">Berkedip</option>
                                       <option value="mati">Mati</option></select>
                                       <?php
-                                    }else if ($row2->pembacaan=='MATI') {
+                                    }else if ($row2->pembacaan=='mati') {
                                       ?>
                                       <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
                                         <option value="mati">Mati</option>
                                         <option value="menyala">Menyala</option></select>
                                         
                                         <?php
-                                      }else if ($row2->pembacaan=='Hijau') {
+                                      }else if ($row2->pembacaan=='hijau') {
                                         ?>
                                         <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
                                           <option value="hijau">Hijau</option>
                                           <option value="putih">Putih</option></select>
                                           <?php
-                                        }else if ($row2->pembacaan=='Hijau Menyala') {
+                                        }else if ($row2->pembacaan=='hijau_menyala') {
                                           ?>
                                           <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
                                             <option value="hijau_menyala">Hijau Menyala</option>
                                             <option value="hijau_tua">Hijau Tua</option></select>
                                             <?php
-                                          }else if ($row2->pembacaan=='Connect') {
+                                          }else if ($row2->pembacaan=='connect') {
                                             ?>
                                             <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
                                               <option value="connect">Connect</option>
                                               <option value="disconnect">Disconnect</option></select>
                                               <?php
-                                            }else if($row2->pembacaan=='Posisi Control'){
+                                            }else if($row2->pembacaan=='control'){
                                               ?>
-                                              <select  class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
+                                              <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
                                                 <option value="control">Control</option>
                                                 <option value="ctrl_yogfrog">CTRL YogFrog</option></select>
                                                 <?php
                                               }else{
                                                 ?>
-                                                <input type="number" class="form-control" name="pembacaan<?php echo $row2->id_radar; ?>" >
+                                                <input type="number" style="background-color: rgb(255,255,255);" readonly class="form-control" name="pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_radar ?>" >
                                                 <?php
                                               }?>
                                               
