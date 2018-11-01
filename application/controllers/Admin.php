@@ -518,9 +518,10 @@ class Admin extends CI_Controller {
 			$var1 = "id_pembacaan".$radar->id_radar;
 			$pembacaan = $this->input->post($var);
 			$id_pembacaan = $this->input->post($var1);
-			$id_pembacaan."-".$pembacaan."<br>";
+			//echo $id_pembacaan."-".$pembacaan."<br>";
 			$where = array(
-				'id_pembacaan' => $id_pembacaan
+				'id_pembacaan' => $id_pembacaan, 
+				'tanggal' => $date
 			);
 			$data = array(
 				'pembacaan' => $pembacaan
