@@ -57,8 +57,8 @@ $(document).ready(function(){
               <h2 class="page-header text-center" >CHEKLIST HARIAN PERALATAN AGROKLIMAT</h2>
               <h4 class="modal-title">Tanggal : <?php echo $tgl; ?></h4>
             </div> 
-            <div class="modal-body">
-              <div class="col-sm-10" style="position: center">
+            <div class="modal-body col-sm-12">
+              <div class="col-sm-10" style="">
                <table class="table table-bordered table-stripped">
                   <thead>
                     <tr>
@@ -80,7 +80,7 @@ $(document).ready(function(){
                     <?php  $no=1; foreach ($kategori as $row1) {
                           ?>
                           <tr>
-                           <td colspan="4" style="background-color:#eceaea;"><?php echo $row1->nama_kategori; ?></td>
+                           <td colspan="8" style="background-color:#eceaea;"><?php echo $row1->nama_kategori; ?></td>
                          </tr>
                          <?php foreach ($harianalat as $row2) {
                           if ($row2->id_kategori == $row1->id_kategori) {

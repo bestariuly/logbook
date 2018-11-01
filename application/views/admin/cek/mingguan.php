@@ -11,7 +11,7 @@
       echo $this->session->flashdata('message_mingguan_sukses');
       $hari = date ("D");
       //$hari = hari_ini();
-      if ($hari === "Fri") {
+      if ($hari == "Fri") {
         ?>
       
 
@@ -113,7 +113,7 @@
 
         <?php };
         }else{
-          echo $hari;
+         
           echo '
 <div class="alert alert-danger alert-dismissible">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

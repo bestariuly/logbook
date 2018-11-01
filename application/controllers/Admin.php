@@ -518,23 +518,20 @@ class Admin extends CI_Controller {
 			$var1 = "id_pembacaan".$radar->id_radar;
 			$pembacaan = $this->input->post($var);
 			$id_pembacaan = $this->input->post($var1);
-			echo $id_pembacaan."-".$pembacaan."<br>";
-			// if(empty($pembacaan)){
-			// 	$pembacaan = "-";
-			// }
-			// $where = array(
-			// 	'id_pembacaan' => $id_pembacaan
-			// );
-			// $data = array(
-			// 	'pembacaan' => $pembacaan
-			// );
-			// $this->m_logbook->update_data($where,$data,'pembacaan');
-			// $this->session->set_flashdata('message_harian_sukses', '
-			// 	<div class="alert alert-success alert-dismissible">
-			// 	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			// 	<strong>Success!</strong> Data Radar Agroklimat Berhasil di Update.
-			// 	</div>');
-			// header('location: cek/cek_radar');
+			$id_pembacaan."-".$pembacaan."<br>";
+			$where = array(
+				'id_pembacaan' => $id_pembacaan
+			);
+			$data = array(
+				'pembacaan' => $pembacaan
+			);
+			$this->m_logbook->update_data($where,$data,'pembacaan');
+			$this->session->set_flashdata('message_harian_sukses', '
+				<div class="alert alert-success alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Success!</strong> Data Radar Agroklimat Berhasil di Update.
+				</div>');
+			header('location: cek/cek_radar');
 		}
 	}
 
