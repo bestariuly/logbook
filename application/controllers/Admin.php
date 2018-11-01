@@ -535,6 +535,35 @@ class Admin extends CI_Controller {
 			header('location: cek/cek_radar');
 		}
 	}
+	public function updateharianradarByTanggal(){
+			$data = $this->m_logbook->get('radar');
+			$date = date('Y-m-d');
+			foreach ($data as $alat) {
+				$var = "pembacaan".$id = $radar->id_radar;
+				$var1 = "id_pembacaan".$radar->id_radar;
+				$var2 = "tanggal".$radar->id_radar;
+				$pembacaan = $this->input->post($var);
+				$id_pembacaan = $this->input->post($var1);
+				$tanggal = $this->input->post($var2);
+			if(empty($pembacaan)){
+				$pembacaan = "-";
+			}
+			$where = array(
+				'id_pembacaan' => $id_pembacaan
+			);
+			$data = array(
+				'pembacaan' => $pembacaan
+			);
+			
+			$this->m_logbook->update_data($where,$data,'pembacaan');
+			$this->session->set_flashdata('message_harian_sukses', '
+				<div class="alert alert-success alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Success!</strong> Data Radar Agroklimat Berhasil di Update.
+				</div>');
+			header('location: view/tampil_data_radar');
+		}
+	}
 
 
 

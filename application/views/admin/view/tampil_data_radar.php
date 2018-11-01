@@ -217,23 +217,24 @@
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      <form action="../updateharianByTanggal" method="post">
-                                        <?php  $no=1; foreach ($kategori as $row1) {
+                                      <form action="../updateharianradarByTanggal" method="post">
+                                        <?php  $no=1; foreach ($kategoriradar as $row1) {
                                           ?>
                                           <tr>
                                            <td colspan="4" style="background-color:#eceaea;"><?php echo $row1->nama_kategori; ?></td>
                                          </tr>
                                          <?php foreach ($editharianalat as $row2) {
-                                          if ($row2->id_kategori == $row1->id_kategori) {
+                                          if ($row2->id_kategoriradar == $row1->id_kategori) {
 
                                             ?>
                                             <tr>
                                               <td><?php echo $no;$no++; ?></td>
-                                              <td><?php echo $row2->nama_alat; ?></td>
+                                              <td><?php echo $row2->nama_radar; ?></td>
+                                              <td><?php echo $row2->standar; ?></td>
                                               <td>
                                                 <div class="form-group">
-                                                  <select class="form-control" id="sel1" name="operasi<?php echo $row2->id_alat; ?>" required >
-                                                    <?php if ($row2->operasi == 'normal'): ?>
+                                                  <select class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required >
+                                                    <?php if ($row2->pembacaan == 'normal'): ?>
                                                       <option value="normal" >Normal</option>
                                                       <option value="gangguan" >Gangguan</option>
 
