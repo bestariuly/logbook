@@ -133,7 +133,7 @@ $(document).ready(function(){
                                 <td>
                                   <textarea readonly class="form-control" name="keterangan<?php echo $row2->id_alat; ?>" placeholder="Keterangan" style="background-color: white;"><?php echo $row2->keterangan; ?></textarea>
                                 </div>
-                              </td>
+                                </td>
                             </tr>
                           <?php }}} ?>
                         </tbody>
@@ -143,7 +143,7 @@ $(document).ready(function(){
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <a href="harian"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></a>
             </div>
           </div>
         </div>
