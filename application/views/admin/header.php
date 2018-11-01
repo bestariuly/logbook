@@ -157,7 +157,10 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="<?php echo base_url('admin/view/chart'); ?>"><i class="fa fa-line-chart fa-fw"></i> Chart Radar</a>
                         </li>
+                        
                             <li>
                             <a href="#"><i class="fa fa-bars fa-fw"></i> Manajemen Alat <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">

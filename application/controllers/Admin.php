@@ -16,18 +16,21 @@ class Admin extends CI_Controller {
 	public function view($data){
 		$kategori = "kategori";
 		$alat = "alat";
-		$radar = "radar";
-		$kategoriradar = "kategoriradar";
 		$data1['kategori'] = $this->m_logbook->get($kategori);
 		$data1['alat'] = $this->m_logbook->get($alat);
 		$data1['kategorialat'] = $this->m_logbook->getKategoriAlat();
-		$data1['kategoriradar'] = $this->m_logbook->get($kategoriradar);
-		$data1['radar'] = $this->m_logbook->get($radar);
-		$data1['kategori_radar'] = $this->m_logbook->getKategoriRadar();
 		$data1['laporan'] = $this->m_logbook->get('laporan');
 		$data1['data'] = $this->m_logbook->operasijoin2();
 		$data1['tanggal'] = $this->m_logbook->grup_tanggal();
+		//radar
+		$radar = "radar";
+		$kategoriradar = "kategoriradar";
+		$data1['chart'] = $this->m_logbook->pembacaanChart(13);
+		$data1['kategoriradar'] = $this->m_logbook->get($kategoriradar);
+		$data1['radar'] = $this->m_logbook->get($radar);
+		$data1['kategori_radar'] = $this->m_logbook->getKategoriRadar();
 		$data1['tanggal_radar'] = $this->m_logbook->grup_tanggal_radar();
+		
 
 //harian Alat dan radar
 		if($this->input->get('tanggal')){
@@ -76,6 +79,18 @@ class Admin extends CI_Controller {
 				<strong>Terima Kasih</strong> Anda sudah Mengisi Data Peralatan Agroklimat Hari Ini, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
 				</div>');
 		}
+
+		$alat = "alat";
+		$kategori = "kategori";
+		$data1['kategori'] = $this->m_logbook->get($kategori);
+		$data1['operasi'] = $this->m_logbook->getWhere('operasi', array('tanggal' => date('Y-m-d')));
+		$data1['operasijoin'] = $this->m_logbook->operasiJoin();
+		$data1['operasijoin3'] = $this->m_logbook->operasijoin3();
+		$data1['alat'] = $this->m_logbook->get($alat);
+		
+		
+		$data1['kategorialat'] = $this->m_logbook->getKategoriAlat();
+		//CEK RADAR
 		$data1['haloradar'] = $this->m_logbook->cekTodayRadar();
 		if($data1['haloradar'] == 0){
 			$this->session->set_flashdata('message_harian_radar', '
@@ -89,23 +104,16 @@ class Admin extends CI_Controller {
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				<strong>Terima Kasih</strong> Hari Ini sudah Input Data Radar Hari Ini, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
 				</div>');
-		}		
-		$kategori = "kategori";
+		}
 		$kategoriradar = "kategoriradar";
-		$alat = "alat";
 		$radar = "radar";
 		$data1['pembacaan'] = $this->m_logbook->getWhere('pembacaan', array('tanggal' => date('Y-m-d')));
 		$data1['radar'] = $this->m_logbook->get($radar);
 		$data1['pembacaanjoin'] = $this->m_logbook->pembacaanJoin();
-		$data1['kategori'] = $this->m_logbook->get($kategori);
-		$data1['operasi'] = $this->m_logbook->getWhere('operasi', array('tanggal' => date('Y-m-d')));
-		$data1['operasijoin'] = $this->m_logbook->operasiJoin();
-		$data1['operasijoin3'] = $this->m_logbook->operasijoin3();
-		$data1['alat'] = $this->m_logbook->get($alat);
 		$data1['kategoriradar'] = $this->m_logbook->get($kategoriradar);
 		$data1['kategoriradar'] = $this->m_logbook->getKategoriRadar();
+		
 		$data1['radar'] = $this->m_logbook->get('radar');
-		$data1['kategorialat'] = $this->m_logbook->getKategoriAlat();
 		$this->load->view('admin/header');
 		$this->load->view('admin/cek/'.$data, $data1);
 		$this->load->view('admin/footer');

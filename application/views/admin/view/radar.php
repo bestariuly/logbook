@@ -123,7 +123,7 @@
                             <label for="radar<?php echo $row1->nama_kategori; ?>">Nama Radar</label>
                             <input required type="text" class="form-control" name="nama_radar" id="radar<?php echo $row1->nama_kategori; ?>">
                             <label for="radar<?php echo $row1->nama_kategori; ?>">Standar Radar</label>
-                            <input required type="text" class="form-control" name="standar" id="radar<?php echo $row1->nama_kategori; ?>">
+                            <input style="text-transform:uppercase" required type="text" class="form-control" name="standar" id="radar<?php echo $row1->nama_kategori; ?>">
                           </div>
                           <button type="submit" class="btn btn-default">Submit</button>
                         </form>
@@ -171,7 +171,7 @@
                                 <label for="xradar<?php echo $row1->nama_kategori; ?>">Nama Radar</label>
                                 <input required type="text" class="form-control" name="nama_radar" id="xradar<?php echo $row1->nama_kategori; ?>" value="<?php echo $row2->nama_radar; ?>">
                                 <label for="xradar<?php echo $row1->nama_kategori; ?>">Standar Radar</label>
-                                <input required type="text" class="form-control" name="standar" id="xradar<?php echo $row1->nama_kategori; ?>" value="<?php echo $row2->standar; ?>">
+                                <input style="text-transform:uppercase" required type="text" class="form-control" name="standar" id="xradar<?php echo $row1->nama_kategori; ?>" value="<?php echo $row2->standar; ?>">
                               </div>
                               <button type="submit" class="btn btn-default">Update</button>
                             </form>

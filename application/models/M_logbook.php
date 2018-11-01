@@ -70,6 +70,36 @@
 			$this->db->where($where);
 			$this->db->update($table,$data);
 		}
+		function getWhere($table, $where){//where pake array
+			$query = $this->db->get_where($table, $where);
+			return $query->result();
+		}
+		function inputHarianRadar($input){
+			$this->db->insert('pembacaan', $input);
+		}
+		function pembacaanJoinByDate($date){
+			$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal, r.nama_radar, r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE p.tanggal = '$date'"); 
+			return $query->result();
+		}
+		function grup_tanggal_radar(){
+			$date = date('Y-m-d');
+			$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM pembacaan GROUP BY tanggal"); 
+			return $query->result();
+		}
+		function cekTodayRadar(){
+			$date = date('Y-m-d');
+			$query = $this->db->query("SELECT * FROM pembacaan WHERE tanggal = '$date'");  
+			return $query->num_rows();
+		}
+		function pembacaanJoin(){
+			$date = date('Y-m-d');
+			$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal,r.nama_radar,r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE p.tanggal = '$date'"); 
+			return $query->result();
+		}
+		function pembacaanChart($data){
+			$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal, r.nama_radar, r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE p.id_radar = '$data'");
+			return $query->result();
+		}
 
 		// LAPORAN
 		function buat_laporan($input){
@@ -85,19 +115,14 @@
 		}
 
 
-		function getWhere($table, $where){//where pake array
-			$query = $this->db->get_where($table, $where);
-			return $query->result();
-		}
+		
 		function inputHarian($table, $input){
 			$this->db->insert($table, $input);
 		}
 		function inputMingguan($table, $input){
 			$this->db->insert($table, $input);
 		}
-		function inputHarianRadar($input){
-			$this->db->insert('pembacaan', $input);
-		}
+		
 		function cekToday(){ //cek harian
 			$date = date('Y-m-d');
 			$query = $this->db->query("SELECT * FROM operasi WHERE tanggal = '$date'");  
@@ -117,10 +142,7 @@
 			$query = $this->db->query("SELECT o.id_operasi, o.operasi, o.id_alat, a.id_kategori, o.tanggal, o.keterangan, a.nama_alat,k.kondisi FROM operasi o INNER JOIN alat a ON o.id_alat = a.id_alat JOIN kondisi k ON a.id_alat=k.id_alat WHERE o.tanggal='$date'"); 
 			return $query->result();
 		}
-		function pembacaanJoinByDate($date){
-			$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal, r.nama_radar, r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE p.tanggal = '$date'"); 
-			return $query->result();
-		}
+		
 
 		function operasiJoin2(){
 			$date = date('Y-m-d');
@@ -137,21 +159,7 @@
 			$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM operasi GROUP BY tanggal"); 
 			return $query->result();
 		}
-		function grup_tanggal_radar(){
-			$date = date('Y-m-d');
-			$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM pembacaan GROUP BY tanggal"); 
-			return $query->result();
-		}
-		function cekTodayRadar(){
-			$date = date('Y-m-d');
-			$query = $this->db->query("SELECT * FROM pembacaan WHERE tanggal = '$date'");  
-			return $query->num_rows();
-		}
-		function pembacaanJoin(){
-			$date = date('Y-m-d');
-			$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal,r.nama_radar,r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE p.tanggal = '$date'"); 
-			return $query->result();
-		}
+		
 		// function pembacaanJoin2(){
 		// 	$date = date('Y-m-d');
 		// 	$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal, r.nama_radar,r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar"); 

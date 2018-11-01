@@ -432,16 +432,6 @@
                                 </div>
                               </div>
                               <!-- /.row -->
-                              <div class="col-lg-12">
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tambahkategoriRadar">Tambah Kategori Radar</button>
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tambahkategoriRadar">Tambah Kategori Radar</button>
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tambahkategoriRadar">Tambah Kategori Radar</button>
-  
 
-                              </div>
-                             
-                              
-
-                              
                             </div>
                             <!-- /#page-wrapper -->
