@@ -27,6 +27,7 @@ class Admin extends CI_Controller {
 		$data1['laporan'] = $this->m_logbook->get('laporan');
 		$data1['data'] = $this->m_logbook->operasijoin2();
 		$data1['tanggal'] = $this->m_logbook->grup_tanggal();
+		$data1['tanggal_radar'] = $this->m_logbook->grup_tanggal_radar();
 
 //harian Alat
 		if($this->input->get('tanggal')){

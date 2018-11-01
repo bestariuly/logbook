@@ -290,13 +290,13 @@
                                     <tr>
                                      
                                     </tr>
-                                    <?php $no=1; foreach ($tanggal as $row2) {
+                                    <?php $no=1; foreach ($tanggal_radar as $row2) {
                                       ?>
                                       <tr>
                                         <td><?php echo $no;$no++; ?></td>
                                         <td><?php 
-                                        $tanggal = $row2->tanggal;
-                                        $day = date('D', strtotime($tanggal));
+                                        $tanggal_radar = $row2->tanggal;
+                                        $day = date('D', strtotime($tanggal_radar));
                                         $dayList = array(
                                           'Sun' => 'Minggu',
                                           'Mon' => 'Senin',
