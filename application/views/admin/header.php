@@ -134,9 +134,9 @@
                                 <li>
                                     <a href="<?php echo base_url('admin/cek/cek_radar'); ?>">Harian</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="<?php echo base_url('admin/view/mingguan'); ?>">Mingguan</a>
-                                </li>
+                                </li> -->
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

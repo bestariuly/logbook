@@ -66,13 +66,13 @@ class Admin extends CI_Controller {
 			$this->session->set_flashdata('message_harian_radar', '
 				<div class="alert alert-danger alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Peringatan!</strong> Anda Belum Mengisi Data RADAR hari ini!
+				<strong>Peringatan!</strong> Anda Belum Mengisi Data Radar hari ini!
 				</div>');
 		}else{
 			$this->session->set_flashdata('message_harian_radar', '
 				<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Terima Kasih</strong> Hari Ini sudah Input Data RADAR Hari Ini, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
+				<strong>Terima Kasih</strong> Hari Ini sudah Input Data Radar Hari Ini, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
 				</div>');
 		}		
 		$kategori = "kategori";
@@ -434,18 +434,34 @@ class Admin extends CI_Controller {
 		$this->session->set_flashdata('message', '
 			<div class="alert alert-success alert-dismissible">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Success!</strong> data Radar berhasil di Hapus .
+			<strong>Success!</strong> Data Radar berhasil di Hapus .
 			</div>');
 		header('location: ../view/radar');
 	}
 	public function cekharianradar()
 	{
+		
 		$data = $this->m_logbook->get('radar');
 		$date = date('Y-m-d');
 		foreach ($data as $radar) {
 			$var = "pembacaan".$id = $radar->id_radar;
 			$pembacaan = $this->input->post($var);
-			echo $var." - ".$pembacaan;
+			if(empty($pembacaan)){
+				$pembacaan = "-";
+			}
+			$data = array(
+				'id_radar' => $id,
+				'tanggal' => $date,
+				'pembacaan' => $pembacaan
+			);
+			$table='pembacaan';			
+			$this->m_logbook->inputHarian($table, $data);
+			$this->session->set_flashdata('message_harian_sukses', '
+				<div class="alert alert-success alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Success!</strong> Data Radar Agroklimat Berhasil di Input.
+				</div>');
+			header('location: cek/cek_radar');
 		}
 	}
 	public function updateharianradar()
@@ -457,21 +473,22 @@ class Admin extends CI_Controller {
 			$var1 = "id_pembacaan".$radar->id_radar;
 			$pembacaan = $this->input->post($var);
 			$id_pembacaan = $this->input->post($var1);
+			if(empty($pembacaan)){
+				$pembacaan = "-";
+			}
 			$where = array(
 				'id_pembacaan' => $id_pembacaan
 			);
 			$data = array(
 				'pembacaan' => $pembacaan
 			);
-			
 			$this->m_logbook->update_data($where,$data,'pembacaan');
-			$this->session->set_flashdata('message_radar_sukses', '
+			$this->session->set_flashdata('message_harian_sukses', '
 				<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Success!</strong> Data Radar Berhasil di Update.
+				<strong>Success!</strong> Data Radar Agroklimat Berhasil di Update.
 				</div>');
-			header('location: cek/cek_radar');
-			
+			header('location: cek/harian');
 		}
 	}
 
