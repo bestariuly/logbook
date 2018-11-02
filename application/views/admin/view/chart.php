@@ -5,7 +5,7 @@
 <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dasboard</h1>
+                    <h1 class="page-header">Chart Radar</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -14,25 +14,39 @@
 				<div class="panel-group" id="accordion">
 
             	<?php $no =1;
+            	$tanggal = '';
             	foreach ($getIdRadar as $getIdRadar) {
             		$id = $getIdRadar->id_radar;
+            		$nama = $getIdRadar->nama_radar;
+            		$standar = $getIdRadar->standar;
+            		
 					$x= 'chart'.$id;
 					
-					// for(${$x} as $chart){
-					// 	$pembacaan[] = $chart->pembacaan;
-					// }
+								$datachart = ${$x};
+								foreach ($datachart as $datachart) {
+									$tanggal = $tanggal."'".$datachart->tanggal."' ,";
+									$p = $datachart->pembacaan;
+									if ($p == '-') {
+										${'pembacaan'.$id}[] = 0;
+									}else{
+										${'pembacaan'.$id}[] = $p;
+									}
+								}
 					?>
 					    <div class="panel panel-default">
 					      <div class="panel-heading">
 					        <h4 class="panel-title">
-					          <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $id ?>"><?php echo $id; ?></a>
+					          <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $id ?>"><?php echo $nama; ?></a>
 					        </h4>
 					      </div>
 					      <div id="collapse<?php echo $id ?>" class="panel-collapse collapse <?php if($no==1){ echo 'in'; $no++;} ?>">
-					        <div class="panel-body" id="container<?php echo $id ?>">
-					        	<?php echo "<pre>";
-					print_r(${$x});
-					echo "</pre>"; ?>
+					        <div class="panel-body" >
+					        	<div id="container<?php echo $id ?>"></div>
+					        	<?php 
+					   //      	echo "<pre>";
+								// print_r(${$x});
+								// echo "</pre>"; 
+								?>
 					        </div>
 					      </div>
 					    </div>
@@ -40,7 +54,7 @@
 						Highcharts.chart('container<?php echo $id ?>', {
 
 						    title: {
-						        text: 'Grafik '
+						        text: 'Grafik <?php echo $nama; ?>'
 						    },
 
 						    subtitle: {
@@ -49,12 +63,12 @@
 
 						    yAxis: {
 						        title: {
-						            text: 'Psi'
+						            text: '<?php echo $standar; ?>'
 						        },
 						    },
 						    xAxis:{
-						    	categories:[]
-						    },
+						    	 categories:[<?php echo $tanggal; ?>]
+						    	},
 						    legend: {
 						        layout: 'vertical',
 						        align: 'right',
@@ -71,8 +85,9 @@
 						    },
 
 						    series: [{
-						        name: 'Tekanan Dehydrator',
-						        data: [<?php echo join($pembacaan, ",") ?>]
+						        name: '<?php echo $nama; ?>',
+						        data: [<?php $pemb = ${'pembacaan'.$id};
+						        	echo join($pemb, ",") ?>]
 						    }],
 
 						    responsive: {
