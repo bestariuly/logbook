@@ -107,10 +107,10 @@
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
                             </div>
                             <!-- /input-group -->
                         </li>
@@ -128,12 +128,12 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
-                              <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Checklist Radar <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php echo base_url('admin/cek/cek_radar'); ?>">Harian</a>
-                                </li>
+                            <li>
+                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Checklist Radar <span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="<?php echo base_url('admin/cek/cek_radar'); ?>">Harian</a>
+                                    </li>
                                 <!-- <li>
                                     <a href="<?php echo base_url('admin/view/mingguan'); ?>">Mingguan</a>
                                 </li> -->
@@ -141,40 +141,40 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        </li>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-table fa-fw"></i> Data <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
                             <li>
-                            <a href="#"><i class="fa fa-table fa-fw"></i> Data <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php echo base_url('admin/view/harian'); ?>">Data Harian Peralatan Agroklimat</a>
-                                </li>
-                               
-                                <li>
-                                    <a href="<?php echo base_url('admin/view/tampil_data_radar'); ?>">Data Radar</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="<?php echo base_url('admin/view/chart'); ?>"><i class="fa fa-line-chart fa-fw"></i> Chart Radar</a>
-                        </li>
-                        
-                            <li>
-                            <a href="#"><i class="fa fa-bars fa-fw"></i> Manajemen Alat <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php echo base_url('admin/view/agroklimat'); ?>">Agroklimat</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('admin/view/radar'); ?>">Radar</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                         <li>
-                            <a href="<?php echo base_url('admin/view/laporan'); ?>"><i class="fa fa-bars fa-fw"></i> Manajemen Laporan <span class="fa arrow"></span></a>
-                        </li>
+                                <a href="<?php echo base_url('admin/view/harian'); ?>">Data Harian Peralatan Agroklimat</a>
+                            </li>
                             
+                            <li>
+                                <a href="<?php echo base_url('admin/view/tampil_data_radar'); ?>">Data Radar</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('admin/view/chart'); ?>"><i class="fa fa-line-chart fa-fw"></i> Chart Radar</a>
+                    </li>
+                    
+                    <li>
+                        <a href="#"><i class="fa fa-bars fa-fw"></i> Manajemen Alat <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="<?php echo base_url('admin/view/agroklimat'); ?>">Agroklimat</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo base_url('admin/view/radar'); ?>">Radar</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('admin/view/laporan'); ?>"><i class="fa fa-bars fa-fw"></i> Manajemen Laporan <span class="fa arrow"></span></a>
+                    </li>
+                    
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>

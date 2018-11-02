@@ -32,7 +32,7 @@ $(document).ready(function(){
  <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog" style="width: 80%">
 
-  <!--   modal lihat laporan -->
+  <!--   modal data mingguan -->
 
           <div class="modal-content">
             <div class="modal-header">
@@ -94,14 +94,33 @@ $(document).ready(function(){
       </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <?php endif ?>
   <?php if (isset($editmingguanalat)): ?>
  
 <!-- Modal content-->
  <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog" style="width: 80%">
-
-  <!--   modal lihat laporan -->
+  <!--   modal edit data mingguan  -->
 
           <div class="modal-content">
             <div class="modal-header">
@@ -121,7 +140,7 @@ $(document).ready(function(){
                   </thead>
 
                   <tbody>
-                    <form action="../updateharianByTanggal" method="post">
+                    <form action="../updatemingguanByTanggal" method="post">
                         <?php  $no=1; foreach ($kategori as $row1) {
                           ?>
                           <tr>

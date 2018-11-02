@@ -45,6 +45,7 @@ class Admin extends CI_Controller {
 			$data1['editharianalat'] = $this->m_logbook->operasiJoinByDate($tgl);
 			$data1['tgl'] = $tgl;
 		}
+
 //mingguan Alat
 		if($this->input->get('tanggal')){
 			$tgl = $this->input->get('tanggal');
@@ -219,6 +220,10 @@ class Admin extends CI_Controller {
 			$keterangan = $this->input->post($var1);
 			$tanggal = $this->input->post($var3);
 			$id_kondisi = $this->input->post($var2);
+			// echo $id_kondisi."<br>";
+			// echo $kondisi."<br>";
+			// echo $keterangan."<br>";
+			// echo "<hr>";
 			if(empty($keterangan)){
 				$keterangan = "-";
 			}
@@ -290,6 +295,7 @@ class Admin extends CI_Controller {
 			$kondisi = $this->input->post($var);
 			$keterangan = $this->input->post($var1);
 			$id_kondisi = $this->input->post($var2);
+
 			if(empty($keterangan)){
 				$keterangan = "-";
 			}
@@ -301,24 +307,17 @@ class Admin extends CI_Controller {
 				'keterangan' => $keterangan
 			);
 			
-			$update = $this->m_logbook->update_data($where,$data,'kondisi');
-			if($update){
-				$this->session->set_flashdata('message_mingguan_sukses', '
+			$this->m_logbook->update_data($where,$data,'kondisi');
+			$this->session->set_flashdata('message_mingguan_sukses', '
 				<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				<strong>Success!</strong> Data Peralatan Agroklimat Berhasil di Update.
 				</div>');
-			}else{
-				$this->session->set_flashdata('message_mingguan_sukses', '
-				<div class="alert alert-danger alert-dismissible">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Success!</strong> Data Tidak Terupdate.
-				</div>');
+			
 			}
 			
 			header('location: cek/mingguan');
 		}
-	}
 
 	public function updatekategori(){
 		$id_kategori = $this->input->post('idkategori');

@@ -40,8 +40,8 @@
                     <td><?php echo $row2->nama_radar; ?></td>
                     <td>
 
-                      </td>
-                      <td>
+                    </td>
+                    <td>
                       
                     </td>
                   </tr>
@@ -50,10 +50,10 @@
             </table>
             <button type="submit" class="btn btn-default" style="float: right;">Submit</button>
           </form>
-          </table>            
-          </form>   
+        </table>            
+      </form>   
 
-        <?php }; ?>  
-        <!-- /.row -->
+    <?php }; ?>  
+    <!-- /.row -->
 
         <!-- /#page-wrapper -->
