@@ -25,7 +25,7 @@ class Admin extends CI_Controller {
 		//radar
 		$radar = "radar";
 		$kategoriradar = "kategoriradar";
-		$data1['chart'] = $this->m_logbook->pembacaanChart(13);
+		$data1['chart'] = $this->m_logbook->pembacaanChart();
 		$data1['kategoriradar'] = $this->m_logbook->get($kategoriradar);
 		$data1['radar'] = $this->m_logbook->get($radar);
 		$data1['kategori_radar'] = $this->m_logbook->getKategoriRadar();
@@ -527,6 +527,9 @@ class Admin extends CI_Controller {
 			$var1 = "id_pembacaan".$radar->id_radar;
 			$pembacaan = $this->input->post($var);
 			$id_pembacaan = $this->input->post($var1);
+			if(empty($pembacaan)){
+				$pembacaan = "-";
+			}
 			//echo $id_pembacaan."-".$pembacaan."<br>";
 			$where = array(
 				'id_pembacaan' => $id_pembacaan, 
