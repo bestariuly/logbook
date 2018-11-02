@@ -358,7 +358,7 @@
                           }else{
                             ?>
                             <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <input type="number" class="form-control" name="pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->pembacaan ?>" >
+                            <input type="number" step="any" class="form-control" name="pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->pembacaan ?>" >
                             <?php
                           }?>
                                                 </div>
