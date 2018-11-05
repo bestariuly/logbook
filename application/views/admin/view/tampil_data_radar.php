@@ -35,11 +35,29 @@
 
           <!--   modal lihat laporan -->
 
-          <div class="modal-content">
+          <div class="modal-content" style="padding-left: 10%; padding-right: 10%">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+
+              <div class="row">
+                <div class="col-sm-2" style="text-align: center;">
+                  <img src="http://4.bp.blogspot.com/-LqUyMLMG05w/Ty0S-w100jI/AAAAAAAABC0/2AmjPy4Br1s/s1600/logo_BMKG.png" style="width: 60%; height: auto;">
+                </div>
+                <div class="col-sm-10" style="text-align: center;">
+                  BADAN METEOROLOGI KLIMATOLOGI DAN GEOFISIKA <br>
+                  <strong style="font-size: 150%">STASIUN KLIMATOLOGI MLATI YOGYAKARTA</strong><br>
+                  Jl. Kabupaten Km. 5,5 Duwet Sendangadi, Mlati, Sleman, D.I. Yogyakarta<br>
+                  Telp : (0274) 2880152 ; Fax: (0247) 2880151 ; email: staklim.yogya@gmail.com
+                  <br><br>
+                </div>
+              </div> 
+              <div class="row" style="background-color: black; height: 4px;"></div>
+              <div class="row" style="text-align: center; "></div>
+              <h2 class="page-header text-center" >CHEKLIST HARIAN RADAR AGROKLIMAT</h2>
               <h4 class="modal-title">Tanggal : <?php echo $tgl; ?></h4>
-            </div> 
+              </div>
+                          
+             
             <div class="modal-body">
 
               <table class="table table-bordered table-stripped">
@@ -64,136 +82,16 @@
                         <td><?php echo $no;$no++; ?></td>
                         <td><?php echo $row2->nama_radar; ?></td>
                         <td><?php echo $row2->standar; ?></td>
-                        <td>
-                          <div class="form-group">
-                            <?php if ($row2->pembacaan=='MENYALA') {
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                            <option value="MENYALA">Menyala</option>
-                            <option value="MATI">Mati</option></select>
-                            <?php
-                          }else if ($row2->pembacaan=='MATI') {
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                           <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                            <option value="MATI">Mati</option>
-                            <option value="MENYALA">Menyala</option>
-                            <option value="MENYALA HIJAU">Menyala Hijau</option>
-                            <option value="MENYALA MERAH">Menyala Merah</option>
-                            <option value="BERKEDIP">Berkedip</option></select>
-                            <?php
-                          }else if ($row2->pembacaan=='ENABLE') {
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                           <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                            <option value="ENABLE">Enable</option>
-                            <option value="DISABLE">Disable</option></select>
-                            <?php
-                          }else if ($row2->pembacaan=='DISABLE') {
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                           <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                            <option value="DISABLE">Disable</option>
-                            <option value="ENABLE">Enable</option></select>
-                            <?php
-                          }else if ($row2->pembacaan=='MENYALA HIJAU') {
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                          <option value="MENYALA HIJAU">Menyala Hijau</option>
-                          <option value="MENYALA MERAH">Menyala Merah</option>
-                            <option value="MATI">Mati</option></select>
-                            <?php
-                          }else if ($row2->pembacaan=='MENYALA MERAH') {
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                          <option value="MENYALA MERAH">Menyala Merah</option>
-                          <option value="MENYALA HIJAU">Menyala Hijau</option>
-                            <option value="MATI">Mati</option></select>
-                            <?php
-                          }else if ($row2->pembacaan=='BERKEDIP') {
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                            <option value="BERKEDIP">Berkedip</option>
-                            <option value="MATI">Mati</option></select>
-                            <?php
-                          }else if ($row2->pembacaan=='HIJAU') {
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                            <option value="HIJAU">Hijau</option>
-                            <option value="PUTIH">Putih</option></select>
-                            <?php
-                          }else if ($row2->pembacaan=='PUTIH') {
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                            <option value="PUTIH">Putih</option>
-                            <option value="HIJAU">Hijau</option></select>
-                            <?php
-                          }else if ($row2->pembacaan=='HIJAU MENYALA') {
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                            <option value="HIJAU MENYALA">Hijau Menyala</option>
-                          <option value="HIJAU TUA">Hijau Tua</option></select>
-                            <?php
-                          }else if ($row2->pembacaan=='HIJAU TUA') {
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                            <option value="HIJAU TUA">Hijau Tua</option>
-                            <option value="HIJAU MENYALA">Hijau Menyala</option></select>
-                            <?php
-                          }else if ($row2->pembacaan=='CONNECT') {
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                            <option value="CONNECT">Connect</option>
-                            <option value="DISCONNECT">Disconnect</option></select>
-                            <?php
-                          }else if ($row2->pembacaan=='DISCONNECT') {
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                            <option value="DISCONNECT">Disconnect</option>
-                            <option value="CONNECT">Connect</option></select>
-                            <?php
-                          }else if($row2->pembacaan=='CONTROL'){
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                            <option value="CONTROL">Control</option>
-                          <option value="CTRL YOGFROG">CTRL YogFrog</option></select>
-                            <?php
-                          }else if($row2->pembacaan=='CTRL YOGFROG'){
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <select disabled="true" style="background-color: rgb(255,255,255);" class="form-control" id="sel1" name="pembacaan<?php echo $row2->id_radar; ?>" required>
-                            <option value="CTRL YOGFROG">CTRL YogFrog</option>
-                            <option value="CONTROL">Control</option></select>
-                            <?php
-                          }else{
-                            ?>
-                            <input type="hidden" name="id_pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->id_pembacaan; ?>">
-                            <input readonly style="background-color: rgb(255,255,255);" type="number" class="form-control" name="pembacaan<?php echo $row2->id_radar; ?>" value="<?php echo $row2->pembacaan ?>" >
-                            <?php
-                          }?>
-                                              
-                                              
-                                              
-                                              
-                                            </div>
-                                          </td>
+                        <td><?php echo $row2->pembacaan; ?></td>
+                        
                                         </tr>
                                       <?php }}} ?>
                                     </tbody>
-                                  </table>  
-                                </div>
 
+                                  </table>  
+
+                                </div>
+                                
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 </div>
