@@ -25,6 +25,13 @@ class Admin extends CI_Controller {
 		//radar
 		$radar = "radar";
 		$kategoriradar = "kategoriradar";
+		$getIdRadar = $this->m_logbook->getIdRadar();
+		$data1['getIdRadar'] = $getIdRadar;
+		foreach ($getIdRadar as $getIdRadar) {
+			$id = $getIdRadar->id_radar;
+			$x= 'chart'.$id;
+			$data1[$x] = $this->m_logbook->pembacaanChartz($id);
+		}
 		$data1['chart'] = $this->m_logbook->pembacaanChart();
 		$data1['kategoriradar'] = $this->m_logbook->get($kategoriradar);
 		$data1['radar'] = $this->m_logbook->get($radar);

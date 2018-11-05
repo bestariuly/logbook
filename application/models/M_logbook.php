@@ -30,12 +30,13 @@ class M_logbook extends CI_Model{
 	function hapusKategoriAlat($id){
 		$query = $this->db->query("DELETE FROM alat WHERE id_kategori = '$id'");
 		$query = $this->db->query("DELETE FROM kategori WHERE id_kategori = '$id'");
-
-<<<<<<< HEAD
 	}
+
+
 	function hapusAlat($id){
 		$query = $this->db->query("DELETE FROM alat WHERE id_alat = '$id'");
-=======
+	}
+
 		// RADAR
 		function getKategoriRadar(){
 			$query = $this->db->query("SELECT * FROM kategoriradar");
@@ -99,9 +100,8 @@ class M_logbook extends CI_Model{
 			$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal, r.nama_radar, r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE p.id_radar = '$data'");
 			return $query->result();
 		}
->>>>>>> parent of b58357b... chart fix bismillah
 
-	}
+	
 	function tambahAlat($input){
 		return $this->db->insert('alat', $input);
 	}
@@ -110,62 +110,6 @@ class M_logbook extends CI_Model{
 		$this->db->update($table,$data);
 	}
 
-
-		// RADAR
-	function getKategoriRadar(){
-		$query = $this->db->query("SELECT * FROM kategoriradar");
-		return $query->result();
-	}
-
-	function tambahKategoriRadar($input){
-		return $this->db->insert('kategoriradar', $input);
-	}
-	function hapusKategoriRadar($id){
-		$query = $this->db->query("DELETE FROM radar WHERE id_kategoriradar = '$id'");
-		$query = $this->db->query("DELETE FROM kategoriradar WHERE id_kategori = '$id'");
-		
-	}
-	function hapusRadar($id){
-		$query = $this->db->query("DELETE FROM radar WHERE id_radar = '$id'");
-		
-	}
-	function tambahRadar($input){
-		return $this->db->insert('radar', $input);
-	}
-	function update_dataradar($where,$data,$table){
-		$this->db->where($where);
-		$this->db->update($table,$data);
-	}
-	function getWhere($table, $where){//where pake array
-		$query = $this->db->get_where($table, $where);
-		return $query->result();
-	}
-	function inputHarianRadar($input){
-		$this->db->insert('pembacaan', $input);
-	}
-	function pembacaanJoinByDate($date){
-		$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal, r.nama_radar, r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE p.tanggal = '$date'"); 
-		return $query->result();
-	}
-	function grup_tanggal_radar(){
-		$date = date('Y-m-d');
-		$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM pembacaan GROUP BY tanggal"); 
-		return $query->result();
-	}
-	function cekTodayRadar(){
-		$date = date('Y-m-d');
-		$query = $this->db->query("SELECT * FROM pembacaan WHERE tanggal = '$date'");  
-		return $query->num_rows();
-	}
-	function pembacaanJoin(){
-		$date = date('Y-m-d');
-		$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal,r.nama_radar,r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE p.tanggal = '$date'"); 
-		return $query->result();
-	}
-	function pembacaanChart(){
-		$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal, r.nama_radar, r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE P.pembacaan != ('MENYALA' || 'MATI' || 'ENABLE' || 'DISABLE' || 'MENYALA HIJAU' || 'MENYALA MERAH' || 'BERKEDIP' || 'HIJAU' || 'PUTIH' || 'HIJAU MENYALA' || 'HIJAU TUA' || 'CONNECT' || 'DISCONNECT' || 'CONTROL' || 'CTRL YOGFROG')");
-		return $query->result();
-	}
 
 	// LAPORAN
 	function buat_laporan($input){
