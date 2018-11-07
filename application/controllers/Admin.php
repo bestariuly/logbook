@@ -121,14 +121,14 @@ class Admin extends CI_Controller {
 		}
 		$kategoriradar = "kategoriradar";
 		$radar = "radar";
+		$radarmingguan = "radar_mingguan";
 		$data1['pembacaan'] = $this->m_logbook->getWhere('pembacaan', array('tanggal' => date('Y-m-d')));
 		$data1['radar'] = $this->m_logbook->get($radar);
 		$data1['pembacaanjoin'] = $this->m_logbook->pembacaanJoin();
 		$data1['kategoriradar'] = $this->m_logbook->get($kategoriradar);
 		$data1['kategoriradar'] = $this->m_logbook->getKategoriRadar();
-		$data1['radarmingguan'] = $this->m_logbook->getChecklistRadarMingguan();
-		
-		$data1['radar'] = $this->m_logbook->get('radar');
+		$data1['radarmingguan'] = $this->m_logbook->get($radarmingguan);
+
 		$this->load->view('admin/header');
 		$this->load->view('admin/cek/'.$data, $data1);
 		$this->load->view('admin/footer');
@@ -485,37 +485,66 @@ class Admin extends CI_Controller {
 			<strong>Success!</strong> Ceklist Radar Mingguan berhasil ditambahkan.
 			</div>');
 	}
-	// public function update_checklist_radar(){
-	// 	$id_kategoriradar = $this->input->post('idkategoriradar');
-	// 	$nama_kategoriradar = $this->input->post('namakategoriradar');
+	
+	// public function updateChecklistRadarMingguan()
+	// {	
+	// 	$var = $this->input
+	// 	$data = $this->m_logbook->get('radar_mingguan');
+	// 	$radarpemeliharaan = $this->input->post('radarpemeliharaan');
+	// 	$radarkebersihan = $this->input->post('radarkebersihan');
+	// 	$radarswitch = $this->input->post('radarswitch');
+	// 	$gensetpemanasan = $this->input->post('gensetpemanasan');
+	// 	$gensetair = $this->input->post('gensetair');
+	// 	$gensetsolar = $this->input->post('gensetsolar');
+	// 	$gensetpemeliharaan = $this->input->post('gensetpemeliharaan');
+	// 	$gensetkebersihan = $this->input->post('gensetkebersihan');
+	// 	$catatan = $this->input->post('catatan');
+	// 	$date = date('Y-m-d');
 	// 	$where = array(
-	// 		'id_kategori' => $id_kategoriradar
-	// 	);
-	// 	$data = array(
-	// 		'nama_kategori' => $nama_kategoriradar
-	// 	);
-	// 	if(empty($nama_kategoriradar)){
-	// 		header('location: view/radar');
-	// 	}else{
-	// 		$this->session->set_flashdata('message', '
+	// 			'id' => $id, 
+	// 			'tanggal' => $date
+	// 		);
+	// 		$data = array(
+	// 			'pembacaan' => $pembacaan
+	// 		);
+	// 		$this->m_logbook->update_data($where,$data,'pembacaan');
+	// 		$this->session->set_flashdata('message_harian_sukses', '
 	// 			<div class="alert alert-success alert-dismissible">
 	// 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	// 			<strong>Success!</strong> Update Data Radar Kategori Alat.
+	// 			<strong>Success!</strong> Data Radar Agroklimat Berhasil di Update.
 	// 			</div>');
-	// 		$this->m_logbook->update_data($where,$data,'kategoriradar');
-	// 		header('location: view/radar');
+	// 		header('location: cek/cek_radar');
+	// 	}
+	// public function updateharianradarByTanggal(){
+	// 		$data = $this->m_logbook->get('radar');
+	// 		$date = date('Y-m-d');
+	// 		foreach ($data as $radar) {
+	// 			$var = "pembacaan".$id = $radar->id_radar;
+	// 			$var1 = "id_pembacaan".$radar->id_radar;
+	// 			$var2 = "tanggal".$radar->id_radar;
+	// 			$pembacaan = $this->input->post($var);
+	// 			$id_pembacaan = $this->input->post($var1);
+	// 			$tanggal = $this->input->post($var2);
+	// 		if(empty($pembacaan)){
+	// 			$pembacaan = "-";
+	// 		}
+	// 		$where = array(
+	// 			'id_pembacaan' => $id_pembacaan
+	// 		);
+	// 		$data = array(
+	// 			'pembacaan' => $pembacaan
+	// 		);
+			
+	// 		$this->m_logbook->update_data($where,$data,'pembacaan');
+	// 		$this->session->set_flashdata('message_harian_sukses', '
+	// 			<div class="alert alert-success alert-dismissible">
+	// 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	// 			<strong>Success!</strong> Data Radar Agroklimat Berhasil di Update.
+	// 			</div>');
+	// 		header('location: view/tampil_data_radar');
 	// 	}
 	// }
-	// public function hapus_checklist_radar($data){
-	// 	$this->m_logbook->hapusKategoriRadar($data);
-	// 	$this->session->set_flashdata('message', '
-	// 		<div class="alert alert-success alert-dismissible">
-	// 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	// 		<strong>Success!</strong> Kategori Radar Berhasil di Hapus.
-	// 		</div>');
-	// 	header('location: ../view/radar');
-	// }
-	public function tambahradar(){
+		public function tambahradar(){
 		$id = $this->input->post('id_kategori_radar');
 		$namaradar = $this->input->post('nama_radar');
 		$standar = $this->input->post('standar');

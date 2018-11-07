@@ -68,10 +68,7 @@ class M_logbook extends CI_Model{
 			function tambahRadar($input){
 			return $this->db->insert('radar', $input);
 		}
-		function update_dataradar($where,$data,$table){
-			$this->db->where($where);
-			$this->db->update($table,$data);
-		}
+		
 		function getWhere($table, $where){//where pake array
 			$query = $this->db->get_where($table, $where);
 			return $query->result();
