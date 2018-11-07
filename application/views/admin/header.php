@@ -127,6 +127,7 @@
                                     <a href="<?php echo base_url('admin/cek/mingguan'); ?>">Mingguan</a>
                                 </li>
                             </ul>
+                        </li>
                             <!-- /.nav-second-level -->
                             <li>
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Checklist Radar <span class="fa arrow"></span></a>
@@ -134,14 +135,12 @@
                                     <li>
                                         <a href="<?php echo base_url('admin/cek/cek_radar'); ?>">Harian</a>
                                     </li>
-                                <!-- <li>
-                                    <a href="<?php echo base_url('admin/view/mingguan'); ?>">Mingguan</a>
-                                </li> -->
-
-                            </ul>
-                            <!-- /.nav-second-level -->
+                                    <li>
+                                       <a href="<?php echo base_url('admin/cek/cek_radar_mingguan'); ?>">Mingguan</a>
+                                    </li> 
+                                </ul>
                         </li>
-                    </li>
+                    
                     <li>
                         <a href="#"><i class="fa fa-table fa-fw"></i> Data <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">

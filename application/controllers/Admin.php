@@ -33,6 +33,7 @@ class Admin extends CI_Controller {
 			$x= 'chart'.$id;
 			$data1[$x] = $this->m_logbook->pembacaanChartz($id);
 		}
+		$data1['chart'] = $this->m_logbook->pembacaanChart();
 		$data1['kategoriradar'] = $this->m_logbook->get($kategoriradar);
 		$data1['radar'] = $this->m_logbook->get($radar);
 		$data1['kategori_radar'] = $this->m_logbook->getKategoriRadar();
@@ -125,6 +126,7 @@ class Admin extends CI_Controller {
 		$data1['pembacaanjoin'] = $this->m_logbook->pembacaanJoin();
 		$data1['kategoriradar'] = $this->m_logbook->get($kategoriradar);
 		$data1['kategoriradar'] = $this->m_logbook->getKategoriRadar();
+		$data1['radarmingguan'] = $this->m_logbook->getChecklistRadarMingguan();
 		
 		$data1['radar'] = $this->m_logbook->get('radar');
 		$this->load->view('admin/header');
@@ -441,6 +443,78 @@ class Admin extends CI_Controller {
 			header('location: view/radar');
 		}
 	}
+	public function hapusKategoriRadar($data){
+		$this->m_logbook->hapusKategoriRadar($data);
+		$this->session->set_flashdata('message', '
+			<div class="alert alert-success alert-dismissible">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>Success!</strong> Kategori Radar Berhasil di Hapus.
+			</div>');
+		header('location: ../view/radar');
+	}
+	public function tambah_checklist_radar(){
+		$radarpemeliharaan = $this->input->post('radarpemeliharaan');
+		$radarkebersihan = $this->input->post('radarkebersihan');
+		$radarswitch = $this->input->post('radarswitch');
+		$gensetpemanasan = $this->input->post('gensetpemanasan');
+		$gensetair = $this->input->post('gensetair');
+		$gensetsolar = $this->input->post('gensetsolar');
+		$gensetpemeliharaan = $this->input->post('gensetpemeliharaan');
+		$gensetkebersihan = $this->input->post('gensetkebersihan');
+		$catatan = $this->input->post('catatan');
+		$date = date('Y-m-d');
+		$input = array(
+			'pemeliharaan_radar' => $radarpemeliharaan,
+			'kebersihan_radar' => $radarkebersihan,
+			'tanggal' => $date,
+			'switch_ac' => $radarswitch,
+			'pemanasan_genset' => $gensetpemanasan,
+			'pengecekanair_genset' => $gensetair,
+			'pengecekansolar_genset' => $gensetsolar,
+			'pemeliharaan_genset' => $gensetpemeliharaan,
+			'kebersihan_genset' => $gensetkebersihan,
+			'catatan' => $catatan
+
+
+		);
+		$this->m_logbook->tambahChecklistRadarMingguan($input);
+		header('location: cek/cek_radar_mingguan');
+		$this->session->set_flashdata('message', '
+			<div class="alert alert-success alert-dismissible">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>Success!</strong> Ceklist Radar Mingguan berhasil ditambahkan.
+			</div>');
+	}
+	// public function update_checklist_radar(){
+	// 	$id_kategoriradar = $this->input->post('idkategoriradar');
+	// 	$nama_kategoriradar = $this->input->post('namakategoriradar');
+	// 	$where = array(
+	// 		'id_kategori' => $id_kategoriradar
+	// 	);
+	// 	$data = array(
+	// 		'nama_kategori' => $nama_kategoriradar
+	// 	);
+	// 	if(empty($nama_kategoriradar)){
+	// 		header('location: view/radar');
+	// 	}else{
+	// 		$this->session->set_flashdata('message', '
+	// 			<div class="alert alert-success alert-dismissible">
+	// 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	// 			<strong>Success!</strong> Update Data Radar Kategori Alat.
+	// 			</div>');
+	// 		$this->m_logbook->update_data($where,$data,'kategoriradar');
+	// 		header('location: view/radar');
+	// 	}
+	// }
+	// public function hapus_checklist_radar($data){
+	// 	$this->m_logbook->hapusKategoriRadar($data);
+	// 	$this->session->set_flashdata('message', '
+	// 		<div class="alert alert-success alert-dismissible">
+	// 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	// 		<strong>Success!</strong> Kategori Radar Berhasil di Hapus.
+	// 		</div>');
+	// 	header('location: ../view/radar');
+	// }
 	public function tambahradar(){
 		$id = $this->input->post('id_kategori_radar');
 		$namaradar = $this->input->post('nama_radar');
@@ -482,15 +556,7 @@ class Admin extends CI_Controller {
 			header('location: view/radar');
 		}
 	}
-	public function hapusKategoriRadar($data){
-		$this->m_logbook->hapusKategoriRadar($data);
-		$this->session->set_flashdata('message', '
-			<div class="alert alert-success alert-dismissible">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Success!</strong> Kategori Radar Berhasil di Hapus.
-			</div>');
-		header('location: ../view/radar');
-	}
+	
 	public function hapusRadar($data){
 		$this->m_logbook->hapusRadar($data);
 		$this->session->set_flashdata('message', '
