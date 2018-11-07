@@ -51,6 +51,18 @@ class M_logbook extends CI_Model{
 			$query = $this->db->query("DELETE FROM kategoriradar WHERE id_kategori = '$id'");
 		
 		}
+		function getChecklistRadarMingguan(){
+			$query = $this->db->query("SELECT * FROM radar_mingguan");
+			return $query->result();
+		}
+		
+		 function tambahChecklistRadarMingguan($input){
+		 	return $this->db->insert('radar_mingguan', $input);
+		 }
+		// function hapusChecklistRadarMingguan($id){
+		// 	$query = $this->db->query("DELETE FROM radar_mingguan WHERE id = '$id'");
+		
+		// }
 		function hapusRadar($id){
 			$query = $this->db->query("DELETE FROM radar WHERE id_radar = '$id'");
 		

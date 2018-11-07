@@ -1,7 +1,7 @@
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg">
-      <h1 class="page-header">CEK LIST  RADAR AGROKLIMAT</h1>
+      <h1 class="page-header">CEK LIST HARIAN RADAR AGROKLIMAT</h1>
     </div>
     <!-- /.col-lg-12 -->
   </div>
