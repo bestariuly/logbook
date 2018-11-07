@@ -1,10 +1,14 @@
-<!-- back up harian -->
+
+
+<!-- DATA HARIAN UMUM SELAIN JUMAT -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
     $("#myModal").modal('show');
@@ -19,15 +23,37 @@
       });
     });
   });
+
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var doc = new jsPDF();
+    var specialElementHandlers = {
+      '#editor': function (element, renderer) {
+        return true;
+      }
+    };
+
+    $('#cmd').click(function () {   
+      doc.fromHTML($('#konten').html(), 15, 15, {
+        'width': 170,
+        'elementHandlers': specialElementHandlers
+      });
+      doc.save('sample-file.pdf');
+    });
+  });
+
+// This code is collected but useful, click below to jsfiddle link.
 </script>
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
 
-      <h1 class="page-header text-center" >DATA CHEKLIST HARIAN PERALATAN AGROKLIMAT</h1>
+      <h1 class="page-header text-center" >DATA CHEKLIST HARIAN PERALATAN AGROKLIMAT KHUSUS HARI JUM'AT</h1>
     </div>
     <!-- /.col-lg-12 -->
   </div>
+
 
   <?php if (isset($harianalat)): ?>
 
@@ -36,14 +62,18 @@
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog" style="width: 80%">
 
-        <!--   modal lihat laporan -->
-        <div class="modal-content">
+        <!--   modal lihat data -->
+        <div class="modal-content" id="konten">
           <div class="modal-header">
             <div class="col-lg-12" style="padding-left: 10%; padding-right: 10%">
               <div class="row">
                 <div class="col-sm-2" style="text-align: center;">
                   <img src="http://4.bp.blogspot.com/-LqUyMLMG05w/Ty0S-w100jI/AAAAAAAABC0/2AmjPy4Br1s/s1600/logo_BMKG.png" style="width: 60%; height: auto;">
                 </div>
+
+                <div id="editor"></div>
+
+
                 <div class="col-sm-10" style="text-align: center;">
                   BADAN METEOROLOGI KLIMATOLOGI DAN GEOFISIKA <br>
                   <strong style="font-size: 150%">STASIUN KLIMATOLOGI MLATI YOGYAKARTA</strong><br>
@@ -65,15 +95,12 @@
                       <th rowspan="2">No</th>
                       <th rowspan="2">Nama</th>
                       <th colspan="3">Operasi</th>
-                      <th colspan="2">Kondisi</th>
                       <th rowspan="2">Keterangan</th>
                     </tr>
                     <tr>
                       <td>N</td>
                       <td>G</td>
                       <td>R</td>
-                      <td>B</td>
-                      <td>K</td>
                     </tr>
                   </thead>
                   <tbody>
@@ -114,56 +141,35 @@
                         <td>&#10004;</td> 
                         <?php
                       }
-
-                      if($row2->kondisi == "bersih") {
-                        ?>
-                        <td>&#10004;</td>
-                        <td></td>
-                        <?php
-                      }
-                      else if($row2->kondisi == "kotor") {
-                        ?>
-                        <td></td>
-                        <td>&#10004;</td>
-                        <?php
-                      }
                       ?>
-
                       <div class="form-group">
                         <td>
-                          <textarea readonly class="form-control" name="keterangan<?php echo $row2->id_alat; ?>" placeholder="Keterangan" style="background-color: white;" rows="5">
-                            <?php 
-                            if($row2->keterangan_kondisi != '-'){
-                          echo "Kondisi : ".$row2->keterangan_kondisi;
-                          echo " & ";
-                            }else if ($row2->keterangan_operasi != '-') {
-                            echo "Operasi : ".$row2->keterangan_operasi;
-                        }else{
-                          echo "-";
-                        }
-                           ?>
-                            
-                          </textarea>
-                        </div>
+                          <textarea readonly class="form-control" name="keterangan<?php echo $row2->id_alat; ?>" style="background-color: white;" ><?php 
+                          echo  "Operasi :".$row2->keterangan_operasi; 
+                          ?>
+                        </textarea>
                       </div>
-                    </td>
-                  </tr>
-                <?php }}} ?>
-              </tbody>
-            </table>  
-          </div>
-        </div>
-        <div class="col-sm-4" align="center" style="float: right;">
-          <br>
-          Teknisi On Duty, <br><br><br>
-          <u>1. &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; 
-            2.&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 
-          3. &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   </u><br>
-        </div>
+                    </div>
+                  </td>
+                </tr>
 
+              <?php }}} ?>
+            </tbody>
+          </table> 
+          <button id="cmd">Generate PDF</button> 
+        </div>
       </div>
+      <div class="col-sm-4" align="center" style="float: right;">
+        <br>
+        Teknisi On Duty, <br><br><br>
+        <u>1. &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 
+          2.&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        3. &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp;  </u><br>
+      </div>
+
     </div>
   </div>
+</div>
 </div> 
 </div>
 </div>
@@ -219,15 +225,15 @@
                             <?php endif ?>
 
                             <?php if ($row2->operasi == 'gangguan'): ?>
-                              <option value="normal" >Normal</option>
                               <option value="gangguan" >Gangguan</option>
+                              <option value="normal" >Normal</option>
                               <option value="rusak" >Rusak</option>
                             <?php endif ?>
 
                             <?php if ($row2->operasi == 'rusak'): ?>
+                              <option value="rusak" >Rusak</option>
                               <option value="normal" >Normal</option>
                               <option value="gangguan" >Gangguan</option>
-                              <option value="rusak" >Rusak</option>
                             <?php endif ?>
 
                             <input type="hidden" name="id_operasi<?php echo $row2->id_alat; ?>" value="<?php echo $row2->id_operasi; ?>">
@@ -236,80 +242,81 @@
 
                         </td>
                         <td>
-                          <textarea class="form-control" name="keterangan<?php echo $row2->id_alat; ?>" placeholder="Keterangan" style="background-color: white;"><?php 
-                            echo $row2->keterangan; ?></textarea>
-                        </div>
-                      </td>
-                    </tr>
-                  <?php }}} ?>
+                          <textarea class="form-control" name="keterangan<?php echo $row2->id_alat; ?>" placeholder="Keterangan" style="background-color: white;">
+                            <?php echo $row2->keterangan_operasi; ?></textarea>
+                          </div>
+                        </td>
+                      </tr>
+                    <?php }}} ?>
 
 
-                </tbody>
-              </table>  
+                  </tbody>
+                </table>  
+              </div>
+
+              <div class="modal-footer"> <input type="submit" name="update" class="btn btn-default">
+              </form>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
             </div>
-
-            <div class="modal-footer"> <input type="submit" name="update" class="btn btn-default">
-            </form>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
-    </div>
 
 
-  <?php endif ?>
-  <!-- /.row -->
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="row2" align="right"> <input class="form-control" style="width: 30%;" id="myInput" type="text" placeholder="Search.."><br></div>
-      <table class="table table-bordered table-stripped">
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Hari</th>
-            <th>Tanggal</th>
-            <th>Aksi</th>
-
-          </tr>
-        </thead>
-        <form action="#" method="post">
-          <tbody id="myData">
+    <?php endif ?>
+    <!-- /.row -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row2" align="right"> <input class="form-control" style="width: 30%;" id="myInput" type="text" placeholder="Search.."><br></div>
+        <table class="table table-bordered table-stripped">
+          <thead>
             <tr>
+              <th>No.</th>
+              <th>Hari</th>
+              <th>Tanggal</th>
+              <th>Aksi</th>
 
             </tr>
-            <?php $no=1; foreach ($tanggal as $row2) {
-              ?>
+          </thead>
+          <form action="#" method="post">
+            <tbody id="myData">
               <tr>
-                <td><?php echo $no;$no++; ?></td>
-                <td><?php 
-                $tanggal = $row2->tanggal;
-                $day = date('D', strtotime($tanggal));
-                $dayList = array(
-                  'Sun' => 'Minggu',
-                  'Mon' => 'Senin',
-                  'Tue' => 'Selasa',
-                  'Wed' => 'Rabu',
-                  'Thu' => 'Kamis',
-                  'Fri' => 'Jumat',
-                  'Sat' => 'Sabtu'
-                );
-                echo $dayList[$day];  ?></td>
-                <td><?php echo $row2->tanggal; ?></td>
-                <td><a href="?tanggal=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-eye-open"> Lihat</span></a>    
-                  <a href="?edit=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-edit"> Edit</span></a></td> 
+
+              </tr>
+              <?php $no=1; foreach ($tanggal as $row2) {
+                ?>
+                <tr>
+                  <td><?php echo $no;$no++; ?></td>
+                  <td><?php 
+                  $tanggal = $row2->tanggal;
+                  $day = date('D', strtotime($tanggal));
+                  $dayList = array(
+                    'Sun' => 'Minggu',
+                    'Mon' => 'Senin',
+                    'Tue' => 'Selasa',
+                    'Wed' => 'Rabu',
+                    'Thu' => 'Kamis',
+                    'Fri' => 'Jumat',
+                    'Sat' => 'Sabtu'
+                  );
+                  echo $dayList[$day];  ?></td>
+                  <td><?php echo $row2->tanggal; ?></td>
+                  <td><a href="?tanggal=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-eye-open"> Lihat</span></a>    
+                    <a href="?edit=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-edit"> Edit</span></a></td> 
 
 
-                </tr>
-              <?php } ?>
+                  </tr>
+                <?php } ?>
 
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+
+          <!-- /.col-lg-12 -->
         </div>
       </div>
-      <!-- /.row -->
-      <div class="row">
-
-        <!-- /.col-lg-12 -->
-      </div>
-    </div>
-    <!-- /#page-wrapper -->
+      <!-- /#page-wrapper -->

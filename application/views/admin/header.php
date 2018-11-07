@@ -146,7 +146,10 @@
                         <a href="#"><i class="fa fa-table fa-fw"></i> Data <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?php echo base_url('admin/view/harian'); ?>">Data Harian Peralatan Agroklimat</a>
+                                <a href="<?php echo base_url('admin/view/dataharian'); ?>">Data Harian Peralatan Agroklimat</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo base_url('admin/view/mingguan'); ?>">Data Mingguan Peralatan Agroklimat</a>
                             </li>
                             
                             <li>

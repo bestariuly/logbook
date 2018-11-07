@@ -22,6 +22,7 @@ class Admin extends CI_Controller {
 		$data1['laporan'] = $this->m_logbook->get('laporan');
 		$data1['data'] = $this->m_logbook->operasijoin2();
 		$data1['tanggal'] = $this->m_logbook->grup_tanggal();
+		$data1['tanggal2'] = $this->m_logbook->grup_tanggal2();
 		//radar
 		$radar = "radar";
 		$kategoriradar = "kategoriradar";
@@ -55,17 +56,22 @@ class Admin extends CI_Controller {
 //mingguan Alat
 		if($this->input->get('tanggal')){
 			$tgl = $this->input->get('tanggal');
-			$data1['mingguanalat'] = $this->m_logbook->operasiJoinByDate($tgl);
+			$data1['mingguanalat'] = $this->m_logbook->operasiJoin3($tgl);
 			$data1['tgl'] = $tgl;
 		}
 		if($this->input->get('edit')){
 			$tgl = $this->input->get('edit');
-			$data1['editmingguanalat'] = $this->m_logbook->operasiJoinByDate($tgl);
+			$data1['editmingguanalat'] = $this->m_logbook->operasiJoin3($tgl);
 			$data1['tgl'] = $tgl;
 		}
+		if ($data=='save') {
+			$this->load->view('admin/view/'.$data, $data1);
+		}else{
 		$this->load->view('admin/header');
 		$this->load->view('admin/view/'.$data, $data1);
-		$this->load->view('admin/footer');	
+		$this->load->view('admin/footer');		
+		}
+		
 		
 		
 	}
@@ -149,7 +155,7 @@ class Admin extends CI_Controller {
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				<strong>Success!</strong> Data Peralatan Agroklimat Berhasil di Input.
 				</div>');
-			header('location: cek/harian');
+			header('location: view/dataharian');
 		}
 	}
 	public function updateharian(){
@@ -179,7 +185,7 @@ class Admin extends CI_Controller {
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				<strong>Success!</strong> Data Peralatan Agroklimat Berhasil di Update.
 				</div>');
-			header('location: cek/harian');
+			header('location: view/dataharian');
 		}
 	}
 	public function updateharianByTanggal(){
@@ -211,7 +217,7 @@ class Admin extends CI_Controller {
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				<strong>Success!</strong> Data Peralatan Agroklimat Berhasil di Update.
 				</div>');
-			header('location: view/harian');
+			header('location: view/dataharian');
 		}
 	}
 	public function updatemingguanByTanggal(){
@@ -226,10 +232,7 @@ class Admin extends CI_Controller {
 			$keterangan = $this->input->post($var1);
 			$tanggal = $this->input->post($var3);
 			$id_kondisi = $this->input->post($var2);
-			// echo $id_kondisi."<br>";
-			// echo $kondisi."<br>";
-			// echo $keterangan."<br>";
-			// echo "<hr>";
+		
 			if(empty($keterangan)){
 				$keterangan = "-";
 			}
@@ -664,9 +667,7 @@ class Admin extends CI_Controller {
 			header('location: view/laporan');
 		}
 	}
-	function lihat_data_alat(){
-
-	}
+	
 }
 
 
