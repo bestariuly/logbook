@@ -27,7 +27,11 @@
                 <tr>
                     <td>1</td>
                     <td>Pemeliharaan</td>
-                    <td>status</td>
+                    <td>
+                      <select  class="form-control" id="sel1" name="radarpemeliharaan" required>
+                        <option value="sudah">Sudah</option>
+                        <option value="belum">Belum</option></select>
+                    </td>
                 </tr>
             </tbody>
     </table>
@@ -64,6 +68,8 @@
           <button type="submit" class="btn btn-default" style="float: right;">Update</button>
              </form>   
        <?php }; ?>  
+
+
     <!-- Tambah kategoriradar -->
     <div id="tambahchecklistRadar" class="modal fade" role="dialog">
       <div class="modal-dialog">
