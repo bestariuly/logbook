@@ -4,11 +4,13 @@
 
     <h1 class="page-header">CEK LIST MINGGUAN RADAR AGROKLIMAT</h1>
     <!--  button tambah kategoriradar -->
-    
     <?php 
-    echo $this->session->flashdata('message');
-
-    ?>
+      echo $this->session->flashdata('message_mingguan');
+      echo $this->session->flashdata('message_mingguan_sukses');
+      $hari = date ("D");
+      //$hari = hari_ini();
+      if ($hari == "Fri") {
+        ?>
     <table class="table table-bordered">
         <thead>
           <tr>
@@ -17,7 +19,9 @@
             <th class="col-lg-5">Status</th>
           </tr>
         </thead>
-      
+
+        <?php if ($haloradar == 0) {
+          ?>
           <form action="../tambah_checklist_radar" method="post">
             <tbody>
                 <tr>
@@ -109,27 +113,16 @@
                     </td>
                 </tr>
 
-
             </tbody>
     </table>
     <button type="submit" class="btn btn-default" style="float: right;">Submit</button>
           </form> 
-
-
-  <?php foreach ($radarmingguan as $data) { ?>
-
-  
-    <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th class="col-lg-1">No.</th>
-            <th class="col-lg-6">Nama Aktivitas</th>
-            <th class="col-lg-5">Status</th>
-          </tr>
-        </thead>
-      
+          <?php
+        }else{ ?>
           <form action="../update_checklist_radar" method="post">
             <tbody>
+             <?php foreach ($radarmingguan as $data){ ?>
+
                 <tr>
                  <td colspan="4" style="background-color:#eceaea;">RADAR</td>
                 </tr>
@@ -137,13 +130,14 @@
                     <td>1</td>
                     <td>Pemeliharaan</td>
                     <td>
+                      <input type="hidden" name="id" value="<?php echo $data->id; ?>">
                       <select  class="form-control" id="sel1" name="radarpemeliharaan" required>
                         <?php if ($data->pemeliharaan_radar == 'sudah'){ ?>
                           <option value="sudah">Sudah</option>
-                          <option value="belum">Belum</option>
+                          <option value="belum">Belum</option></select>
                         <?php }else{ ?>
                           <option value="belum">Belum</option>
-                          <option value="sudah">Sudah</option>
+                          <option value="sudah">Sudah</option></select>
                         <?php } ?>
                         </select>
                     </td>
@@ -153,14 +147,13 @@
                     <td>Kebersihan</td>
                     <td>
                       <select  class="form-control" id="sel1" name="radarkebersihan" required>
-                         <?php if ($data->kebersihan_radar == 'sudah') ?>
+                         <?php if ($data->kebersihan_radar == 'sudah'){ ?>
                           <option value="sudah">Sudah</option>
-                        <option value="belum">Belum</option>
-                        <?php endif ?>
-                        <?php if ($data->kebersihan_radar == 'belum'): ?>
+                          <option value="belum">Belum</option></select>
+                        <?php }else{ ?>
                           <option value="belum">Belum</option>
-                          <option value="sudah">Sudah</option>
-                        <?php endif ?>
+                          <option value="sudah">Sudah</option></select>
+                        <?php } ?>
                     </td>
                 </tr>
                 <tr>
@@ -168,14 +161,13 @@
                     <td>Switch AC</td>
                     <td>
                       <select  class="form-control" id="sel1" name="radarswitch" required>
-                        <?php if ($data->switch_ac == 'sudah') ?>
+                        <?php if ($data->switch_ac == 'sudah'){ ?>
                           <option value="sudah">Sudah</option>
-                        <option value="belum">Belum</option>
-                        <?php endif ?>
-                        <?php if ($data->switch_ac == 'belum'): ?>
+                          <option value="belum">Belum</option></select>
+                        <?php }else{ ?>
                           <option value="belum">Belum</option>
-                          <option value="sudah">Sudah</option>
-                        <?php endif ?>
+                          <option value="sudah">Sudah</option></select>
+                        <?php } ?>
                     </td>
                 </tr>
                 <tr>
@@ -186,8 +178,13 @@
                     <td>Running test/ Pemanasan Genset (min 10 menit)</td>
                     <td>
                       <select  class="form-control" id="sel1" name="gensetpemanasan" required>
-                        <option value="sudah">Sudah</option>
-                        <option value="belum">Belum</option></select>
+                      <?php if ($data->pemanasan_genset == 'sudah'){ ?>
+                          <option value="sudah">Sudah</option>
+                          <option value="belum">Belum</option></select>
+                        <?php }else{ ?>
+                          <option value="belum">Belum</option>
+                          <option value="sudah">Sudah</option></select>
+                        <?php } ?>
                     </td>
                 </tr>
                 <tr>
@@ -195,8 +192,13 @@
                     <td>Pengecekan Air Aki</td>
                     <td>
                       <select  class="form-control" id="sel1" name="gensetair" required>
-                        <option value="sudah">Sudah</option>
-                        <option value="belum">Belum</option></select>
+                      <?php if ($data->pengecekanair_genset == 'sudah'){ ?>
+                          <option value="sudah">Sudah</option>
+                          <option value="belum">Belum</option></select>
+                        <?php }else{ ?>
+                          <option value="belum">Belum</option>
+                          <option value="sudah">Sudah</option></select>
+                        <?php } ?>
                     </td>
                 </tr>
                 <tr>
@@ -204,8 +206,13 @@
                     <td>Pengecekan Solar</td>
                     <td>
                       <select  class="form-control" id="sel1" name="gensetsolar" required>
-                        <option value="sudah">Sudah</option>
-                        <option value="belum">Belum</option></select>
+                      <?php if ($data->pengecekansolar_genset == 'sudah'){ ?>
+                          <option value="sudah">Sudah</option>
+                          <option value="belum">Belum</option></select>
+                        <?php }else{ ?>
+                          <option value="belum">Belum</option>
+                          <option value="sudah">Sudah</option></select>
+                        <?php } ?>
                     </td>
                 </tr>
                 <tr>
@@ -213,8 +220,13 @@
                     <td>Pemeliharaan</td>
                     <td>
                       <select  class="form-control" id="sel1" name="gensetpemeliharaan" required>
-                        <option value="sudah">Sudah</option>
-                        <option value="belum">Belum</option></select>
+                      <?php if ($data->pemeliharaan_genset == 'sudah'){ ?>
+                          <option value="sudah">Sudah</option>
+                          <option value="belum">Belum</option></select>
+                        <?php }else{ ?>
+                          <option value="belum">Belum</option>
+                          <option value="sudah">Sudah</option></select>
+                        <?php } ?>
                     </td>
                 </tr>
                 <tr>
@@ -222,8 +234,13 @@
                     <td>Kebersihan</td>
                     <td>
                       <select  class="form-control" id="sel1" name="gensetkebersihan" required>
-                        <option value="sudah">Sudah</option>
-                        <option value="belum">Belum</option></select>
+                      <?php if ($data->kebersihan_genset == 'sudah'){ ?>
+                          <option value="sudah">Sudah</option>
+                          <option value="belum">Belum</option></select>
+                        <?php }else{ ?>
+                          <option value="belum">Belum</option>
+                          <option value="sudah">Sudah</option></select>
+                        <?php } ?>
                     </td>
                 </tr>
                 <tr>
@@ -233,13 +250,24 @@
                     <td>9</td>
                     <td>Catatan</td>
                     <td>
-                      <textarea rows="5" class="form-control" name="catatan" placeholder="Masukkan Catatan Mingguan Radar disini"></textarea>
+                      <textarea rows="5" class="form-control" name="catatan" placeholder="Masukkan Catatan Mingguan Radar disini" ><?php echo $data->catatan ?> </textarea>
                     </td>
                 </tr>
-
-
+              <?php }; ?>
             </tbody>
+
     </table>
-<?php } ?>
+    <button type="submit" class="btn btn-default" style="float: right;">Update</button>
+  </form>
+        <?php } ?>
 
-
+ <?php 
+    }else{
+         
+          echo '
+          <div class="alert alert-danger alert-dismissible">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Peringatan!</strong> Data Hanya Bisa Diisi Pada Hari Jumat!
+          </div>
+          ';
+        } ?>  

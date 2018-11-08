@@ -486,35 +486,45 @@ class Admin extends CI_Controller {
 			</div>');
 	}
 	
-	// public function updateChecklistRadarMingguan()
-	// {	
-	// 	$var = $this->input
-	// 	$data = $this->m_logbook->get('radar_mingguan');
-	// 	$radarpemeliharaan = $this->input->post('radarpemeliharaan');
-	// 	$radarkebersihan = $this->input->post('radarkebersihan');
-	// 	$radarswitch = $this->input->post('radarswitch');
-	// 	$gensetpemanasan = $this->input->post('gensetpemanasan');
-	// 	$gensetair = $this->input->post('gensetair');
-	// 	$gensetsolar = $this->input->post('gensetsolar');
-	// 	$gensetpemeliharaan = $this->input->post('gensetpemeliharaan');
-	// 	$gensetkebersihan = $this->input->post('gensetkebersihan');
-	// 	$catatan = $this->input->post('catatan');
-	// 	$date = date('Y-m-d');
-	// 	$where = array(
-	// 			'id' => $id, 
-	// 			'tanggal' => $date
-	// 		);
-	// 		$data = array(
-	// 			'pembacaan' => $pembacaan
-	// 		);
-	// 		$this->m_logbook->update_data($where,$data,'pembacaan');
-	// 		$this->session->set_flashdata('message_harian_sukses', '
-	// 			<div class="alert alert-success alert-dismissible">
-	// 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	// 			<strong>Success!</strong> Data Radar Agroklimat Berhasil di Update.
-	// 			</div>');
-	// 		header('location: cek/cek_radar');
-	// 	}
+	public function update_checklist_radar()
+	{	
+		$var = $this->input->post('id');
+		$data = $this->m_logbook->get('radar_mingguan');
+		$radarpemeliharaan = $this->input->post('radarpemeliharaan');
+		$radarkebersihan = $this->input->post('radarkebersihan');
+		$radarswitch = $this->input->post('radarswitch');
+		$gensetpemanasan = $this->input->post('gensetpemanasan');
+		$gensetair = $this->input->post('gensetair');
+		$gensetsolar = $this->input->post('gensetsolar');
+		$gensetpemeliharaan = $this->input->post('gensetpemeliharaan');
+		$gensetkebersihan = $this->input->post('gensetkebersihan');
+		$catatan = $this->input->post('catatan');
+		$date = date('Y-m-d');
+		$where = array(
+				'id' => $var, 
+				'tanggal' => $date
+
+			);
+			$data = array(
+				'pemeliharaan_radar' => $radarpemeliharaan,
+				'kebersihan_radar' => $radarkebersihan,
+				'tanggal' => $date,
+				'switch_ac' => $radarswitch,
+				'pemanasan_genset' => $gensetpemanasan,
+				'pengecekanair_genset' => $gensetair,
+				'pengecekansolar_genset' => $gensetsolar,
+				'pemeliharaan_genset' => $gensetpemeliharaan,
+				'kebersihan_genset' => $gensetkebersihan,
+				'catatan' => $catatan
+			);
+			$this->m_logbook->update_data($where,$data,'radar_mingguan');
+			$this->session->set_flashdata('message_mingguan_sukses', '
+				<div class="alert alert-success alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Success!</strong> Data Radar Agroklimat Berhasil di Update.
+				</div>');
+			header('location: cek/cek_radar_mingguan');
+		}
 	// public function updateharianradarByTanggal(){
 	// 		$data = $this->m_logbook->get('radar');
 	// 		$date = date('Y-m-d');
