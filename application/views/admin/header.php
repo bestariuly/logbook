@@ -154,6 +154,10 @@
                             <li>
                                 <a href="<?php echo base_url('admin/view/tampil_data_radar'); ?>">Data Radar</a>
                             </li>
+
+                             <li>
+                                <a href="<?php echo base_url('admin/view/tampil_data_radar_mingguan'); ?>">Data Radar Mingguan</a>
+                            </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
