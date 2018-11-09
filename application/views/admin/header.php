@@ -133,10 +133,10 @@
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Checklist Radar <span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="<?php echo base_url('admin/cek/cek_radar'); ?>">Harian</a>
+                                        <a href="<?php echo base_url('adminradar/cek/cek_radar'); ?>">Harian</a>
                                     </li>
                                     <li>
-                                       <a href="<?php echo base_url('admin/cek/cek_radar_mingguan'); ?>">Mingguan</a>
+                                       <a href="<?php echo base_url('adminradar/cek/cek_radar_mingguan'); ?>">Mingguan</a>
                                     </li> 
                                 </ul>
                         </li>
@@ -152,27 +152,27 @@
                             </li>
                             
                             <li>
-                                <a href="<?php echo base_url('admin/view/tampil_data_radar'); ?>">Data Radar</a>
+                                <a href="<?php echo base_url('adminradar/view/tampil_data_radar'); ?>">Data Radar</a>
                             </li>
 
                              <li>
-                                <a href="<?php echo base_url('admin/view/tampil_data_radar_mingguan'); ?>">Data Radar Mingguan</a>
+                                <a href="<?php echo base_url('adminradar/view/tampil_data_radar_mingguan'); ?>">Data Radar Mingguan</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="<?php echo base_url('admin/view/chart'); ?>"><i class="fa fa-line-chart fa-fw"></i> Chart Radar</a>
+                        <a href="<?php echo base_url('adminradar/view/chart'); ?>"><i class="fa fa-line-chart fa-fw"></i> Chart Radar</a>
                     </li>
                     
                     <li>
                         <a href="#"><i class="fa fa-bars fa-fw"></i> Manajemen Alat <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?php echo base_url('admin/view/agroklimat'); ?>">Agroklimat</a>
+                                <a href="<?php echo base_url('adminradar/view/agroklimat'); ?>">Agroklimat</a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url('admin/view/radar'); ?>">Radar</a>
+                                <a href="<?php echo base_url('adminradar/view/radar'); ?>">Radar</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
