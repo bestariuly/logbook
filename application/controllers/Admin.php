@@ -90,6 +90,20 @@ class Admin extends CI_Controller {
 				<strong>Terima Kasih</strong> Anda sudah Mengisi Data Peralatan Agroklimat Hari Ini, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
 				</div>');
 		}
+		$data1['halo1'] = $this->m_logbook->cekmingguan();
+		if($data1['halo1'] == 0){
+			$this->session->set_flashdata('message_mingguan', '
+				<div class="alert alert-danger alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Peringatan!</strong> Anda Belum Mengisi Data PERALATAN AGROKLIMAT hari ini!
+				</div>');
+		}else{
+			$this->session->set_flashdata('message_mingguan_sukses', '
+				<div class="alert alert-success alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Terima Kasih</strong> Anda sudah Mengisi Data Peralatan Agroklimat Hari Ini, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
+				</div>');
+		}
 
 		$alat = "alat";
 		$kategori = "kategori";
