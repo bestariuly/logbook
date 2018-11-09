@@ -119,6 +119,21 @@ class Admin extends CI_Controller {
 				<strong>Terima Kasih</strong> Hari Ini sudah Input Data Radar Hari Ini, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
 				</div>');
 		}
+		//cek radar mingguan
+		$data1['halomingguan'] = $this->m_logbook->cekTodayRadarMingguan();
+		if($data1['halomingguan'] == 0){
+			$this->session->set_flashdata('message_mingguan_radar', '
+				<div class="alert alert-danger alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Peringatan!</strong> Anda Belum Mengisi Data Radar Minggu ini!
+				</div>');
+		}else{
+			$this->session->set_flashdata('message_mingguan_radar_sukses', '
+				<div class="alert alert-success alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Terima Kasih</strong> Data Radar minggu ini telah diinput, jika ada kesalahakan input langsung ubah dan klik <strong>Update</strong> di bagian bawah.
+				</div>');
+		}
 		$kategoriradar = "kategoriradar";
 		$radar = "radar";
 		$radarmingguan = "radar_mingguan";

@@ -5,8 +5,8 @@
     <h1 class="page-header">CEK LIST MINGGUAN RADAR AGROKLIMAT</h1>
     <!--  button tambah kategoriradar -->
     <?php 
-      echo $this->session->flashdata('message_mingguan');
-      echo $this->session->flashdata('message_mingguan_sukses');
+      echo $this->session->flashdata('message_mingguan_radar');
+      echo $this->session->flashdata('message_mingguan_radar_sukses');
       $hari = date ("D");
       //$hari = hari_ini();
       if ($hari == "Fri") {
@@ -20,7 +20,7 @@
           </tr>
         </thead>
 
-        <?php if ($haloradar == 0) {
+        <?php if ($halomingguan == 0) {
           ?>
           <form action="../tambah_checklist_radar" method="post">
             <tbody>

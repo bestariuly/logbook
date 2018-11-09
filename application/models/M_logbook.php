@@ -90,6 +90,11 @@ class M_logbook extends CI_Model{
 			$query = $this->db->query("SELECT * FROM pembacaan WHERE tanggal = '$date'");  
 			return $query->num_rows();
 		}
+		function cekTodayRadarMingguan(){
+			$date = date('Y-m-d');
+			$query = $this->db->query("SELECT * FROM radar_mingguan WHERE tanggal = '$date'");  
+			return $query->num_rows();
+		}
 		function pembacaanJoin(){
 			$date = date('Y-m-d');
 			$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal,r.nama_radar,r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE p.tanggal = '$date'"); 
