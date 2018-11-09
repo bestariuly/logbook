@@ -121,10 +121,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Cheklist Peralatan Agroklimat <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?php echo base_url('admin/cek/harian'); ?>">Harian</a>
+                                    <a href="<?php echo base_url('adminalat/cek/harian'); ?>">Harian</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo base_url('admin/cek/mingguan'); ?>">Mingguan</a>
+                                    <a href="<?php echo base_url('adminalat/cek/mingguan'); ?>">Mingguan</a>
                                 </li>
                             </ul>
                         </li>
