@@ -46,25 +46,17 @@ class Admin extends CI_Controller {
 			$tgl = $this->input->get('tanggal');
 			$data1['harianradar'] = $this->m_logbook->pembacaanJoinByDate($tgl);
 			$data1['harianalat'] = $this->m_logbook->operasiJoinByDate($tgl);
-<<<<<<< HEAD
 			$data1['mingguanalat'] = $this->m_logbook->operasiJoin4($tgl);
-=======
 			$data1['mingguanalat'] = $this->m_logbook->operasiJoin3($tgl);
 			$data1['mingguanradar'] = $this->m_logbook->getChecklistRadarMingguanTanggal($tgl);
->>>>>>> db0043aa929c29dc6df04e2fb456413bdd3419d9
 			$data1['tgl'] = $tgl;
-
 		}
 		if($this->input->get('edit')){
 			$tgl = $this->input->get('edit');
 			$data1['editharianradar'] = $this->m_logbook->pembacaanJoinByDate($tgl);
 			$data1['editharianalat'] = $this->m_logbook->operasiJoinByDate($tgl);
-<<<<<<< HEAD
 			$data1['editmingguanalat'] = $this->m_logbook->operasiJoin4($tgl);
-			$data1['tgl'] = $tgl;
-		}
-=======
-			$data1['editmingguanalat'] = $this->m_logbook->operasiJoin3($tgl);
+			$data1['mingguanalat'] = $this->m_logbook->operasiJoin3($tgl);
 			$data1['editmingguanradar'] = $this->m_logbook->getChecklistRadarMingguanTanggal($tgl);
 			$data1['tgl'] = $tgl;
 		}
@@ -73,11 +65,10 @@ class Admin extends CI_Controller {
 		if ($data=='save') {
 			$this->load->view('admin/view/'.$data, $data1);
 		}else{
->>>>>>> db0043aa929c29dc6df04e2fb456413bdd3419d9
 		$this->load->view('admin/header');
 		$this->load->view('admin/view/'.$data, $data1);
 		$this->load->view('admin/footer');		
-		
+		}
 		
 		
 		
@@ -85,10 +76,7 @@ class Admin extends CI_Controller {
 
 	// ALAT
 	public function cek($data){
-		// HALO UNTUK HARIAN
 		$data1['halo'] = $this->m_logbook->cekToday();
-		// HALO UNTUK MINGGUAN
-		$data1['halo1'] = $this->m_logbook->cekMingguan();
 		if ($data1['halo'] == 0) {
 			$this->session->set_flashdata('message_harian', '
 				<div class="alert alert-danger alert-dismissible">
@@ -772,7 +760,7 @@ class Admin extends CI_Controller {
 		$id = $this->input->post('id');
 		$jenis_laporan = $this->input->post('jenis_laporan');
 		$jenis_alat = $this->input->post('jenis_alat');
-		$nama_alat = $this->input->post('nama_alat');
+		$nama_alat = $this->input->post('nama');
 		$lokasi = $this->input->post('lokasi');
 		$permasalahan = $this->input->post('permasalahan');
 		$tindakan = $this->input->post('tindakan');
@@ -808,12 +796,6 @@ class Admin extends CI_Controller {
 			header('location: view/laporan');
 		}
 	}
-
-		public function dataLaporanPdf(){
-			$this->load->library('pdf');
-			$data = $this->M_logbook->getLaporan();
-			$this->load->view('pdf_laporan', array('data' => $data));
-		}
 	
 }
 
