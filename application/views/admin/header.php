@@ -115,16 +115,16 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="<?php echo base_url('admin'); ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="<?php echo base_url('adminalat'); ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Cheklist Peralatan Agroklimat <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?php echo base_url('admin/cek/harian'); ?>">Harian</a>
+                                    <a href="<?php echo base_url('adminalat/cek/harian'); ?>">Harian</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo base_url('admin/cek/mingguan'); ?>">Mingguan</a>
+                                    <a href="<?php echo base_url('adminalat/cek/mingguan'); ?>">Mingguan</a>
                                 </li>
                             </ul>
                         </li>
@@ -145,10 +145,10 @@
                         <a href="#"><i class="fa fa-table fa-fw"></i> Data <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?php echo base_url('admin/view/dataharian'); ?>">Data Harian Peralatan Agroklimat</a>
+                                <a href="<?php echo base_url('adminalat/view/dataharian'); ?>">Data Harian Peralatan Agroklimat</a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url('admin/view/mingguan'); ?>">Data Mingguan Peralatan Agroklimat</a>
+                                <a href="<?php echo base_url('adminalat/view/mingguan'); ?>">Data Mingguan Peralatan Agroklimat</a>
                             </li>
                             
                             <li>
@@ -178,7 +178,7 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="<?php echo base_url('admin/view/laporan'); ?>"><i class="fa fa-bars fa-fw"></i> Manajemen Laporan <span class="fa arrow"></span></a>
+                        <a href="<?php echo base_url('adminalat/view/laporan'); ?>"><i class="fa fa-bars fa-fw"></i> Manajemen Laporan <span class="fa arrow"></span></a>
                     </li>
                     
                 </div>
