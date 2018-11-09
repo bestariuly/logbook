@@ -42,9 +42,9 @@
       doc.save('sample-file.pdf');
     });
   });
-
-// This code is collected but useful, click below to jsfiddle link.
 </script>
+
+
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
@@ -70,7 +70,6 @@
                 <div class="col-sm-2" style="text-align: center;">
                   <img src="http://4.bp.blogspot.com/-LqUyMLMG05w/Ty0S-w100jI/AAAAAAAABC0/2AmjPy4Br1s/s1600/logo_BMKG.png" style="width: 60%; height: auto;">
                 </div>
-
                 <div id="editor"></div>
 
 
@@ -155,8 +154,10 @@
 
               <?php }}} ?>
             </tbody>
-          </table> 
-          <button id="cmd">Generate PDF</button> 
+          </table>
+          <a href="<?php echo base_url('admin/view/pdf_laporan'); ?>"><button id="cmd">Print PDF</button>
+          <button id="cmd">Generate PDF</button>
+          
         </div>
       </div>
       <div class="col-sm-4" align="center" style="float: right;">

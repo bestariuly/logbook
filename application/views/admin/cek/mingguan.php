@@ -24,7 +24,9 @@
               <th>keterangan</th>
             </tr>
           </thead>
-          <?php if ($halo == 0) {
+
+  <!--  halo untuk mingguan -->
+          <?php if ($halo1 == 0) {
             ?>
             <form action="../cekmingguan" method="post">
               <tbody>
@@ -51,7 +53,7 @@
 
                         </td>
                         <td>
-                          <textarea class="form-control" name="keterangan<?php echo $row2->id_alat; ?>" placeholder="Keterangan"></textarea>
+                        <textarea class="form-control"  placeholder="Keterangan" name="keterangan<?php echo $row2->id_alat; ?>" ></textarea>
                         </div>
                       </td>
                     </tr>
@@ -93,12 +95,11 @@
                               <option value="bersih">Bersih</option>
                             <?php endif ?>
                             <input type="hidden" name="id_kondisi<?php echo $row2->id_alat; ?>" value="<?php echo $row2->id_kondisi; ?>">
-
                           </select>
-
                         </td>
+                        
                         <td>
-                          <textarea class="form-control" name="keterangan<?php echo $row2->id_alat; ?>" placeholder="Keterangan" ><?php echo $row2->keterangan; ?></textarea>
+                          <textarea class="form-control"  name="keterangan<?php echo $row2->id_alat; ?>" ><?php echo $row2->keterangan_kondisi; ?></textarea>
                         </div>
                       </td>
                     </tr>

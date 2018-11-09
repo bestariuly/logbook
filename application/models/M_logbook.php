@@ -106,6 +106,7 @@ class M_logbook extends CI_Model{
 			$query = $this->db->query("SELECT COUNT(p.id_radar), p.id_radar, r.id_kategoriradar, p.tanggal, r.nama_radar, r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE P.pembacaan != ('MENYALA' || 'MATI' || 'ENABLE' || 'DISABLE' || 'MENYALA HIJAU' || 'MENYALA MERAH' || 'BERKEDIP' || 'HIJAU' || 'PUTIH' || 'HIJAU MENYALA' || 'HIJAU TUA' || 'CONNECT' || 'DISCONNECT' || 'CONTROL' || 'CTRL YOGFROG') GROUP BY p.id_radar");
 			return $query->result();
 		}
+
 		function pembacaanChartz($data){
 			$query = $this->db->query("SELECT p.id_pembacaan, p.pembacaan, p.id_radar, r.id_kategoriradar, p.tanggal, r.nama_radar, r.standar FROM pembacaan p INNER JOIN radar r ON p.id_radar = r.id_radar WHERE p.id_radar = '$data'");
 			return $query->result();
@@ -120,6 +121,8 @@ class M_logbook extends CI_Model{
 		$this->db->where($where);
 		$this->db->update($table,$data);
 	}
+
+	
 
 	// LAPORAN
 	function buat_laporan($input){
@@ -139,8 +142,17 @@ class M_logbook extends CI_Model{
 	function inputMingguan($table, $input){
 		$this->db->insert($table, $input);
 	}
+
+	public function getLaporan(){
+		$this->db->select('*');
+		$this->db->from('laporan l');
+
+		$data = $this->db->get();
+		return $data->result_array();
+	}
 	
-	function cekToday(){ //cek harian
+	//cek harian
+	function cekToday(){ 
 		$date = date('Y-m-d');
 		$query = $this->db->query("SELECT * FROM operasi WHERE tanggal = '$date'");  
 		return $query->num_rows();
@@ -150,6 +162,7 @@ class M_logbook extends CI_Model{
 		$query = $this->db->query("SELECT * FROM kondisi WHERE tanggal = '$date'");
 		return $query->num_rows();
 	}
+	// JOIN OPERASI DAN ALAT UNTUK CEK HARIAN
 	function operasiJoin(){
 		$date = date('Y-m-d');
 		$query = $this->db->query("SELECT o.id_operasi, o.operasi, o.id_alat, a.id_kategori, o.tanggal, o.keterangan, a.nama_alat FROM operasi o INNER JOIN alat a ON o.id_alat = a.id_alat WHERE o.tanggal = '$date'"); 
@@ -160,16 +173,21 @@ class M_logbook extends CI_Model{
 		$query = $this->db->query("SELECT DISTINCT o.id_operasi, o.operasi, o.id_alat, a.id_kategori, o.tanggal, o.keterangan AS keterangan_operasi, a.nama_alat FROM operasi o INNER JOIN alat a ON o.id_alat = a.id_alat WHERE o.tanggal='$date' GROUP BY a.id_alat"); 
 			return $query->result();
 	}
-	// join alat dengan operasi 
+	// join alat dengan operasi untuk nyimpan data
 	function operasiJoin2(){
 		$date = date('Y-m-d');
 		$query = $this->db->query("SELECT o.id_operasi, o.operasi, o.id_alat, a.id_kategori, o.tanggal, o.keterangan, a.nama_alat FROM operasi o INNER JOIN alat a ON o.id_alat = a.id_alat"); 
 		return $query->result();
 	}	
-	// join mingguan
+	// join kondisi dan alat untuk cek data mingguan
 	function operasiJoin3(){
 		$date = date('Y-m-d');
-		$query = $this->db->query("SELECT k.id_kondisi, k .kondisi, k.id_alat, a.id_kategori, k.tanggal, k.keterangan, a.nama_alat FROM kondisi k INNER JOIN alat a ON k.id_alat = a.id_alat WHERE k.tanggal='$date' GROUP BY a.id_alat"); 
+		$query = $this->db->query("SELECT k.id_kondisi, k .kondisi, k.id_alat, a.id_kategori, k.tanggal, k.keterangan AS keterangan_kondisi , a.nama_alat FROM kondisi k INNER JOIN alat a ON k.id_alat = a.id_alat WHERE k.tanggal='$date' GROUP BY a.id_alat"); 
+		return $query->result();
+	}
+	// join kondisi dan alat untuk view data mingguan	
+	function operasiJoin4($date){	
+		$query = $this->db->query("SELECT k.id_kondisi, k .kondisi, k.id_alat, a.id_kategori, k.tanggal, k.keterangan AS keterangan_kondisi , a.nama_alat FROM kondisi k INNER JOIN alat a ON k.id_alat = a.id_alat WHERE k.tanggal='$date' GROUP BY a.id_alat"); 
 		return $query->result();
 	}	
 	function grup_tanggal(){

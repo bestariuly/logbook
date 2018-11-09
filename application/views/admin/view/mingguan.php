@@ -24,7 +24,7 @@
   <div class="row">
     <div class="col-lg-12">
 
-      <h1 class="page-header text-center" >DATA CHEKLIST HARIAN PERALATAN AGROKLIMAT KHUSUS HARI JUM'AT</h1>
+      <h1 class="page-header text-center" >DATA CHEKLIST KONDISI PERALATAN AGROKLIMAT MINGGUAN</h1>
     </div>
     <!-- /.col-lg-12 -->
   </div>
@@ -32,9 +32,9 @@
 
   <?php if (isset($mingguanalat)): ?>
     <?php 
-    echo "<pre>";
-    print_r($mingguanalat);
-    echo "</pre>";
+    // echo "<pre>";
+    // print_r($mingguanalat);
+    // echo "</pre>";
      ?>
 
 
@@ -50,6 +50,7 @@
                 <div class="col-sm-2" style="text-align: center;">
                   <img src="http://4.bp.blogspot.com/-LqUyMLMG05w/Ty0S-w100jI/AAAAAAAABC0/2AmjPy4Br1s/s1600/logo_BMKG.png" style="width: 60%; height: auto;">
                 </div>
+
                 <div class="col-sm-10" style="text-align: center;">
                   BADAN METEOROLOGI KLIMATOLOGI DAN GEOFISIKA <br>
                   <strong style="font-size: 150%">STASIUN KLIMATOLOGI MLATI YOGYAKARTA</strong><br>
@@ -60,7 +61,7 @@
               </div>
               <div class="row" style="background-color: black; height: 4px;"></div>
               <div class="row" style="text-align: center; "></div>
-              <h2 class="page-header text-center" >CHEKLIST HARIAN PERALATAN AGROKLIMAT</h2>
+              <h2 class="page-header text-center" >CHEKLIST DATA MINGGUAN PERALATAN AGROKLIMAT</h2>
               <h4 class="modal-title">Tanggal : <?php echo $tgl; ?></h4>
               <div class="row">
                <div class="modal-body">
@@ -109,9 +110,9 @@
 
                       <div class="form-group">
                         <td>
-                          <textarea readonly class="form-control" name="keterangan<?php echo $row2->id_alat; ?>" placeholder="Keterangan" style="background-color: white;" rows="5">
+                          <textarea readonly class="form-control" name="keterangan<?php echo $row2->keterangan_kondisi; ?>" style="background-color: white;" rows="5">
                             <?php 
-                             echo "Kondisi :".$row2->keterangan_kondisi;
+                             echo "Kondisi :".$row2->keterangan_kondisi;                             
                            ?>
                             
                           </textarea>
@@ -123,7 +124,8 @@
                 <?php }}} ?>
 
               </tbody>
-            </table>  
+            </table> 
+           <button id="cmd">Generate PDF</button> 
           </div>
         </div>
         <div class="col-sm-4" align="center" style="float: right;">
@@ -185,8 +187,7 @@
                       <td>
                         <div class="form-group">
                           <select class="form-control" id="sel1" name="kondisi<?php echo $row2->id_alat; ?>" required >
-                            <?php
-                            if ($row2->kondisi == 'bersih'): ?>
+                            <?php if ($row2->kondisi == 'bersih'): ?>
                               <option value="bersih" >Bersih</option>
                               <option value="kotor" >Kotor</option>
                             <?php endif ?>
@@ -202,8 +203,7 @@
 
                         </td>
                         <td>
-                          <textarea class="form-control" name="keterangan<?php echo $row2->id_alat; ?>" placeholder="Keterangan" style="background-color: white;">
-                            <?php echo $row2->keterangan_kondisi; ?></textarea>
+                        <textarea class="form-control"  name="keterangan<?php echo $row2->id_alat; ?>" ><?php echo $row2->keterangan_kondisi; ?></textarea>
                         </div>
                       </td>
                     </tr>
@@ -263,7 +263,6 @@
                 <td><?php echo $row2->tanggal; ?></td>
                 <td><a href="?tanggal=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-eye-open"> Lihat</span></a>    
                   <a href="?edit=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-edit"> Edit</span></a></td> 
-
 
                 </tr>
               <?php } ?>
