@@ -147,16 +147,19 @@
                       </select>
 
                       <label for="jenis_alat">Jenis Alat</label>
-                      <input required type="text" class="form-control" id="nama" name="jenis_alat" value="<?php echo $laporan->jenis_alat; ?>">
+                      <input required type="text" class="form-control" id="jenis_alat" name="jenis_alat" value="<?php echo $laporan->jenis_alat; ?>">
 
                       <label for="nama_alat">Nama Alat</label>
-                      <input required type="text" class="form-control" id="nama" name="nama_alat" value="<?php echo $laporan->nama_alat; ?>">
+                      <input required type="text" class="form-control" id="nama_alat" name="nama_alat" value="<?php 
+                      echo $laporan->nama_alat; ?>">
 
                       <label for="lokasi">Lokasi</label>
-                      <input required type="text" class="form-control" id="lokasi" name="lokasi" value="<?php echo $laporan->lokasi; ?>">
+                      <input required type="text" class="form-control" id="lokasi" name="lokasi" value="<?php 
+                      echo $laporan->lokasi; ?>">
 
                       <label for="permasalahan">Permasalahan</label>
-                      <textarea class="form-control" name="permasalahan" id="permasalahan"><?php echo $laporan->permasalahan; ?></textarea>
+                      <textarea class="form-control" name="permasalahan" id="permasalahan"><?php 
+                      echo $laporan->permasalahan; ?></textarea>
 
                       <label for="tindakan">Tindakan</label>
                       <textarea name="tindakan" class="form-control" id="tindakan"><?php echo $laporan->tindakan; ?></textarea>
@@ -180,7 +183,7 @@
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
                 </div>
               </div>
 

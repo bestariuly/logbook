@@ -774,7 +774,7 @@ class Admin extends CI_Controller {
 		$id = $this->input->post('id');
 		$jenis_laporan = $this->input->post('jenis_laporan');
 		$jenis_alat = $this->input->post('jenis_alat');
-		$nama_alat = $this->input->post('nama');
+		$nama_alat = $this->input->post('nama_alat');
 		$lokasi = $this->input->post('lokasi');
 		$permasalahan = $this->input->post('permasalahan');
 		$tindakan = $this->input->post('tindakan');
@@ -788,6 +788,7 @@ class Admin extends CI_Controller {
 		);
 		$data = array(
 			'jenis_laporan' => $jenis_laporan,
+			'jenis_alat' => $jenis_alat,
 			'nama_alat'=> $nama_alat,
 			'lokasi' => $lokasi,
 			'permasalahan' => $permasalahan,
