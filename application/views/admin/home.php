@@ -7,7 +7,10 @@
             </div>
             <!-- /.row -->
             <div class="row">
-                Halaman utama dasboard
+            <?php 
+      echo $this->session->flashdata('message_harian');
+  
+      ?>
             </div>
             <!-- /.row -->
 </div>

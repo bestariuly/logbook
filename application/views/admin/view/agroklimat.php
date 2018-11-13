@@ -31,13 +31,11 @@
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-    <!-- /.col-lg-12 -->
   </div>
-  <!-- /.row -->
+
   <div class="row">
     <div class="col-md-8">
       <div class="panel-group" id="accordion">
@@ -50,11 +48,10 @@
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $row1->id_kategori; ?>">
                   <?php echo $row1->id_kategori.". ".$nama_kategori=$row1->nama_kategori; ?></a>
 
-                  <!-- hapus kategori -->
+                  <!-- hapus kategori -->   
+                  <?php echo anchor('admin/hapusKategoriAlat/'.$row1->id_kategori,
+                   '<button style="float: right" class="btn btn-default small glyphicon glyphicon-trash" title="Hapus"></button>', array('class'=>'delete', 'onclick'=>"return confirmDialog();")); ?>
                   
-                  <?php echo anchor('admin/hapusKategoriAlat/'.$row1->id_kategori, '<button style="float: right" class="btn btn-default small glyphicon glyphicon-trash" title="Hapus"></button>', array('class'=>'delete', 'onclick'=>"return confirmDialog();")); ?>
-                  <!-- button hapus kategori -->
-
                   <script>
                     function confirmDialog() {
                      return confirm('Apakah anda yakin akan menghapus kategori alat ini?')
@@ -62,11 +59,11 @@
                    function confirmDialog1() {
                      return confirm('Apakah anda yakin akan menghapus alat ini?')
                    }
-                 </script>
+                   </script>
+                 
                  <!-- button edit kategori -->
                  <button style="float: right" class="btn btn-default small glyphicon glyphicon-edit" title="Edit" data-toggle="modal" data-target="#editKategori<?php echo $row1->id_kategori; ?>"></button>
-                 <!-- button edit kategori -->
-
+                 
                  <!-- Edit Kategori -->
                  <div id="editKategori<?php echo $row1->id_kategori; ?>" class="modal fade" role="dialog">
                   <div class="modal-dialog">
@@ -129,9 +126,9 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       </div>
                     </div>
-
                   </div>
                 </div>
+
                 <?php $no=1; foreach ($alat as $row2) {
                   if ($row2->id_kategori == $row1->id_kategori) {
                     ?>
@@ -140,12 +137,12 @@
                         <?php echo $no.'. '.$row2->nama_alat; $no++; ?>
                         <div style="text-align: right;">
                          <button class="btn btn-default glyphicon glyphicon-edit" data-toggle="modal" data-target="#edit<?php echo $row2->id_alat; ?>"></button>
-                         <?php echo anchor('admin/hapusAlat/'.$row2->id_alat, '<button class="btn btn-default glyphicon glyphicon-trash" ></button>', array('class'=>'delete', 'onclick'=>"return confirmDialog1();")); ?> 
-
+                         <?php echo anchor('admin/hapusAlat/'.$row2->id_alat, '<button class="btn btn-default glyphicon glyphicon-trash" ></button>',
+                          array('class'=>'delete', 'onclick'=>"return confirmDialog1();")); ?> 
                        </div>
-                       
                      </div>
                    </div>
+
                    <!-- modal edit mulai --> 
                    <div id="edit<?php echo $row2->id_alat; ?>" class="modal fade" role="dialog">
                     <div class="modal-dialog">
@@ -170,14 +167,12 @@
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                       </div>
-
                     </div>
                   </div>
+
                   <!-- modal edit selesai -->
 
-                  <?php
-                }
-              } ?>
+                  <?php }} ?>
             </div>
           </div>
         </div>
@@ -187,6 +182,5 @@
 
       
     </div>
-    <!-- /.row -->
   </div>
   <!-- /#page-wrapper -->

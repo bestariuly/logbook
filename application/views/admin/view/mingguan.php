@@ -4,6 +4,7 @@
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+<link href="<?php echo base_url(); ?>asset/dist/css/mingguan.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
@@ -24,13 +25,13 @@
   <div class="row">
     <div class="col-lg-12">
 
-      <h1 class="page-header text-center" >DATA CHEKLIST KONDISI PERALATAN AGROKLIMAT MINGGUAN</h1>
+      <h1 class="page-header text-center" >DATA CHEKLIST MINGGUAN PERALATAN AGROKLIMAT </h1>
     </div>
     <!-- /.col-lg-12 -->
   </div>
 
 
-  <?php if (isset($mingguanalat)): ?>
+  <?php if (isset($mingguanalatview)): ?>
     <?php 
     // echo "<pre>";
     // print_r($mingguanalat);
@@ -87,7 +88,7 @@
                   <tr>
                    <td colspan="8" style="background-color:#eceaea;"><?php echo $row1->nama_kategori; ?></td>
                  </tr>
-                 <?php foreach ($mingguanalat as $row2) {
+                 <?php foreach ($mingguanalatview as $row2) {
                   if ($row2->id_kategori == $row1->id_kategori) {
                     ?>
                     <tr>
@@ -228,7 +229,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="row2" align="right"> <input class="form-control" style="width: 30%;" id="myInput" type="text" placeholder="Search.."><br></div>
-      <table class="table table-bordered table-stripped">
+      <table class="table table-bordered table-hover" id="mingguan">
         <thead>
           <tr>
             <th>No.</th>
@@ -261,8 +262,8 @@
                 );
                 echo $dayList[$day];  ?></td>
                 <td><?php echo $row2->tanggal; ?></td>
-                <td><a href="?tanggal=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-eye-open"> Lihat</span></a>    
-                  <a href="?edit=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-edit"> Edit</span></a></td> 
+                <td><a href="?tanggal=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-eye-open" id="btn-view"> Lihat</span></a>    
+                  <a href="?edit=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-edit" id="btn-edit"> Edit</span></a></td> 
 
                 </tr>
               <?php } ?>

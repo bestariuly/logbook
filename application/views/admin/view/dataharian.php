@@ -6,6 +6,7 @@
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+<link href="<?php echo base_url(); ?>asset/dist/css/dataharian.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
@@ -26,22 +27,21 @@
 
 </script>
 <script type="text/javascript">
-  $(document).ready(function(){
-    var doc = new jsPDF();
-    var specialElementHandlers = {
-      '#editor': function (element, renderer) {
-        return true;
-      }
-    };
+  function printElem() {
+    var content = document.getElementById("konten1").innerHTML;
+    var mywindow = window.open('', 'Print');
 
-    $('#cmd').click(function () {   
-      doc.fromHTML($('#konten').html(), 15, 15, {
-        'width': 170,
-        'elementHandlers': specialElementHandlers
-      });
-      doc.save('sample-file.pdf');
-    });
-  });
+    mywindow.document.write('<html><head><title>Print</title>');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write(content);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close();
+    mywindow.focus()
+    mywindow.print();
+    mywindow.close();
+    return true;
+}
 </script>
 
 
@@ -49,7 +49,7 @@
   <div class="row">
     <div class="col-lg-12">
 
-      <h1 class="page-header text-center" >DATA CHEKLIST HARIAN PERALATAN AGROKLIMAT KHUSUS HARI JUM'AT</h1>
+      <h1 class="page-header text-center" >DATA CHEKLIST HARIAN PERALATAN AGROKLIMAT </h1>
     </div>
     <!-- /.col-lg-12 -->
   </div>
@@ -59,6 +59,7 @@
 
 
     <!-- Modal content-->
+    <div id="konten1">
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog" style="width: 80%">
 
@@ -155,9 +156,6 @@
               <?php }}} ?>
             </tbody>
           </table>
-          <a href="<?php echo base_url('admin/view/pdf_laporan'); ?>"><button id="cmd">Print PDF</button>
-          <button id="cmd">Generate PDF</button>
-          
         </div>
       </div>
       <div class="col-sm-4" align="center" style="float: right;">
@@ -167,13 +165,13 @@
           2.&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
         3. &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp;  </u><br>
       </div>
-
+      <button onclick="printElem()">Print</button>
     </div>
   </div>
 </div>
 </div> 
 </div>
-</div>
+</div></div>
 
 <!-- edit harian alat -->
 
@@ -270,7 +268,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="row2" align="right"> <input class="form-control" style="width: 30%;" id="myInput" type="text" placeholder="Search.."><br></div>
-        <table class="table table-bordered table-stripped">
+        <table class="table table-bordered table-hover" id="harian">
           <thead>
             <tr>
               <th>No.</th>
@@ -303,10 +301,12 @@
                   );
                   echo $dayList[$day];  ?></td>
                   <td><?php echo $row2->tanggal; ?></td>
-                  <td><a href="?tanggal=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-eye-open"> Lihat</span></a>    
-                    <a href="?edit=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-edit"> Edit</span></a></td> 
-
-
+                  <td>
+                    <a href="?tanggal=<?php  echo $row2->tanggal; ?>" >
+                    <span class="btn btn-default small glyphicon glyphicon-eye-open" id="btn-view"> Lihat</span></a>    
+                    <a href="?edit=<?php  echo $row2->tanggal; ?>" >
+                    <span class="btn btn-default small glyphicon glyphicon-edit" id="btn-edit"> Edit</span></a>
+                  </td> 
                   </tr>
                 <?php } ?>
 
@@ -314,10 +314,7 @@
             </table>
           </div>
         </div>
-        <!-- /.row -->
         <div class="row">
-
-          <!-- /.col-lg-12 -->
         </div>
       </div>
       <!-- /#page-wrapper -->

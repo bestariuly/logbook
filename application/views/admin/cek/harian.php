@@ -1,3 +1,5 @@
+<link href="<?php echo base_url(); ?>asset/dist/css/harian.css" rel="stylesheet">
+
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg">
@@ -11,7 +13,7 @@
       echo $this->session->flashdata('message_harian_sukses');
       ?>
 
-      <table class="table table-bordered">
+      <table class="table table-bordered table-hover" id="harian">
         <thead>
           <tr>
             <th>No.</th>

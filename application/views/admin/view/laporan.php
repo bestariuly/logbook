@@ -1,3 +1,9 @@
+<!-- datatable -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<script charset="utf8" src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<!-- end of datatable -->
+<link href="<?php echo base_url(); ?>asset/dist/css/laporan.css" rel="stylesheet">
+
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
@@ -7,32 +13,52 @@
   </div>
   <!-- /.row -->
   <div class="row">
-    <button type="button" class="btn btn-primary btn-md" data-toggle = 'modal' data-target = "#laporan" >Buat Laporan</button>
-    <table class="table table-striped">
+    <button type="button" class="btn btn-primary btn-md" data-toggle = 'modal' data-target = "#laporan1" >Buat Laporan</button>
+      <table class="table table-bordered table-hover" id="laporan">
       <thead>
         <tr>
-          <th>No</th>
-          <th>Tanggal</th>
-          <th>Jenis Laporan</th>
-          <th>Aksi</th>
-
+          <th style= "text-align: center">No</th>
+          <th style= "text-align: center">Tanggal</th>
+          <th style= "text-align: center">Jenis Laporan</th>
+          <th style= "text-align: center">Aksi</th>
         </tr>
       </thead>
+
       <tbody>
-        <?php $no = 1; foreach ($laporan as $laporan) {
-          
-          ?>
+        <?php $no = 1; foreach ($laporan as $laporan) { ?>
           <tr>
-            <td><?php echo $no; $no++; ?></td>
-            <td><?php echo $laporan->tanggal; ?></td>
-            <td><?php echo $laporan->jenis_laporan; ?></td>
+            <td style= "text-align: center"><?php echo $no; $no++; ?></td>
+            <td style= "text-align: center"><?php echo $laporan->tanggal; ?></td>
+            <td style= "text-align: center"><?php echo $laporan->jenis_laporan; ?></td>
             <td>
               <!-- button  -->
-              <?php echo anchor('admin/hapuslaporan/'.$laporan->id, '<button style="float: right" class="btn btn-default small glyphicon glyphicon-trash" title="Hapus"></button>', array('class'=>'delete', 'onclick'=>"return confirmDialog();")); ?>  
-              <button style="float: right" class="btn btn-default small glyphicon glyphicon-edit" title="Edit" data-toggle="modal" data-target="#editlaporan<?php echo $laporan->id; ?>"></button>
-              <button style="float: right" class="btn btn-default small glyphicon glyphicon-eye-open" title="view" data-toggle="modal" data-target="#lihatlaporan<?php echo $laporan->id; ?>"></button>
+              <?php echo anchor('admin/hapuslaporan/'.$laporan->id, 
+              '<button style="float: right" class="btn btn-default small glyphicon glyphicon-trash" id="btn-delete" title="Hapus"></button>', array('class'=>'delete', 'onclick'=>"return confirmDialog();")); ?>  
+              <button style="float: right" class="btn btn-default small glyphicon glyphicon-edit" title="Edit" id="btn-edit" data-toggle="modal" data-target="#editlaporan<?php echo $laporan->id; ?>"></button>
+              <button style="float: right" class="btn btn-default small glyphicon glyphicon-eye-open" title="view" id="btn-view" data-toggle="modal" data-target="#lihatlaporan<?php echo $laporan->id; ?>"></button>
+              <script>
+                    document.getElementById("btnPrint<?php echo $laporan->id; ?>").onclick = function () {
+                        printElement(document.getElementById("printThis<?php echo $laporan->id; ?>"));
+                    }
 
+                    function printElement(elem) {
+                        var domClone = elem.cloneNode(true);
+                        
+                        var $printSection = document.getElementById("printSection<?php echo $laporan->id; ?>");
+                        
+                        if (!$printSection) {
+                            var $printSection = document.createElement("div");
+                            $printSection.id = "printSection<?php echo $laporan->id; ?>";
+                            document.body.appendChild($printSection);
+                        }
+                        
+                        $printSection.innerHTML = "";
+                        $printSection.appendChild(domClone);
+                        window.print();
+                    }
+                  </script> 
  <!-- modal lihat laporan -->
+                    <div id="printThis<?php echo $laporan->id; ?>">
               <div id="lihatlaporan<?php echo $laporan->id; ?>" class="modal fade" role="dialog">
                 <div class="modal-dialog" style="width: 80%">
                  <!-- Modal content-->
@@ -41,8 +67,9 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     
     <!-- lihat laporan --> 
-                  </div> 
-                  <div class="modal-body"> 
+                  </div>
+
+                  <div class="modal-body" > 
                     <div class="row">
                       <div class="col-lg-12" style="padding-left: 10%; padding-right: 10%">
                         <div class="row">
@@ -86,22 +113,21 @@
                               <br>
                               Teknisi On Duty, <br><br><br>
                               <u><?php  echo $laporan->nama_teknisi; ?></u><br>
-                            </div>
-                            
+                            </div>     
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="modal-footer">
+                  <button id="btnPrint<?php echo $laporan->id; ?>" type="button" class="btn btn-default">Print</button>
                     <a href="<?php echo base_url()."admin/dataLaporanPdf";?>" value="simpan">Save</a>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
-
+                  </div>
  <!-- modal edit laporan -->                    
           <div id="editlaporan<?php echo $laporan->id; ?>" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -117,7 +143,6 @@
                     <div class="form-group">
                                         
                       <input required type="hidden" class="form-control" id="id" name="id" value="<?php echo $laporan->id; ?>">
-
                       <label for="jenis_laporan">jenis laporan</label>                
                       <select class="form-control" id="jenis_laporan" name="jenis_laporan" required>
                         <?php if($laporan->jenis_laporan == 'kerusakan'): ?>
@@ -178,6 +203,7 @@
 
                       <label for="nama_teknisi">Teknisi On Duty</label>
                       <input required type="text" class="form-control" id="nama_teknisi" name="nama_teknisi" value="<?php echo $laporan->nama_teknisi; ?>">
+                   
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                   </form>
@@ -193,26 +219,21 @@
       </div>
       <div id="collapse<?php echo $laporan->id; ?>" class="panel-collapse collapse">
         <div class="panel-body">
-          <!-- button hapus laporan -->
-          
           <script>
             function confirmDialog() {
              return confirm('Apakah anda yakin akan menghapus laporan ini?')
            }
          </script>
-
        </td>
      </tr>
    <?php } ?>
  </tbody>
 </table>
 </div>
-
 </div>
 
-
 <!-- modal buat laporan -->
-<div id="laporan" class="modal fade" role="dialog">
+<div id="laporan1" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
@@ -224,10 +245,8 @@
         <form action="../buat_laporan" method="post">
           <div class="form-group">
             <label for="jenis">Jenis Laporan</label>
-            
             <div class="form-group">
-              <label for="jenis_laporan"></label>
-              
+              <label for="jenis_laporan"></label>        
               <select class="form-control" id="jenis_laporan" name="jenis_laporan">
                 <option value="kerusakan">Kerusakan</option>
                 <option value="perbaikan">Perbaikan</option>
@@ -265,3 +284,9 @@
     </div>
   </div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function()){
+      $('#laporan').DataTable();
+    }		
+</script>

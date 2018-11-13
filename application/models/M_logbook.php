@@ -6,6 +6,7 @@ class M_logbook extends CI_Model{
 	{
 		parent::__construct();
 		$this->load->database();
+		$this->load->library('session');
 	}
 	function get($table){
 		$query = $this->db->get($table);
@@ -213,6 +214,27 @@ class M_logbook extends CI_Model{
 		$date = date('Y-m-d');
 		$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM kondisi GROUP BY tanggal"); 
 		return $query->result();
+	}
+
+	//fungsi cek session
+	function logged_id()
+	{
+		return $this->session->userdata('username');
+	}
+	//fungsi cek login
+	function chek_login($table, $field1, $field2)
+	{
+		$this->db->select('*');
+        $this->db->from($table);
+        $this->db->where($field1);
+        $this->db->where($field2);
+        $this->db->limit(1);
+        $query = $this->db->get();
+        if ($query->num_rows() == 0) {
+            return FALSE;
+        } else {
+            return $query->result();
+        }
 	}
 	
 }

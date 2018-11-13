@@ -169,7 +169,7 @@
                         <a href="#"><i class="fa fa-bars fa-fw"></i> Manajemen Alat <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?php echo base_url('adminradar/view/agroklimat'); ?>">Agroklimat</a>
+                                <a href="<?php echo base_url('adminalat/view/agroklimat'); ?>">Agroklimat</a>
                             </li>
                             <li>
                                 <a href="<?php echo base_url('adminradar/view/radar'); ?>">Radar</a>

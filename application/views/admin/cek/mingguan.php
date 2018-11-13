@@ -7,11 +7,11 @@
   <div class="row" align="center">
     <div class="col-lg-12">
       <?php 
-      echo $this->session->flashdata('message_mingguan');
       echo $this->session->flashdata('message_mingguan_sukses');
       $hari = date ("D");
       //$hari = hari_ini();
       if ($hari == "Fri") {
+        echo $this->session->flashdata('message_mingguan');
         ?>
         
 
@@ -58,13 +58,13 @@
                       </td>
                     </tr>
                   <?php }}} ?>
-
                 </tbody>
-
-
+                
               </table>
               <button type="submit" class="btn btn-default" style="float: right;">Submit</button>
+              
             </form>
+           
           <?php } else{ ?>
             <form action="../updatemingguan" method="post">
               <tbody>
