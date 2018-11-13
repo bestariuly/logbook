@@ -88,11 +88,18 @@
                                       <?php }}} ?>
                                     </tbody>
 
-                                  </table>  
+                                  </table>
+                                  <div class="modal-footer">
+                                  <div class="col-sm-4" align="center" style="float: right;">
+                                    <br>
+                                    Teknisi On Duty, <br><br><br>
+                                    <u>1. &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 
+                                      2.&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                                    3. &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp;  </u><br>
+                                  </div>  
 
                                 </div>
                                 
-                                <div class="modal-footer">
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 </div>
                               </div>

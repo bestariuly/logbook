@@ -80,6 +80,12 @@
                     <td>Pemeliharaan</td>
                     <td>
                       <input type="hidden" name="id" value="<?php echo $data->id; ?>">
+                        <?php if ($data->pemeliharaan_radar == 'sudah'){ ?>
+                          Sudah
+                        <?php }else{ ?>
+                          Belum
+                        <?php } ?>
+                        </select><!-- 
                       <select  class="form-control" id="sel1" name="radarpemeliharaan" required>
                         <?php if ($data->pemeliharaan_radar == 'sudah'){ ?>
                           <option value="sudah">Sudah</option>
@@ -88,27 +94,39 @@
                           <option value="belum">Belum</option>
                           <option value="sudah">Sudah</option></select>
                         <?php } ?>
-                        </select>
+                        </select> -->
                     </td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Kebersihan</td>
                     <td>
-                      <select  class="form-control" id="sel1" name="radarkebersihan" required>
+                      <?php if ($data->kebersihan_radar == 'sudah'){ ?>
+                          Sudah
+                          
+                        <?php }else{ ?>
+                          Belum
+                        <?php } ?>
+                      <!-- <select  class="form-control" id="sel1" name="radarkebersihan" required>
                          <?php if ($data->kebersihan_radar == 'sudah'){ ?>
                           <option value="sudah">Sudah</option>
                           <option value="belum">Belum</option></select>
                         <?php }else{ ?>
                           <option value="belum">Belum</option>
                           <option value="sudah">Sudah</option></select>
-                        <?php } ?>
+                        <?php } ?> -->
                     </td>
                 </tr>
                 <tr>
                   <td>3</td>
                     <td>Switch AC</td>
                     <td>
+                      <?php if ($data->switch_ac == 'sudah'){ ?>
+                          Sudah
+                        <?php }else{ ?>
+                          Belum
+                        <?php } ?>
+                        <!-- 
                       <select  class="form-control" id="sel1" name="radarswitch" required>
                         <?php if ($data->switch_ac == 'sudah'){ ?>
                           <option value="sudah">Sudah</option>
@@ -116,7 +134,7 @@
                         <?php }else{ ?>
                           <option value="belum">Belum</option>
                           <option value="sudah">Sudah</option></select>
-                        <?php } ?>
+                        <?php } ?> -->
                     </td>
                 </tr>
                 <tr>
@@ -126,70 +144,95 @@
                     <td>4</td>
                     <td>Running test/ Pemanasan Genset (min 10 menit)</td>
                     <td>
-                      <select  class="form-control" id="sel1" name="gensetpemanasan" required>
+                      <?php if ($data->pemanasan_genset == 'sudah'){ ?>
+                          Sudah
+                        <?php }else{ ?>
+                          Belum
+                        <?php } ?>
+                      <!-- <select  class="form-control" id="sel1" name="gensetpemanasan" required>
                       <?php if ($data->pemanasan_genset == 'sudah'){ ?>
                           <option value="sudah">Sudah</option>
                           <option value="belum">Belum</option></select>
                         <?php }else{ ?>
                           <option value="belum">Belum</option>
                           <option value="sudah">Sudah</option></select>
-                        <?php } ?>
+                        <?php } ?> -->
                     </td>
                 </tr>
                 <tr>
                     <td>5</td>
                     <td>Pengecekan Air Aki</td>
                     <td>
-                      <select  class="form-control" id="sel1" name="gensetair" required>
+                      <?php if ($data->pengecekanair_genset == 'sudah'){ ?>
+                          Sudah
+                        <?php }else{ ?>
+                          Belum
+                        <?php } ?>
+                      <!-- <select  class="form-control" id="sel1" name="gensetair" required>
                       <?php if ($data->pengecekanair_genset == 'sudah'){ ?>
                           <option value="sudah">Sudah</option>
                           <option value="belum">Belum</option></select>
                         <?php }else{ ?>
                           <option value="belum">Belum</option>
                           <option value="sudah">Sudah</option></select>
-                        <?php } ?>
+                        <?php } ?> -->
                     </td>
                 </tr>
                 <tr>
                     <td>6</td>
                     <td>Pengecekan Solar</td>
                     <td>
-                      <select  class="form-control" id="sel1" name="gensetsolar" required>
+                      <?php if ($data->pengecekansolar_genset == 'sudah'){ ?>
+                          Sudah
+                        <?php }else{ ?>
+                          Belum
+                        <?php } ?>
+                      <!-- <select  class="form-control" id="sel1" name="gensetsolar" required>
                       <?php if ($data->pengecekansolar_genset == 'sudah'){ ?>
                           <option value="sudah">Sudah</option>
                           <option value="belum">Belum</option></select>
                         <?php }else{ ?>
                           <option value="belum">Belum</option>
                           <option value="sudah">Sudah</option></select>
-                        <?php } ?>
+                        <?php } ?> -->
                     </td>
                 </tr>
                 <tr>
                     <td>7</td>
                     <td>Pemeliharaan</td>
                     <td>
-                      <select  class="form-control" id="sel1" name="gensetpemeliharaan" required>
+                      <?php if ($data->pemeliharaan_genset == 'sudah'){ ?>
+                          Sudah
+                        <?php }else{ ?>
+                          Belum
+                        <?php } ?>
+                      <!-- <select  class="form-control" id="sel1" name="gensetpemeliharaan" required>
                       <?php if ($data->pemeliharaan_genset == 'sudah'){ ?>
                           <option value="sudah">Sudah</option>
                           <option value="belum">Belum</option></select>
                         <?php }else{ ?>
                           <option value="belum">Belum</option>
                           <option value="sudah">Sudah</option></select>
-                        <?php } ?>
+                        <?php } ?> -->
                     </td>
                 </tr>
                 <tr>
                     <td>8</td>
                     <td>Kebersihan</td>
                     <td>
-                      <select  class="form-control" id="sel1" name="gensetkebersihan" required>
+                      <?php if ($data->kebersihan_genset == 'sudah'){ ?>
+                          Sudah
+                        <?php }else{ ?>
+                          Belum
+                        <?php } ?>
+                      <!-- <select  class="form-control" id="sel1" name="gensetkebersihan" required>
                       <?php if ($data->kebersihan_genset == 'sudah'){ ?>
                           <option value="sudah">Sudah</option>
                           <option value="belum">Belum</option></select>
                         <?php }else{ ?>
                           <option value="belum">Belum</option>
                           <option value="sudah">Sudah</option></select>
-                        <?php } ?>
+                        <?php } ?> -->
                     </td>
                 </tr>
                 <tr>
@@ -199,16 +242,27 @@
                     <td>9</td>
                     <td>Catatan</td>
                     <td>
-                      <textarea rows="5" class="form-control" name="catatan" placeholder="Masukkan Catatan Mingguan Radar disini" ><?php echo $data->catatan ?> </textarea>
+                      <?php echo $data->catatan ?>
+                      <!-- <textarea rows="5" class="form-control" name="catatan" placeholder="Masukkan Catatan Mingguan Radar disini" ><?php echo $data->catatan ?> </textarea> -->
                     </td>
                 </tr>
               <?php }; ?>
             </tbody>
-                                  </table>  
 
-                                </div>
+               </table>  
+                      
+                      </div>
+
                                 
                                 <div class="modal-footer">
+                                   <div class="col-sm-4" align="center" style="float: right;">
+                                    <br>
+                                    Teknisi On Duty, <br><br><br>
+                                    <u>1. &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 
+                                      2.&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                                    3. &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp;  </u><br>
+                                  </div> 
+
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 </div>
                               </div>
