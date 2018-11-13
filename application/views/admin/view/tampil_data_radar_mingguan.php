@@ -2,6 +2,12 @@
    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+   <script type="text/javascript">
+     function print(url) {
+    var printWindow = window.open( url);
+    printWindow.print();
+};
+   </script>
    <script>
     $(document).ready(function(){
       $("#myInput").on("keyup", function() {
@@ -85,16 +91,7 @@
                         <?php }else{ ?>
                           Belum
                         <?php } ?>
-                        </select><!-- 
-                      <select  class="form-control" id="sel1" name="radarpemeliharaan" required>
-                        <?php if ($data->pemeliharaan_radar == 'sudah'){ ?>
-                          <option value="sudah">Sudah</option>
-                          <option value="belum">Belum</option></select>
-                        <?php }else{ ?>
-                          <option value="belum">Belum</option>
-                          <option value="sudah">Sudah</option></select>
-                        <?php } ?>
-                        </select> -->
+                    
                     </td>
                 </tr>
                 <tr>
@@ -107,14 +104,7 @@
                         <?php }else{ ?>
                           Belum
                         <?php } ?>
-                      <!-- <select  class="form-control" id="sel1" name="radarkebersihan" required>
-                         <?php if ($data->kebersihan_radar == 'sudah'){ ?>
-                          <option value="sudah">Sudah</option>
-                          <option value="belum">Belum</option></select>
-                        <?php }else{ ?>
-                          <option value="belum">Belum</option>
-                          <option value="sudah">Sudah</option></select>
-                        <?php } ?> -->
+                 
                     </td>
                 </tr>
                 <tr>
@@ -126,16 +116,7 @@
                         <?php }else{ ?>
                           Belum
                         <?php } ?>
-                        <!-- 
-                      <select  class="form-control" id="sel1" name="radarswitch" required>
-                        <?php if ($data->switch_ac == 'sudah'){ ?>
-                          <option value="sudah">Sudah</option>
-                          <option value="belum">Belum</option></select>
-                        <?php }else{ ?>
-                          <option value="belum">Belum</option>
-                          <option value="sudah">Sudah</option></select>
-                        <?php } ?> -->
-                    </td>
+                                          </td>
                 </tr>
                 <tr>
                  <td colspan="4" style="background-color:#eceaea;">GENSET RADAR</td>
@@ -149,14 +130,7 @@
                         <?php }else{ ?>
                           Belum
                         <?php } ?>
-                      <!-- <select  class="form-control" id="sel1" name="gensetpemanasan" required>
-                      <?php if ($data->pemanasan_genset == 'sudah'){ ?>
-                          <option value="sudah">Sudah</option>
-                          <option value="belum">Belum</option></select>
-                        <?php }else{ ?>
-                          <option value="belum">Belum</option>
-                          <option value="sudah">Sudah</option></select>
-                        <?php } ?> -->
+                   
                     </td>
                 </tr>
                 <tr>
@@ -168,14 +142,7 @@
                         <?php }else{ ?>
                           Belum
                         <?php } ?>
-                      <!-- <select  class="form-control" id="sel1" name="gensetair" required>
-                      <?php if ($data->pengecekanair_genset == 'sudah'){ ?>
-                          <option value="sudah">Sudah</option>
-                          <option value="belum">Belum</option></select>
-                        <?php }else{ ?>
-                          <option value="belum">Belum</option>
-                          <option value="sudah">Sudah</option></select>
-                        <?php } ?> -->
+              
                     </td>
                 </tr>
                 <tr>
@@ -187,14 +154,7 @@
                         <?php }else{ ?>
                           Belum
                         <?php } ?>
-                      <!-- <select  class="form-control" id="sel1" name="gensetsolar" required>
-                      <?php if ($data->pengecekansolar_genset == 'sudah'){ ?>
-                          <option value="sudah">Sudah</option>
-                          <option value="belum">Belum</option></select>
-                        <?php }else{ ?>
-                          <option value="belum">Belum</option>
-                          <option value="sudah">Sudah</option></select>
-                        <?php } ?> -->
+                  
                     </td>
                 </tr>
                 <tr>
@@ -206,14 +166,7 @@
                         <?php }else{ ?>
                           Belum
                         <?php } ?>
-                      <!-- <select  class="form-control" id="sel1" name="gensetpemeliharaan" required>
-                      <?php if ($data->pemeliharaan_genset == 'sudah'){ ?>
-                          <option value="sudah">Sudah</option>
-                          <option value="belum">Belum</option></select>
-                        <?php }else{ ?>
-                          <option value="belum">Belum</option>
-                          <option value="sudah">Sudah</option></select>
-                        <?php } ?> -->
+                 
                     </td>
                 </tr>
                 <tr>
@@ -225,14 +178,7 @@
                         <?php }else{ ?>
                           Belum
                         <?php } ?>
-                      <!-- <select  class="form-control" id="sel1" name="gensetkebersihan" required>
-                      <?php if ($data->kebersihan_genset == 'sudah'){ ?>
-                          <option value="sudah">Sudah</option>
-                          <option value="belum">Belum</option></select>
-                        <?php }else{ ?>
-                          <option value="belum">Belum</option>
-                          <option value="sudah">Sudah</option></select>
-                        <?php } ?> -->
+                    
                     </td>
                 </tr>
                 <tr>
@@ -243,7 +189,7 @@
                     <td>Catatan</td>
                     <td>
                       <?php echo $data->catatan ?>
-                      <!-- <textarea rows="5" class="form-control" name="catatan" placeholder="Masukkan Catatan Mingguan Radar disini" ><?php echo $data->catatan ?> </textarea> -->
+                      
                     </td>
                 </tr>
               <?php }; ?>
@@ -487,7 +433,9 @@
                                         );
                                         echo $dayList[$day];  ?></td>
                                         <td><?php echo $row2->tanggal; ?></td>
-                                        <td><a href="?tanggal=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-eye-open"> Lihat</span></a>    
+                                        <td>
+                                         <a href=""><span class="btn btn-default small glyphicon glyphicon-eye-open" onclick="print('cetak_data_radar_mingguan?tanggal=<?php  echo $row2->tanggal; ?>')"> Cetak</span></a>
+                                          <a href="?tanggal=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-eye-open"> Lihat</span></a>    
                                           <a href="?edit=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-edit"> Edit</span></a></td> 
 
                                           
