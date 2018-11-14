@@ -46,6 +46,10 @@
  <!--   modal lihat data -->
         <div class="modal-content">
           <div class="modal-header">
+           
+
+
+
             <div class="col-lg-12" style="padding-left: 10%; padding-right: 10%">
               <div class="row">
                 <div class="col-sm-2" style="text-align: center;">
@@ -126,7 +130,6 @@
 
               </tbody>
             </table> 
-           <button id="cmd">Generate PDF</button> 
           </div>
         </div>
         <div class="col-sm-4" align="center" style="float: right;">
@@ -139,6 +142,8 @@
 
       </div>
     </div>
+
+
   </div>
 </div> 
 </div>
@@ -262,8 +267,13 @@
                 );
                 echo $dayList[$day];  ?></td>
                 <td><?php echo $row2->tanggal; ?></td>
-                <td><a href="?tanggal=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-eye-open" id="btn-view"> Lihat</span></a>    
-                  <a href="?edit=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-edit" id="btn-edit"> Edit</span></a></td> 
+                <td>
+                <a href="?tanggal=<?php  echo $row2->tanggal; ?>" >
+                <span class="btn btn-default small glyphicon glyphicon-eye-open" id="btn-view"> Lihat</span></a> 
+                <a href="save-mingguan?tanggal=<?php  echo $row2->tanggal; ?>" target="_blank">
+                <span class="btn btn-default small glyphicon glyphicon-print" id="btn-view"> Print</span></a>    
+                <a href="?edit=<?php  echo $row2->tanggal; ?>" >
+                <span class="btn btn-default small glyphicon glyphicon-edit" id="btn-edit"> Edit</span></a></td> 
 
                 </tr>
               <?php } ?>

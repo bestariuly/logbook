@@ -58,12 +58,11 @@ class M_alat extends CI_Model{
 	{
 		$this->db->where($where);
 		$this->db->update($table,$data);
-    }
+	}
+	
     public function getLaporan(){
-		$this->db->select('*');
-		$this->db->from('laporan l');
-		$data = $this->db->get();
-		return $data->result_array();
+		$data = $query = $this->db->query("SELECT * FROM laporan ORDER BY tanggal DESC");
+		return $data->result();
 	}
     
     //input harian dan mingguan
@@ -116,13 +115,13 @@ class M_alat extends CI_Model{
     // pemanggilan tanggal harian
 	function grup_tanggal(){
 		$date = date('Y-m-d');
-		$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM operasi GROUP BY tanggal"); 
+		$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM operasi GROUP BY tanggal ORDER BY tanggal DESC "); 
 		return $query->result();
     }
     //pemanggilan tanggal mingguan
 	function grup_tanggal2(){
 		$date = date('Y-m-d');
-		$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM kondisi GROUP BY tanggal"); 
+		$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM kondisi GROUP BY tanggal ORDER BY tanggal DESC"); 
 		return $query->result();
 	}
 	

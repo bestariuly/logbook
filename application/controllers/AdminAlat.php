@@ -3,11 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AdminAlat extends CI_Controller {
 	public function __construct(){
-        parent::__construct();
+		parent::__construct();
+		
         $this->load->model('m_alat');
         $this->load->helper('url');
-        $this->load->library('session');
-    }
+		$this->load->library('session');
+		if($this->session->userdata('status')!='login'){
+			redirect(base_url('login'));
+		}
+	}
 	public function index(){
 		$this->load->view('admin/header');
 		$this->load->view('admin/home');
@@ -19,7 +23,7 @@ class AdminAlat extends CI_Controller {
 		$data1['kategori'] = $this->m_alat->get($kategori);
 		$data1['alat'] = $this->m_alat->get($alat);
 		$data1['kategorialat'] = $this->m_alat->getKategoriAlat();
-		$data1['laporan'] = $this->m_alat->get('laporan');
+		$data1['laporan'] = $this->m_alat->getLaporan();
 		$data1['data'] = $this->m_alat->operasijoin2();
 		$data1['tanggal'] = $this->m_alat->grup_tanggal();
 		$data1['tanggal2'] = $this->m_alat->grup_tanggal2();
@@ -29,6 +33,7 @@ class AdminAlat extends CI_Controller {
 			$tgl = $this->input->get('tanggal');
 			$data1['harianalat'] = $this->m_alat->operasiJoinByDate($tgl);
 			$data1['mingguanalatview'] = $this->m_alat->operasiJoin4($tgl);
+			$data1['laporan2']= $this->m_alat->getWhere('laporan', array('id' => $tgl));
 			$data1['mingguanalat'] = $this->m_alat->operasiJoin3($tgl);
 			$data1['tgl'] = $tgl;
 		}
@@ -40,7 +45,7 @@ class AdminAlat extends CI_Controller {
 			$data1['tgl'] = $tgl;
 		}
 
-		if ($data=='save') {
+		if ($data=='save-harian' || $data=='save-mingguan' || $data=='save-laporan') {
 			$this->load->view('admin/view/'.$data, $data1);
 		}else{
 		$this->load->view('admin/header');

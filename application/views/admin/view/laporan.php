@@ -31,32 +31,17 @@
             <td style= "text-align: center"><?php echo $laporan->tanggal; ?></td>
             <td style= "text-align: center"><?php echo $laporan->jenis_laporan; ?></td>
             <td>
-              <!-- button  -->
-              <?php echo anchor('admin/hapuslaporan/'.$laporan->id, 
-              '<button style="float: right" class="btn btn-default small glyphicon glyphicon-trash" id="btn-delete" title="Hapus"></button>', array('class'=>'delete', 'onclick'=>"return confirmDialog();")); ?>  
-              <button style="float: right" class="btn btn-default small glyphicon glyphicon-edit" title="Edit" id="btn-edit" data-toggle="modal" data-target="#editlaporan<?php echo $laporan->id; ?>"></button>
-              <button style="float: right" class="btn btn-default small glyphicon glyphicon-eye-open" title="view" id="btn-view" data-toggle="modal" data-target="#lihatlaporan<?php echo $laporan->id; ?>"></button>
-              <script>
-                    document.getElementById("btnPrint<?php echo $laporan->id; ?>").onclick = function () {
-                        printElement(document.getElementById("printThis<?php echo $laporan->id; ?>"));
-                    }
+<!-- button  -->
+<?php echo anchor('admin/hapuslaporan/'.$laporan->id, 
+'<button style="float: right" class="btn btn-default small glyphicon glyphicon-trash" id="btn-delete" title="Hapus"> Hapus</button>',
+  array('class'=>'delete', 'onclick'=>"return confirmDialog();")); ?>  
+<button style="float: right" class="btn btn-default small glyphicon glyphicon-edit" title="Edit" id="btn-edit" 
+  data-toggle="modal" data-target="#editlaporan<?php echo $laporan->id; ?>"> Edit</button>
+<button style="float: right" class="btn btn-default small glyphicon glyphicon-eye-open" title="view" id="btn-view" 
+  data-toggle="modal" data-target="#lihatlaporan<?php echo $laporan->id; ?>"> Lihat</button>
 
-                    function printElement(elem) {
-                        var domClone = elem.cloneNode(true);
-                        
-                        var $printSection = document.getElementById("printSection<?php echo $laporan->id; ?>");
-                        
-                        if (!$printSection) {
-                            var $printSection = document.createElement("div");
-                            $printSection.id = "printSection<?php echo $laporan->id; ?>";
-                            document.body.appendChild($printSection);
-                        }
-                        
-                        $printSection.innerHTML = "";
-                        $printSection.appendChild(domClone);
-                        window.print();
-                    }
-                  </script> 
+<a href="save-laporan?tanggal=<?php  echo $laporan->id; ?>" target="_blank" style="float: right"><button id="btn-view" class="btn btn-default small glyphicon glyphicon-print"> Print</button>
+  </a>
  <!-- modal lihat laporan -->
                     <div id="printThis<?php echo $laporan->id; ?>">
               <div id="lihatlaporan<?php echo $laporan->id; ?>" class="modal fade" role="dialog">
@@ -66,9 +51,8 @@
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     
-    <!-- lihat laporan --> 
+ <!-- lihat laporan --> 
                   </div>
-
                   <div class="modal-body" > 
                     <div class="row">
                       <div class="col-lg-12" style="padding-left: 10%; padding-right: 10%">
@@ -120,8 +104,6 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                  <button id="btnPrint<?php echo $laporan->id; ?>" type="button" class="btn btn-default">Print</button>
-                    <a href="<?php echo base_url()."admin/dataLaporanPdf";?>" value="simpan">Save</a>
                   </div>
                 </div>
               </div>

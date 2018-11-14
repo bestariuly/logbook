@@ -104,15 +104,8 @@
 
                 <button class="btn btn-lg btn-primary btn-block" name="btn-login" id="btn-login" type="submit">
                     Masuk</button>
-
-                <label class="checkbox pull-left">
-                    <input type="checkbox" value="remember-me">
-                    Ingatkan Saya
-                </label>
-                <a href="#" class="pull-right need-help">Butuh bantuan? </a><span class="clearfix"></span>
                 </form>
             </div>
-            <a href="#" class="text-center new-account">Buat Akun </a>
             <div id="error" style="margin-top: 10px"></div>
         </div>
     </div>

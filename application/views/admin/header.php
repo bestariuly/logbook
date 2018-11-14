@@ -91,7 +91,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="<?php echo base_url();?>logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -179,6 +179,9 @@
                     </li>
                     <li>
                         <a href="<?php echo base_url('adminalat/view/laporan'); ?>"><i class="fa fa-bars fa-fw"></i> Manajemen Laporan <span class="fa arrow"></span></a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('adminalat/view/user'); ?>"><i class="fa fa-bars fa-fw"></i> Manajemen User <span class="fa arrow"></span></a>
                     </li>
                     
                 </div>

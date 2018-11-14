@@ -165,7 +165,7 @@
           2.&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
         3. &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp;  </u><br>
       </div>
-      <button onclick="printElem()">Print</button>
+      <!-- <button onclick="printElem()">Print</button> -->
     </div>
   </div>
 </div>
@@ -303,7 +303,9 @@
                   <td><?php echo $row2->tanggal; ?></td>
                   <td>
                     <a href="?tanggal=<?php  echo $row2->tanggal; ?>" >
-                    <span class="btn btn-default small glyphicon glyphicon-eye-open" id="btn-view"> Lihat</span></a>    
+                    <span class="btn btn-default small glyphicon glyphicon-eye-open" id="btn-view"> Lihat</span></a> 
+                    <a href="save-harian?tanggal=<?php  echo $row2->tanggal; ?>" target="_blank" >
+                    <span class="btn btn-default small glyphicon glyphicon-print" id="btn-view"> Print</span></a>   
                     <a href="?edit=<?php  echo $row2->tanggal; ?>" >
                     <span class="btn btn-default small glyphicon glyphicon-edit" id="btn-edit"> Edit</span></a>
                   </td> 
