@@ -2,6 +2,12 @@
    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+   <script type="text/javascript">
+     function print(url) {
+    var printWindow = window.open( url);
+    printWindow.print();
+};
+   </script>
    <script>
     $(document).ready(function(){
       $("#myInput").on("keyup", function() {
@@ -325,7 +331,9 @@
                                         );
                                         echo $dayList[$day];  ?></td>
                                         <td><?php echo $row2->tanggal; ?></td>
-                                        <td><a href="?tanggal=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-eye-open"> Lihat</span></a>    
+                                        <td>
+                                          <a href=""><span class="btn btn-default small glyphicon glyphicon-eye-open" onclick="print('cetak_data_radar?tanggal=<?php  echo $row2->tanggal; ?>')"> Cetak</span></a>    
+                                          <a href="?tanggal=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-eye-open"> Lihat</span></a>    
                                           <a href="?edit=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-edit"> Edit</span></a></td> 
 
                                           
