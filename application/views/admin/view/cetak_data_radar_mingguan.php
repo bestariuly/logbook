@@ -1,4 +1,10 @@
  <link href="<?php echo base_url(); ?>asset/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ <script src="<?php echo base_url(); ?>asset/vendor/jquery/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  window.print();
+  });
+</script>
 
  <div class="row">
                 <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2 col-xl-2" style="text-align: center;">
