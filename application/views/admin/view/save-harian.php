@@ -22,10 +22,12 @@ $(document).ready(function(){
       <strong >STASIUN KLIMATOLOGI MLATI YOGYAKARTA</strong><br>
       Jl. Kabupaten Km. 5,5 Duwet Sendangadi, Mlati, Sleman, D.I. Yogyakarta<br>
       Telp : (0274) 2880152 ; Fax: (0247) 2880151 ; email: staklim.yogya@gmail.com
-      <br>
+      <br><br>
+    </div>
+    <div>
+      <hr width="100%" noshade style="border-top: 2px solid #000;">
     </div>
   </div>
-  <div class="row" style="background-color: black; height: 10px; text-align: center ">---------------------------------------------------------------------------------------------------------------------------------------------------</div>
   <div class="row" style="text-align: center; "></div>
   
   <h4 class="page-header text-center" >CHEKLIST HARIAN PERALATAN AGROKLIMAT</h4>

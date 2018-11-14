@@ -811,6 +811,36 @@ class Admin extends CI_Controller {
 			header('location: view/laporan');
 		}
 	}
+		//tambah user
+		function tambah_user(){
+			$username=$this->input->post('user');
+			$input = array
+			(
+			  'username' => $username,
+			  'nama' => $nama
+			);
+			$this->m_alat->tambahUser($input);
+			header("location: view/user");
+			// $this->session->set_flashdata('message', '
+			// 	<div class="alert alert-success alert-dismissible">
+			// 	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			// 	<strong>Success!</strong> Kategori Alat Baru Agroklimat ditambahkan.
+			  // 	</div>');
+	}
+	public function buat_user(){
+		$nama = $this->input->post('nama');
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		// $ulangpassword = $this->input->post('ulangpassword');
+	   $data = array
+		   (
+		   'nama' => $nama,
+		   'username' => $username,
+		   'password'=> $password
+		//    'ulangpassword' => $ulangpassword,
+			);
+	   $this->m_alat->tambahUser($data);
+	   header('location:view/user');
 	
 }
 

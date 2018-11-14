@@ -22,11 +22,12 @@ $(document).ready(function(){
                   Telp : (0274) 2880152 ; Fax: (0247) 2880151 ; email: staklim.yogya@gmail.com
                   <br><br>
                 </div>
+                <div>
+                  <hr width="100%" noshade style="border-top: 2px solid #000;">
+                </div>
               </div>
-              <div class="row" style="background-color: black; height: 10px; 
-              text-align: center ">--------------------------------------------------------------------------------------------------------------------</div>
+              <div class="row" style="background-color: black; height: 10px;"> 
               <div class="row" style="text-align: center; "></div>
-              
               <h2 class="page-header text-center" >CHEKLIST DATA MINGGUAN PERALATAN AGROKLIMAT</h2>
               <h4 class="modal-title">Tanggal : <?php echo $tgl; ?></h4>
               <div class="row">

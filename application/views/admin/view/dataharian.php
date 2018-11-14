@@ -26,23 +26,7 @@
   });
 
 </script>
-<script type="text/javascript">
-  function printElem() {
-    var content = document.getElementById("konten1").innerHTML;
-    var mywindow = window.open('', 'Print');
 
-    mywindow.document.write('<html><head><title>Print</title>');
-    mywindow.document.write('</head><body >');
-    mywindow.document.write(content);
-    mywindow.document.write('</body></html>');
-
-    mywindow.document.close();
-    mywindow.focus()
-    mywindow.print();
-    mywindow.close();
-    return true;
-}
-</script>
 
 
 <div id="page-wrapper">

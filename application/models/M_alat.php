@@ -125,5 +125,15 @@ class M_alat extends CI_Model{
 		return $query->result();
 	}
 	
+	// tambah user
+	function tambahUser($input){
+		return $this->db->insert('user', $input);
+	}
+	//get user
+	public function getuser(){
+		$data = $query = $this->db->query("SELECT * FROM user ");
+		return $data->result();
+	}
+
 }
 ?>

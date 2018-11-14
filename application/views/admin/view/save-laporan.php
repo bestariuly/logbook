@@ -26,9 +26,11 @@ foreach($laporan2 as $laporan){
                   Telp : (0274) 2880152 ; Fax: (0247) 2880151 ; email: staklim.yogya@gmail.com
                   <br><br>
                 </div>
+                <div class="row" style="background-color: black; height: 10px;"> 
+                <div>
+                  <hr width="100%" noshade style="border-top: 2px solid #000;">
+                </div>
               </div>
-              <div class="row" style="background-color: black; height: 10px; 
-              text-align: center ">--------------------------------------------------------------------------------------------------------------------</div>
               <div class="row" style="text-align: center; "></div>
               <div class="row" style="text-align: center; ">
                 <br><strong>LAPORAN <?php echo strtoupper($laporan->jenis_laporan); ?> PERALATAN </strong><br>

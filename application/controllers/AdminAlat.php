@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AdminAlat extends CI_Controller {
 	public function __construct(){
-		parent::__construct();
-		
+		parent::__construct();	
         $this->load->model('m_alat');
         $this->load->helper('url');
 		$this->load->library('session');
@@ -27,6 +26,7 @@ class AdminAlat extends CI_Controller {
 		$data1['data'] = $this->m_alat->operasijoin2();
 		$data1['tanggal'] = $this->m_alat->grup_tanggal();
 		$data1['tanggal2'] = $this->m_alat->grup_tanggal2();
+		$data1['user'] = $this->m_alat->getuser();
 		
 //harian Alat dan radar
 		if($this->input->get('tanggal')){
@@ -452,5 +452,6 @@ class AdminAlat extends CI_Controller {
 			header('location: view/laporan');
 		}
 	}
+
 }
 
