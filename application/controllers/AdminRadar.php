@@ -28,7 +28,6 @@ class AdminRadar extends CI_Controller {
 			$x= 'chart'.$id;
 			$data1[$x] = $this->m_radar->pembacaanChartz($id);
 		}
-		$data1['chart'] = $this->m_radar->pembacaanChart();
 		$data1['kategoriradar'] = $this->m_radar->get($kategoriradar);
 		$data1['radar'] = $this->m_radar->get($radar);
 		$data1['kategori_radar'] = $this->m_radar->getKategoriRadar();
