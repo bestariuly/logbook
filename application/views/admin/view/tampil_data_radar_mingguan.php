@@ -202,8 +202,6 @@
                                       2.&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
                                     3. &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp;  </u><br>
                                   </div> 
-
-                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 </div>
                               </div>
                             </div>
