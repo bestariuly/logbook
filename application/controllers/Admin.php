@@ -7,6 +7,9 @@ class Admin extends CI_Controller {
         $this->load->model('m_logbook');
         $this->load->helper('url');
         $this->load->library('session');
+        if($this->session->userdata('status')!='login'){
+			redirect(base_url('login'));
+		}
     }
 	public function index(){
 		$this->load->view('admin/header');

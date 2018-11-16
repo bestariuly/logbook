@@ -7,6 +7,9 @@ class AdminRadar extends CI_Controller {
         $this->load->model('m_radar');
         $this->load->helper('url');
         $this->load->library('session');
+		if($this->session->userdata('status')!='login'){
+			redirect(base_url('login'));
+		}
     }
 	public function index(){
 		$this->load->view('admin/header');
@@ -47,7 +50,8 @@ class AdminRadar extends CI_Controller {
 		}
 
 
-		if ($data=='save') {
+		
+		if ($data=='cetak_data_radar' || $data=='cetak_data_radar_mingguan') {
 			$this->load->view('admin/view/'.$data, $data1);
 		}else{
 		$this->load->view('admin/header');

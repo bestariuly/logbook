@@ -72,13 +72,13 @@ class M_radar extends CI_Model{
 	//harian
 	function grup_tanggal_radar(){
 		$date = date('Y-m-d');
-		$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM pembacaan GROUP BY tanggal"); 
+		$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM pembacaan GROUP BY tanggal ORDER BY tanggal DESC"); 
 		return $query->result();
 	}
 	//mingguan
 	function grup_tanggal_radar2(){
 		$date = date('Y-m-d');
-		$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM radar_mingguan GROUP BY tanggal"); 
+		$query = $this->db->query("SELECT COUNT(tanggal), tanggal FROM radar_mingguan GROUP BY tanggal ORDER BY tanggal DESC"); 
 		return $query->result();
 	}
 	function cekTodayRadar(){
