@@ -59,6 +59,10 @@ class M_radar extends CI_Model{
 	function tambahRadar($input){
 		return $this->db->insert('radar', $input);
 	}
+	function getJumlahRadar(){
+		$query = $this->db->query("SELECT COUNT(id_radar) FROM radar");
+		return $query->result();
+	}
 
 	function inputHarianRadar($input){
 		$this->db->insert('pembacaan', $input);
