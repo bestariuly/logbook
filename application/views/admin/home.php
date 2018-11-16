@@ -19,12 +19,12 @@
                     <i class="fa fa-comments fa-5x"></i>
                   </div>
                   <div class="col-xs-6 text-right">
-                    <p class="announcement-heading">456</p>
+                    <p class="announcement-heading"><?php echo $jumlahalat; ?></p>
                     <p class="announcement-text">Jumlah Alat</p>
                   </div>
                 </div>
               </div>
-              <a href="#">
+              <a href="<?php echo base_url('adminalat/view/agroklimat'); ?>">
                 <div class="panel-footer announcement-bottom">
                   <div class="row">
                     <div class="col-xs-6">
@@ -47,12 +47,12 @@
                     <i class="fa fa-comments fa-5x"></i>
                   </div>
                   <div class="col-xs-6 text-right">
-                    <p class="announcement-heading">456</p>
+                    <p class="announcement-heading"><?php echo $jumlahradar; ?></p>
                     <p class="announcement-text">Jumlah Radar</p>
                   </div>
                 </div>
               </div>
-              <a href="#">
+              <a href="<?php echo base_url('adminradar/view/radar'); ?>">
                 <div class="panel-footer announcement-bottom">
                   <div class="row">
                     <div class="col-xs-6">
@@ -80,7 +80,7 @@
                   </div>
                 </div>
               </div>
-              <a href="#">
+              <a href="<?php echo base_url('adminradar/view/chart'); ?>">
                 <div class="panel-footer announcement-bottom">
                   <div class="row">
                     <div class="col-xs-6">

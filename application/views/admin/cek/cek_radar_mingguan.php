@@ -1,3 +1,4 @@
+<link href="<?php echo base_url(); ?>asset/dist/css/harian.css" rel="stylesheet">
 <div id="page-wrapper">
  <div class="row">
   <div class="col-lg-12">
@@ -11,7 +12,7 @@
       //$hari = hari_ini();
       if ($hari == "Fri") {
         ?>
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="harian">
         <thead>
           <tr>
             <th class="col-lg-1">No.</th>

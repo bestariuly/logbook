@@ -12,8 +12,10 @@ class Admin extends CI_Controller {
 		}
     }
 	public function index(){
+		$data['jumlahradar'] = $this->m_logbook->getCountRadar();
+		$data['jumlahalat'] = $this->m_logbook->getCountAlat();
 		$this->load->view('admin/header');
-		$this->load->view('admin/home');
+		$this->load->view('admin/home',$data);
 		$this->load->view('admin/footer');
 	}
 	public function view($data){
@@ -846,5 +848,4 @@ class Admin extends CI_Controller {
 	   header('location:view/user');
 	
 }
-
-
+}

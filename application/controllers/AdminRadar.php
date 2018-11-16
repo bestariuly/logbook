@@ -16,7 +16,6 @@ class AdminRadar extends CI_Controller {
 		$this->load->view('admin/header');
 		$this->load->view('admin/home');
 		$this->load->view('admin/footer');
-		$jumlahradar= $this->m_radar->getJumlahRadar();
 	}
 	public function view($data){
 		//radar

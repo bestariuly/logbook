@@ -20,7 +20,7 @@
                 $nama = $getIdRadar->nama_radar;
                 $standar = $getIdRadar->standar;
                 
-          $x= 'chart'.$id;
+               $x= 'chart'.$id;
           
                 $datachart = ${$x};
                 foreach ($datachart as $datachart) {
@@ -34,9 +34,9 @@
                 }
           ?>
               <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading" style="background-color:  #384d84">
                   <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $id ?>"><?php echo $nama; ?></a>
+                    <a data-toggle="collapse" data-parent="#accordion" style="color: white" href="#collapse<?php echo $id ?>"><?php echo $nama; ?></a>
                   </h4>
                 </div>
                 <div id="collapse<?php echo $id ?>" class="panel-collapse collapse <?php if($no==1){ echo 'in'; $no++;} ?>">

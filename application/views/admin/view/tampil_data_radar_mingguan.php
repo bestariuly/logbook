@@ -1,6 +1,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+   <link href="<?php echo base_url(); ?>asset/dist/css/dataharian.css" rel="stylesheet">
    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
    <script>
     $(document).ready(function(){
@@ -392,7 +393,7 @@
                           <div class="row">
                             <div class="col-lg-12">
                               <div class="row2" align="right"> <input class="form-control" style="width: 30%;" id="myInput" type="text" placeholder="Search.."><br></div>
-                              <table class="table table-bordered table-stripped">
+                              <table class="table table-bordered table-stripped" id=harian>
                                 <thead>
                                   <tr>
                                     <th>No.</th>
@@ -426,9 +427,9 @@
                                         echo $dayList[$day];  ?></td>
                                         <td><?php echo $row2->tanggal; ?></td>
                                         <td>
-                                         <a href="cetak_data_radar_mingguan?tanggal=<?php  echo $row2->tanggal; ?>" target="_blank"><span class="btn btn-default small glyphicon glyphicon-print"> Print</span></a>
-                                          <a href="?tanggal=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-eye-open"> Lihat</span></a>    
-                                          <a href="?edit=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-edit"> Edit</span></a></td> 
+                                         <a href="cetak_data_radar_mingguan?tanggal=<?php  echo $row2->tanggal; ?>" target="_blank"><span class="btn btn-default small glyphicon glyphicon-print" style="color: white;background-color: #FF0000; margin: 5px;"> Print</span></a>
+                                          <a href="?tanggal=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-eye-open" style="color: white;background-color:#00FF00;margin: 5px;"> Lihat</span></a>    
+                                          <a href="?edit=<?php  echo $row2->tanggal; ?>" ><span class="btn btn-default small glyphicon glyphicon-edit" style="color: white;background-color:#0000FF;margin: 5px;"> Edit</span></a></td> 
 
                                           
                                         </tr>

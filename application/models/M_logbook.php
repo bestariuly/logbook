@@ -236,6 +236,14 @@ class M_logbook extends CI_Model{
             return $query->result();
         }
 	}
+
+	//fungsi pada dashboard
+	function getCountRadar(){
+		return $this->db->count_all('radar');
+	}
+	function getCountAlat(){
+		return $this->db->count_all('alat');
+	}
 	
 }
 ?>
